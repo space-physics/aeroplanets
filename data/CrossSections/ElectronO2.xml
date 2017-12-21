@@ -1,0 +1,625 @@
+<crs>
+	<Name>O2</Name>
+	<Collider>e</Collider>
+	<RecommendedFile/>
+	<title> O$_2$  + e</title>
+	<Emin>0.9</Emin>
+	<Emax>120000</Emax>
+	<Cmax>1E-15</Cmax>
+	<Cmin>1E-21</Cmin>
+	<plotname>seff_O2_e_recommended.pdf</plotname>
+	<explotname>seff_O2_e_recommendedex.pdf</explotname>
+	<figsize>3</figsize>
+	<O2>
+		<TotalCrsElectron/>
+		<ElasticCrs>
+			<legend>O2 Elastic Itikawa</legend>
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review</Notes>
+			<Recommended/>
+			<Egrid unit="eV">
+				1   2   3   4   5   
+				6   7   8   9   10  
+				12  15  20  30  40  
+				50  60  70  80  90  
+				100 200 300 400 500 
+				600 700 800 900 1000
+			</Egrid>
+			<Cross unit="cm2" uncertainty="20%" fact="1E-16">
+				5.97 6.45 6.74 6.93 7.20
+				7.52 7.86 8.21 8.49 8.80
+				9.00 8.89 8.60 8.09 7.30
+				6.59 6.08 5.63 5.29 5.01
+				4.78 3.15 2.40 2.00 1.72
+				1.53 1.37 1.27 1.18 1.10	
+			</Cross>
+		</ElasticCrs>
+		<!-- Excitations -->
+		<Process name="O2 + e -> O2(v'=1)" electrons="0" threshold="0.3">
+			<Species>
+				<Specie name="O2" state="v1"/>
+			</Species>
+			<Excitation/>
+			<Proc>v1</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Egrid unit="eV">
+				5 
+				7 
+				10
+				15
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16">
+				0.095 
+				0.305 
+				0.44  
+				0.057 		
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(v'=2)" electrons="0" threshold="0.3">
+			<Species>
+				<Specie name="O2" state="v2"/>
+			</Species>
+			<Excitation/>
+			<Proc>v2</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Egrid unit="eV">
+				5 
+				7 
+				10
+				15
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16">
+				0.034
+				0.114
+				0.165
+				0.015
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(v'=3)" electrons="0" threshold="6">
+			<Species>
+				<Specie name="O2" state="v'=3"/>
+			</Species>
+			<Excitation/>
+			<Proc>v3</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Egrid unit="eV">
+				7 
+				10
+				15
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16">
+				0.045
+				0.075
+				0.0065
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(A1Dg)" electrons="0" threshold="0.977">
+			<Species>
+				<Specie name="O2" state="A1Dg"/>
+			</Species>
+			<Proc>A1Dg</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				5 
+				7 
+				10 
+				15 
+				20 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="16%">
+				0.076
+				0.104
+				0.077 
+				0.042 			
+				0.023 	
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(b1Sg+)" electrons="0" threshold="1.627">
+			<Species>
+				<Specie name="O2" state="b1Sg+"/>
+			</Species>
+			<Proc>b1Sg+</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				5 7 10 15 20 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="18%">
+				0.020 0.033 0.019 0.0078 0.0055
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(A3Su A'3Du c1Su)" electrons="0" threshold="4.2">
+			<Species>
+				<Specie name="O2" state="A3Su" number="0.3333"/>
+				<Specie name="O2" state="A'3Du" number="0.3333"/>
+				<Specie name="O2" state="c1Su" number="0.3333"/>
+			</Species>
+			<Proc>A3Su A'3Du c1Su</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review + measurement Teillet: 50% error bar </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				10 15 20 30 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="50%">
+				0.1305 0.075 0.039 0.013
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O2(B3Su)" electrons="0" threshold="6.120">
+			<Species>
+				<Specie name="O2" state="B3Su"/>
+			</Species>
+			<Proc>B3Su</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				10 15 20 30 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="20%">
+				0.687  	0.790  0.598  0.2764 
+			</Cross>
+		</Process>
+
+
+		<Process name="O2 + e -> O2(B3Su - LB)" electrons="0" threshold="6.120">
+			<Species>
+				<Specie name="O2" state="B3Su - LB"/>
+			</Species>
+			<Proc>B3Su - LB</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				10 15 20 30 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="20%">
+				0.0575 0.0669 0.0622 0.0236
+			</Cross>
+		</Process>
+
+		<Process name="O2 + e -> O2(B3Su - 2B)" electrons="0" threshold="6.120">
+			<Species>
+				<Specie name="O2" state="B3Su - 2B"/>
+			</Species>
+			<Proc>B3Su - 2B</Proc> <!-- Name for the processus -->
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Excitation/>
+			<Egrid unit="eV">
+				10 15 20 30 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="23%">
+				0.00720 0.00915 0.00871 0.00472
+			</Cross>
+		</Process>
+
+
+		<Process name="O2 + e -> O* + O* (total dissociation)" electrons="0" threshold="13">
+			<Species>
+				<Specie name="O" state="*" number="2"/>
+			</Species>
+			<Excitation/>
+			<Proc>2 O(*)</Proc> <!-- Name for the processus -->
+			<Section>dissociation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Egrid unit="eV">
+				13.5 18.5 21.0 23.5 28.5 
+				33.5 38.5 48.5 58.5 73.5 
+				98.5 148.5 198.5 1000 
+			</Egrid>
+			<Cross unit="cm2" fact="1E-16" uncertainty="34%">
+				0.220 0.529 0.565 0.525 0.587
+				0.663 0.610 0.534 0.444 0.366
+				0.331 0.296 0.291 0.15
+			</Cross>
+		</Process>
+
+
+
+		<!-- Ionizations -->
+
+
+		<Process name="O2+e->O2+" electrons="1" threshold="12.8">
+			<Ionization/>
+			<legend>O2+ Straub</legend>
+			<Proc>O2+</Proc> <!-- Name for the processus -->
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="measurement">Straub 2004</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes>Data on website </Notes>
+			<Recommended/>
+			<Species>
+				<Specie name="O2+" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+				1.300000e+01	  1.550000e+01	  1.800000e+01	  2.300000e+01	  2.800000e+01
+				3.300000e+01	  3.800000e+01	  4.300000e+01	  4.800000e+01	  5.300000e+01
+				5.800000e+01	  6.300000e+01	  6.800000e+01	  7.300000e+01	  7.800000e+01
+				8.300000e+01	  8.800000e+01	  9.300000e+01	  9.800000e+01	  1.080000e+02
+				1.180000e+02	  1.380000e+02	  1.580000e+02	  1.780000e+02	  1.980000e+02
+				2.230000e+02	  2.480000e+02	  2.730000e+02	  2.980000e+02	  3.480000e+02
+				3.980000e+02	  4.480000e+02	  4.980000e+02	  5.480000e+02	  5.980000e+02
+				6.480000e+02	  6.980000e+02	  7.480000e+02	  7.980000e+02	  8.480000e+02
+				8.980000e+02	  9.480000e+02	  9.980000e+02
+			</Egrid>
+			<Cross unit="cm2" uncertainty="5%" >
+				1.200000e-18	  7.300000e-18	  1.640000e-17	  3.660000e-17	  5.630000e-17
+				7.580000e-17	  9.290000e-17	  1.080000e-16	  1.190000e-16	  1.290000e-16
+				1.360000e-16	  1.420000e-16	  1.470000e-16	  1.500000e-16	  1.510000e-16
+				1.530000e-16	  1.550000e-16	  1.560000e-16	  1.560000e-16	  1.540000e-16
+				1.530000e-16	  1.500000e-16	  1.480000e-16	  1.430000e-16	  1.390000e-16
+				1.340000e-16	  1.310000e-16	  1.240000e-16	  1.200000e-16	  1.130000e-16
+				1.050000e-16	  9.830000e-17	  9.230000e-17	  8.820000e-17	  8.270000e-17
+				8.000000e-17	  7.610000e-17	  7.200000e-17	  6.860000e-17	  6.710000e-17
+				6.430000e-17	  6.170000e-17	  5.970000e-17
+			</Cross>
+		</Process>
+
+		<Process name="O2+e->O+(4S)+O(2S)" electrons="1" threshold="23.">
+			<Species>
+				<Specie name="O+" state="4S"/>
+				<Specie name="O" state="2S"/>
+			</Species>
+			<legend>O+ Recommended (for extr)</legend>
+			<Proc>O+</Proc> <!-- Name for the processus -->
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="adaptation">Straub 2004</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes>Data on website+ adaptation for extrapolation </Notes>
+			<EstimatedUncertainty/>
+			<Extrapolate/>
+			<Recommended/>
+			<Ionization/>
+			<Egrid unit="eV">
+				1.300000e+01	  1.550000e+01	  1.800000e+01	  2.300000e+01	  2.800000e+01
+				3.300000e+01	  3.800000e+01	  4.300000e+01	  4.800000e+01	  5.300000e+01
+				5.800000e+01	  6.300000e+01	  6.800000e+01	  7.300000e+01	  7.800000e+01
+				8.300000e+01	  8.800000e+01	  9.300000e+01	  9.800000e+01	  1.080000e+02
+				1.180000e+02	  1.380000e+02	  1.580000e+02	  1.780000e+02	  1.980000e+02
+				2.230000e+02	  2.480000e+02	  2.730000e+02	  2.980000e+02	  3.480000e+02
+				3.980000e+02	  4.480000e+02	  4.980000e+02	  5.480000e+02	  5.980000e+02
+				6.480000e+02	  6.980000e+02	  7.480000e+02	  7.980000e+02	  8.480000e+02
+				8.980000e+02	  9.480000e+02	  9.980000e+02
+			</Egrid>
+			<Cross unit="cm2" uncertainty="5%" >
+				0.000000e+00	  0.000000e+00	  0.000000e+00	  1.670000e-18	  7.810000e-18
+				1.690000e-17	  2.580000e-17	  3.330000e-17	  4.190000e-17	  4.900000e-17
+				5.530000e-17	  6.210000e-17	  6.790000e-17	  7.170000e-17	  7.510000e-17
+				8.010000e-17	  8.270000e-17	  8.550000e-17	  8.710000e-17	  9.000000e-17
+				9.100000e-17	  9.130000e-17	  9.050000e-17	  8.910000e-17	  8.640000e-17
+				8.300000e-17	  7.940000e-17	  7.550000e-17	  7.210000e-17	  6.590000e-17
+				6.110000e-17	  5.620000e-17	  5.260000e-17	  4.870000e-17	  4.570000e-17
+				4.320000e-17	  4.150000e-17	  3.880000e-17	  3.690000e-17	  3.550000e-17
+				3.360000e-17	  3.260000e-17	  3.140000e-17
+			</Cross>
+		</Process>
+
+		<Process name="O2+e->O++ +O" electrons="2" ions="1" threshold="73.">
+			<Ionization/>
+			<Species>
+				<!-- Uncertainty about the state of the O++ created -->
+				<Specie name="O++" state="X"/>
+				<Specie name="O" state="X"/>
+			</Species>
+			<legend>O++ Recommended</legend>
+			<Proc>O++</Proc> <!-- Name for the processus -->
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="adaptation">Straub 2004</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes>Data on website+ adaptation for extrapolation </Notes>
+			<EstimatedUncertainty/>
+			<Extrapolate/>
+			<Recommended/>
+			<Egrid unit="eV">
+				1.300000e+01	  1.550000e+01	  1.800000e+01	  2.300000e+01	  2.800000e+01
+				3.300000e+01	  3.800000e+01	  4.300000e+01	  4.800000e+01	  5.300000e+01
+				5.800000e+01	  6.300000e+01	  6.800000e+01	  7.300000e+01	  7.800000e+01
+				8.300000e+01	  8.800000e+01	  9.300000e+01	  9.800000e+01	  1.080000e+02
+				1.180000e+02	  1.380000e+02	  1.580000e+02	  1.780000e+02	  1.980000e+02
+				2.230000e+02	  2.480000e+02	  2.730000e+02	  2.980000e+02	  3.480000e+02
+				3.980000e+02	  4.480000e+02	  4.980000e+02	  5.480000e+02	  5.980000e+02
+				6.480000e+02	  6.980000e+02	  7.480000e+02	  7.980000e+02	  8.480000e+02
+				8.980000e+02	  9.480000e+02	  
+			</Egrid>
+			<Cross unit="cm2" uncertainty="6%" >
+				0.000000e+00	  0.000000e+00	  0.000000e+00	  0.000000e+00	  0.000000e+00
+				0.000000e+00	  0.000000e+00	  0.000000e+00	  0.000000e+00	  0.000000e+00
+				0.000000e+00	  0.000000e+00	  0.000000e+00	  1.180000e-19	  1.890000e-19
+				2.410000e-19	  3.520000e-19	  4.380000e-19	  6.100000e-19	  8.080000e-19
+				9.560000e-19	  1.370000e-18	  1.800000e-18	  2.000000e-18	  2.110000e-18
+				2.300000e-18	  2.260000e-18	  2.130000e-18	  2.070000e-18	  1.890000e-18
+				1.710000e-18	  1.530000e-18	  1.360000e-18	  1.230000e-18	  1.110000e-18
+				1.080000e-18	  9.870000e-19	  9.770000e-19	  8.370000e-19	  7.990000e-19
+				7.700000e-19	  7.400000e-19	 
+			</Cross>
+		</Process>
+		<Process name="O2+e->O2++" electrons="2" ions="1" threshold="36.13">
+			<Ionization/>
+			<Species>
+				<!-- Uncertainty about the state of the O2++ created -->
+				<Specie name="O2++" state="X"/>
+			</Species>
+			<legend>O2++ Straub with bratio</legend>
+			<Proc>O2++</Proc> <!-- Name for the processus -->
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="adaptation">Straub 2004</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes>Straub + branching ratio BDD</Notes>
+			<Egrid unit="eV">
+				1.300000e+01	  1.550000e+01	  1.800000e+01	  2.300000e+01	  2.800000e+01
+				3.300000e+01	  3.800000e+01	  4.300000e+01	  4.800000e+01	  5.300000e+01
+				5.800000e+01	  6.300000e+01	  6.800000e+01	  7.300000e+01	  7.800000e+01
+				8.300000e+01	  8.800000e+01	  9.300000e+01	  9.800000e+01	  1.080000e+02
+				1.180000e+02	  1.380000e+02	  1.580000e+02	  1.780000e+02	  1.980000e+02
+				2.230000e+02	  2.480000e+02	  2.730000e+02	  2.980000e+02	  3.480000e+02
+				3.980000e+02	  4.480000e+02	  4.980000e+02	  5.480000e+02	  5.980000e+02
+				6.480000e+02	  6.980000e+02	  7.480000e+02	  7.980000e+02	  8.480000e+02
+				8.980000e+02	  9.480000e+02	  9.980000e+02
+			</Egrid>
+			<Cross unit="cm2" fact="0.015" uncertainty="40%" >
+				0.000000e+00	  0.000000e+00	  0.000000e+00	  1.670000e-18	  7.810000e-18
+				1.690000e-17	  2.580000e-17	  3.330000e-17	  4.190000e-17	  4.900000e-17
+				5.530000e-17	  6.210000e-17	  6.790000e-17	  7.170000e-17	  7.510000e-17
+				8.010000e-17	  8.270000e-17	  8.550000e-17	  8.710000e-17	  9.000000e-17
+				9.100000e-17	  9.130000e-17	  9.050000e-17	  8.910000e-17	  8.640000e-17
+				8.300000e-17	  7.940000e-17	  7.550000e-17	  7.210000e-17	  6.590000e-17
+				6.110000e-17	  5.620000e-17	  5.260000e-17	  4.870000e-17	  4.570000e-17
+				4.320000e-17	  4.150000e-17	  3.880000e-17	  3.690000e-17	  3.550000e-17
+				3.360000e-17	  3.260000e-17	  3.170000e-17
+			</Cross>
+		</Process>
+
+		<!--
+		K-Shell ionization: The ratio Kshell/simple ionization was taken in Fremont 2006
+		and corresponds to the O ratio
+		the ionization rate, wich was x by the ratio, comes from Itikawa 2008
+		the ratio, defined between 400 and 5 KeV, was extrapolated (as a limit!)
+		the production ratio were computed on the basis of the K Shell photoionization
+		-->
+		<Process name="O2 + e -> .31 x O2++(X-KSHELL) 0.69 x O+(X) 0.69 x Fluo-auger(X) "  electrons="1" ions="1" threshold="539">
+			<Species>
+				<Specie name="O2++" state="X-KSHELL" number=".31"/>
+				<Specie name="O2+" state="X" number="0.69"/>
+				<Specie name="Fluo-auger" state="X" number="0.69"/>
+			</Species>
+			<Ionization/>
+			<Proc>O2++(Auger)</Proc>
+			<legend>O2++(Auger)</legend>
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="adaptation">Fremont 2006 + Straub 2004</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown -->
+			<Notes>K-Shell ionization: The ratio Kshell/simple ionization was taken in Fremont 2006 and corresponds to the O ratio. The ionization rate, wich was x by the ratio, comes from Straub</Notes>
+			<Recommended/>
+			<Extrapolated/>
+			<EstimatedUncertainty/>
+			<Auger  energy="456" fact="0.31"/>
+			<Egrid unit="eV">
+				1.00000000e+05   9.08093584e+04   8.24633361e+04   7.48843125e+04
+				6.80018007e+04   6.17517911e+04   5.60761570e+04   5.09221132e+04
+				4.62417256e+04   4.19914652e+04   3.81318035e+04   3.46268443e+04
+				3.14439907e+04   2.85536410e+04   2.59289143e+04   2.35453997e+04
+				2.13809300e+04   1.94153748e+04   1.76304540e+04   1.60095673e+04
+				1.45376400e+04   1.32009826e+04   1.19871640e+04   1.08848952e+04
+				9.88392484e+03   8.97494356e+03   8.14949759e+03   7.39991005e+03
+				6.71920954e+03   6.10106535e+03   5.53972857e+03   5.02997859e+03
+				4.56707460e+03   4.14671144e+03   3.76497963e+03   3.41832894e+03
+				3.10353543e+03   2.81767141e+03   2.55807828e+03   2.32234173e+03
+				2.10826935e+03   1.91387021e+03   1.73733634e+03   1.57702591e+03
+				1.43144800e+03   1.29924869e+03   1.17919848e+03   1.07018088e+03
+				9.71181989e+02   8.81281088e+02   7.99642073e+02   7.25505676e+02
+				6.58182409e+02   5.97046145e+02   5.41528299e+02   
+			</Egrid>
+			<Cross unit="cm2" uncertainty="20%" >
+				3.55885151e-020   3.68381331e-020   3.81316389e-020   3.94705750e-020
+				4.08565388e-020   4.22911836e-020   4.37762216e-020   4.53134251e-020
+				4.69046293e-020   4.85517341e-020   5.02567068e-020   5.20215845e-020
+				5.38484765e-020   5.57395669e-020   5.76971176e-020   5.97234708e-020
+				6.18210524e-020   6.39923747e-020   6.62400401e-020   6.85667439e-020
+				7.09752783e-020   7.34685358e-020   7.60495134e-020   7.87213164e-020
+				8.14871624e-020   8.43503864e-020   8.73144448e-020   9.03829209e-020
+				9.35595296e-020   9.68481231e-020   1.00252726e-019   1.02325270e-019
+				1.04008843e-019   1.06999599e-019   1.08010112e-019   1.08052311e-019
+				1.08094561e-019   1.09279754e-019   1.09742836e-019   1.08779374e-019
+				1.06610113e-019   1.03517912e-019   1.01218693e-019   9.79130194e-020
+				9.40722038e-020   9.05355796e-020   8.49769320e-020   7.86879800e-020
+				7.15784064e-020   6.37751999e-020   5.28514452e-020   4.10792285e-020
+				2.94850646e-020   1.35175765e-020   2.30477062e-021 
+			</Cross>
+		</Process>
+
+		<!-- Emissions -->
+
+		<!-- There is no Ionization or Excitation here : IT IS NORMAL! -->
+		<Process name="O2+e -> O2+ - first negative band" electrons="0" threshold="18">
+			<Species>
+				<Specie name="O2+" state="B4Sg-NOTOT"/>
+			</Species>
+			<Proc>O2+(B4Sg)</Proc> <!-- Name for the processus -->
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review, First negative band</Notes>
+			<Egrid unit="eV">
+				19 20 22 25 
+				30 35 40 50 60 
+				70 80 90 100 120
+				140 160 180 200 220
+				240 260 280 300 325
+				350 375 400
+			</Egrid>
+			<Cross unit="cm2" fact="1E-18" uncertainty="24%">
+
+				1.5 1.84 4.03 7.00 11.5 
+				15.6 19.6 24.6 28.7 29.8 
+				31.1 30.1 32.1 31.6 29.2 
+				28.7 26.2 26.8 26.5 25.2 
+				23.0 24.7 21.8 21.7 23.4 
+				22.5 20.8 
+			</Cross>
+		</Process>
+
+		<!-- There is no Ionization or Excitation here : IT IS NORMAL! -->
+		<Process name="O2+e -> O2+ - second negative band" electrons="0" threshold="18">
+			<Species>
+				<Specie name="O2+" state="A2Pu-NOTOT"/>
+			</Species>
+			<Proc>O2+(A2Pu)</Proc> <!-- Name for the processus -->
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review, Second negative band</Notes>
+			<Egrid unit="eV">
+				18 19 20 22 25 
+				30 35 40 50 60 
+				70 80 90 100 120
+				140 160 180 200 220
+				240 260 280 300 325
+				350 375 400
+			</Egrid>
+			<Cross unit="cm2" fact="1E-18" uncertainty="24%">
+
+				0.097 0.21 0.32 0.84 1.82
+				3.0 4.45 5.50 7.44 8.86
+				9.5 10.1 10.4 10.2 10.6
+				10.  10.8 10.4 10.4 9.79
+				9.6 9.22 8.78 8.57 8.28
+				8.2 8.09 7.72
+			</Cross>
+		</Process>
+		<Process name="O2 + e -> O(1S) + O" electrons="0" threshold="16.">
+			<Species>
+				<Specie name="O" state="1S-NOTOT"/>
+			</Species>
+			<legend>O(1S) LeClair 1993</legend>
+			<Proc>O(1S)</Proc>
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="measurement">LeClair 1993</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown -->
+			<Notes>Emission: excitation to O(1S) is computed in the dissociation of O2. Small process</Notes>
+			<Recommended/>
+			<Extrapolated/>
+			<Egrid unit="eV">
+				16	20	24	28	32
+				36	40	45	50	60
+				70	80	90	100	120
+				140	160	180	200	250
+				300	350	400	450	500
+				600	700	800	900	1000
+			</Egrid>
+			<Cross unit="cm2" uncertainty="18%" fact="1E-18">
+				0.35	0.92	1.26	1.47	1.61
+				1.73	1.82	1.92	1.97	2.04
+				2.07	2.08	2.06	2.04	1.98
+				1.90	1.82	1.75	1.67	1.53
+				1.39	1.26	1.16	1.08	1.02
+				0.92	0.82	0.75	0.69	0.65
+			</Cross>
+		</Process>
+
+		<!-- Emission processes -->
+		<Process name="O2+e->O2+(FirstNegative)" electrons="1" threshold="19">
+			<legend>O2+ Itikawa</legend>
+			<Proc>O2+</Proc> <!-- Name for the processus -->
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review</Notes>
+			<Species>
+				<Specie name="O2+" state="FirstNegative"/>
+			</Species>
+			<Emission/>
+			<Egrid unit="eV">
+				19 20 22 25 30
+				35 40 50 60 70
+				80 90 100 120 140
+				160 180 200 220 240
+				260 280 300 325 350
+				375 400
+			</Egrid>
+			<Cross unit="cm2" fact="1E-18" uncertainty="24%">
+				1.5 1.84 4.03 7.00 11.5 
+				15.6 19.6 24.6 28.7 29.8 
+				31.1 30.1 32.1 31.6 29.2 
+				28.7 26.2 26.8 26.5 25.2 
+				23.0 24.7 21.8 21.7 23.4 
+				22.5 20.8 
+			</Cross>
+			<!-- b4Sg- - a4Pu Terrel et al. 2004: Ratio: 5631.9 ang: 8.9 / 32.1 5295.7 ang: 3 / 32.1 6026.4 ang: 5.31 / 32.1		--> 
+		</Process>
+		<Process name="O2+e->O2+(SecondNegative)" electrons="1" threshold="18">
+			<legend>O2+ Itikawa</legend>
+			<Proc>O2+</Proc> <!-- Name for the processus -->
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Itikawa 2009</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<Species>
+				<Specie name="O2+" state="SecondNegative"/>
+			</Species>
+			<Emission/>
+			<Egrid unit="eV">
+				18 19 20 22 25
+				30 35 40 50 60
+				70 80 90 100 120
+				140 160 180 200 220
+				240 260 280 300 325
+				350 375 400
+			</Egrid>
+			<Cross unit="cm2" fact="1E-18" uncertainty="24%">
+				0.097 0.21 0.32 0.84 1.82
+				3.07 4.45 5.50 7.44 8.86
+				9.58 10.1 10.4 10.2 10.6
+				10.9 10.8 10.4 10.4 9.79
+				9.66 9.22 8.78 8.57 8.28
+				8.23 8.09 7.72
+			</Cross>
+			<!-- A2Pu - X2Pg Terrel et al. 2004: --> 
+		</Process>
+		<Process name="O2+e->O(777.4nm)" electrons="1" threshold="19">
+			<legend>777.4nm</legend>
+			<Proc>777.4nm</Proc> <!-- Name for the processus -->
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="measurement">Erdman 1987</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes></Notes>
+			<Species>
+				<Specie name="O" state="5P-777.4nm"/>
+			</Species>
+			<Emission/>
+			<Egrid unit="eV">
+				16   17   18   19   20   
+				22   24   26   28   30   
+				35   40   50   60   70   
+				80   90   100  125  150  
+				175  200  225  250  275  
+				300  325  350  375  400  
+				425  450  475  500  600  
+				700  800  900  1000 1200 
+				1400 1600 1800 2000 2200 
+				2400 2600 2800 3000 4000 
+				5000 6000 7000 8000 9000 
+				10000
+			</Egrid>
+			<Cross unit="cm2" fact="1E-19" uncertainty="15%">
+				0.44 3.5 6.18 8.88 11.0
+				15.2 17.5 19.1 20.5 21.6
+				24.  26.2 31.9 38.3 39.9
+				40.7 43.1 42.3 38.7 34.2
+				30.6 27.6 25.6 23.4 22.0
+				20.4 19.4 18.2 17.2 16.5
+				15.8 15.0 14.4 13.9 12.0
+				10.6 9.54 8.68 7.97 6.87
+				6.05 5.42 4.92 4.51 4.16
+				3.87 3.62 3.40 3.21 2.51
+				2.08 1.78 1.56 1.39 1.25
+				1.14
+			</Cross>
+		</Process>
+	</O2>
+</crs>	

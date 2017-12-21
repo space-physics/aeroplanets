@@ -1,0 +1,14 @@
+<aero_main>
+	<Version></Version>
+<sun>
+
+	<model>
+		<f107>253</f107>
+		<fudge>1.</fudge>
+		
+	</model>
+
+</sun>
+
+
+</aero_main>

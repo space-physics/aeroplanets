@@ -1,0 +1,17 @@
+<specie>
+
+
+	<!-- the xml should  recognise /specie/a /specie/a+ -->
+	<a></a>
+
+	<a></a>
+
+	<!-- the xml should not recognise /specie/b+ -->
+	<b></b>
+
+	<!-- the xml should not recognise /specie/c -->
+
+
+
+
+</specie>

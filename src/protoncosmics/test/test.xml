@@ -1,0 +1,32 @@
+<aero_main>
+
+
+	<proton_cosmic>
+		<name> High energy protons</name>
+		<!-- energy of pair production
+		     -->
+		<ionization_energy>35.
+		</ionization_energy>
+		<energy_deposition_file></energy_deposition_file>
+		<electron_flux_file></electron_flux_file>
+	</proton_cosmic>
+
+	<proton_cosmic>
+		<name>Cosmic rays</name>
+		<!-- energy of pair production
+		     -->
+		<ionization_energy>35.
+		</ionization_energy>
+		<energy_deposition_file></energy_deposition_file>
+		<electron_flux_file></electron_flux_file>
+		
+	</proton_cosmic>
+
+
+
+
+</aero_main>
+
+
+
+

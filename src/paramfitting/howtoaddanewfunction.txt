@@ -1,0 +1,25 @@
+To add a new function in the adjustement system, several things needs to be
+done:
+
+
+1) Add the function in math/umathfunction.cpp and math/umathfunction.hpp
+
+
+2) When you know which parameters to modify, and which to get from the model,
+you can modify the files in atmo
+
+3) In atmo/atmo.cpp modify the function InitIonosphere and ResetElectronDens
+
+4) In atmo/neutralatmo.cpp modify ReadParameters and ResetSpecieDens
+
+5) You can now modify the files in paramfitting
+
+6) Adjustement::Adjust (read the parameters)
+7) RunAtmoLsq::Exec (the execution)
+8) Adjustement::ApplyModif (the same)
+9) Adjustement::FillReport (the report about your work)
+
+
+
+
+

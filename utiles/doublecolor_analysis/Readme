@@ -1,0 +1,31 @@
+In this folder, there are several tools to launch a double-color analysis.
+
+================================== Launching the simulations
+First, the create_launchfile.py, (which uses powerlaw.py), is used to create a CIGRI-like launch file.
+
+The create_launchfile is intended to be edited before creating a file.
+The "dico" dictionnary gives the option to be modified, and a list of values for that option. (The options should be valid in ../launchxmlaero.py since it is this program which will be ultimately called.)
+
+
+When the script is ready, it should be launched as 
+create_launchfile.py templatename outdirname launchfilename
+
+The launchfilename can be launched with e.g. cigri, launchfile_alacigry.py.
+Technically, each line of this file will be executed using launchxmlaero.py.
+
+================================= Analysing the simulations
+
+launch_analysis_better.py
+
+This systems aims at analyzing the results of the previous simulations.
+It is also intended to be edited (notably the function ptype_study).
+
+It reads the command file, used to create the simulations, to create a database that will be searched for the analysis. This database will the be re-used (that's partially why you should launch this simulation in the directory where the results are; the other reason is because it looks for spectrum.out locally for the color analysis).
+
+The results are read in spectrum.out + number (number given by the simulation).
+
+For now, it does not analyze the Monte-Carlo simulations...
+
+
+
+

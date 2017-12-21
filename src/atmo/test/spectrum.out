@@ -1,0 +1,19 @@
+# Syntetic vertical spectrum (w/o radiative transfer) 
+# Wavelength in nm
+# Intensity in R
+2.972290000e+02 	-0.000000000e+00
+5.200000000e+02 	-0.000000000e+00
+5.577340000e+02 	-0.000000000e+00
+6.300304000e+02 	-0.000000000e+00
+6.363776000e+02 	-0.000000000e+00
+6.391733000e+02 	-0.000000000e+00
+#	AeroPlanets 1.01
+#	Copyright G Gronoff 2009
+#	Report bugs : guillaume.gronoff@gmail.com
+#
+#	Launched :Thu Oct  6 15:08:10 2016
+# Planet:Venus
+# Photoionization used
+# Electron impact ionization used
+# Electron impact ionization error: 8.45398% (>0 : gain)
+

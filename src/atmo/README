@@ -1,0 +1,9 @@
+Ici, on definit l'atmosphere:
+appel du modèle d'atmosphère
+initialisation des différentes grilles  d'énergie (photons, electrons, ...) et d'altitude  et d'altitude 
+
+Concernant les espèces, il y a deux parties: celle include dans le modèle, et celle uniquement dans les résultats.
+
+
+
+Geophys: données concernant les planètes

@@ -1,0 +1,167 @@
+#	AeroPlanets 1.01
+#	Copyright G Gronoff 2009
+#	Report bugs : guillaume.gronoff@gmail.com
+#
+#	Launched :Tue Dec 19 13:05:08 2017
+
+
+***************************************
+**** CONFIG
+---- 
+---------------------------------------
+***************************************
+**** INFO
+---- 
+---------------------------------------
+***************************************
+**** SECTION
+---- 
+---------------------------------------
+***************************************
+**** WARNING
+---- 
+---------------------------------------
+We will use your file AuroraEarthFairbanks.xml
+____________________________________________
+We set up the atmosphere
+____________________________________________
+Initialization of the altitude grid
+Initialization of the electron grid
+Initialization of the photons grid
+Initialization of the proton grid
+You do not use protons
+End of grid initialization
+Earth... This is really an original choice, did you manage to move to work today?
+Initialisation of the neutral atmosphere
+Name of your cross section species :N2
+Load electron impact cross section forN2
+Name of your cross section species :N2
+Warning proton energy grid not defined
+Load electron impact cross section forN2
+Name of your cross section species :N2
+Warning proton/hydrogen energy grid not defined
+Load electron impact cross section forN2
+Name of your cross section species :N2
+Name of your cross section species :O2
+Load electron impact cross section forO2
+Name of your cross section species :O2
+Warning proton energy grid not defined
+Load electron impact cross section forO2
+Name of your cross section species :O2
+Warning proton/hydrogen energy grid not defined
+Load electron impact cross section forO2
+Name of your cross section species :O2
+Name of your cross section species :O
+Load electron impact cross section forO
+Name of your cross section species :O
+Warning proton energy grid not defined
+Load electron impact cross section forO
+Name of your cross section species :O
+Warning proton/hydrogen energy grid not defined
+Load electron impact cross section forO
+Name of your cross section species :O
+Name of your cross section species :H
+Load electron impact cross section forH
+Name of your cross section species :H
+Impossible to find your species proton impact cross section
+Species : H
+Impossible to find your species hydrogen impact cross section
+Species : H
+SZA : 59.5872
+Return iono
+launch iri
+vector compare
+return inside
+Initialization of the ionosphere
+Return iono
+vector compare
+return inside
+____________________________________________
+We launch the computation
+____________________________________________
+Start electron impact ionization (and excitation...)
+We add the different electron fluxes before the computation
+Maxwell precipitation
+Energie totale integree :100 desiree : 100 facteur de normalisation :4.60489
+We load the species in Porter
+Check if CTot > 1E-20
+Begin of the energy loop
+Loop execution time : 341.46
+..........................................
+Total energy in the flux 6.74466e+21
+..........................................
+Total energy :6.25e+13
+Reflected energy = 4.65079e+12
+Transmitted (without taking albedo into account : 2.66206e-20 and with albedo 0
+Transmitted energy = 0
+Absorbed energy = 2.37578e+11
+Inelastic energy deposition : [4](3.12559e+13,6.42633e+12,2.70756e+12,1.10569e+08)
+Inelastic energy deposition total : 4.03899e+13
+=============================================
+ Total input energy: 6.25e+13
+---------------------------------------------
+ Total Heating:      2.37578e+11
+ Total inelastic:    4.03899e+13
+ Total reflected:    4.65079e+12
+ Total transmitted:  0
+---------------------------------------------
+ Total absorbed energy (inelastic + heating) 4.06275e+13
+ Total computed energy (tot abs   + reflect) 4.52783e+13
+---------------------------------------------
+	 Energy conservation error :  -27.5547% (>0 : gain)
+	 elos (1,2,3)33.6888 47.9692 51.8257
+	 ilos (1,2,3)33.8515 48.2009 52.076
+	 Production total: 1.20597e+12
+	 Production total, ions: 1.20017e+12
+---------------------------------------------
+Energy from the secondaries      : 3.75886e+11 = 0.0187313%
+Energy from the degraded      : 2.00595e+15 = 99.9615%
+Energy from the coulombian      : 3.97054e+11 = 0.0197862%
+=============================================
+The tot production has been found empty during the computation of the maximum position
+The tot production has been found empty during the computation of the maximum position
+The tot production has been found empty during the computation of the maximum position
+The tot production has been found empty during the computation of the maximum position
+____________________________________________
+We proceed the outputs 
+____________________________________________
+Initialization of the chemistry
+Return iono
+vector compare
+return inside
+We compute the density of N2(A3S)
+We compute the density of O(1S)
+Search if the absorption is defined for 297.229
+Search if the absorption is defined for 557.734
+We compute the density of N(2D)
+We compute the density of O(1D)
+We compute the density of CO(a3Pi)
+Work on O+(2P)
+get density of O+(2P)
+We compute the density of O+(2P)
+density retrieved
+Work on O((3p)3P)
+get density of O((3p)3P)
+Work on H(2p)
+Work on H(n=3)
+Work on O(3S)
+Work on O(5S)
+Work on N2(135.4nm)
+Work on N2(95.8nm)
+Work on N*(113.4nm)
+Work on N*(120nm)
+Work on N*(124.3nm)
+Work on N*(149.4nm)
+Work on N+(108.4nm)
+Work on N2+(391.4 - first negative)
+Your species :N2+(391.4 - first negative)Does not seems to be produced, and therefore, its emission are not computed. Check if the species is created in the cross section files.
+Work on N2+(391.4nmFiNeT)
+Work on N2+(427.8nmFiNeT)
+Output production
+Excitations allowed for the output of the productions
+Output energy
+Output chemistry
+Output computed density
+Fin output
+Bye Bye planete
+Program exited correctly!!!!!

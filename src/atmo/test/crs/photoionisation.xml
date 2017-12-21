@@ -1,0 +1,489 @@
+
+<crs>
+
+<!--
+Cross section file test.
+It is based on real data for the CO2, compiled by J.Lilensten (07/2009)
+
+
+-->
+
+	<Version>Test cross section, not valid for experience</Version>
+
+
+
+	<!-- Photoionisation for CO2 -->
+	<CO2>
+		<TotalCrs>
+			<Egrid unit="eV">
+			     12.015137	     12.087764	     12.103104	     12.690297	     12.724158
+			     13.413848	     14.180968	     15.042975	     15.706131	     16.014492
+			     16.093484	     16.204967	     17.122525	     17.628921	     18.392553
+			     19.689408	     19.869263	     20.331945	     21.219271	     21.603799
+			     22.363672	     23.670141	     26.173570	     26.651806	     29.276080
+			     33.213019	     33.682206	     38.373321	     40.811126	     40.878404
+			     43.625686	     45.465420	     48.374639	     55.798470	     72.336173
+			    103.320167	    185.883358	    330.624533	    532.121030
+			</Egrid>
+			<Cross unit="cm2">
+			  3.410000e-17	  3.410000e-17	  3.410000e-17	  3.410000e-17	  3.410000e-17
+			  3.410000e-17	  3.779000e-17	  1.732000e-17	  2.945000e-17	  3.742000e-17
+			  2.888000e-17	  8.178000e-17	  2.980000e-17	  3.269000e-17	  3.437000e-17
+			  3.541000e-17	  3.555000e-17	  3.621000e-17	  3.597000e-17	  3.565000e-17
+			  3.466000e-17	  3.167000e-17	  2.932000e-17	  2.885000e-17	  2.816000e-17
+			  2.557000e-17	  2.535000e-17	  2.265000e-17	  2.082000e-17	  2.069000e-17
+			  1.818000e-17	  1.767000e-17	  1.562000e-17	  1.415000e-17	  8.530000e-18
+			  5.140000e-18	  2.300000e-18	  1.510000e-18	  1.000000e-18
+			</Cross>
+		</TotalCrs>
+		<!-- total cross section: sample
+		<TotalCrs>
+			<Egrid unit="eV">
+			</Egrid>
+			<Cross unit="cm2">
+			</Cross>
+		</TotalCrs>
+
+		-->
+
+		<!-- if not total crs:
+		1 - to disable the warning: the total crs is computed
+		through another program later. eg for the electron total crs
+		<DisableTotalCrsWarning/>
+		2 - to compute the total cross section by adding the different
+		processes cross sections
+		-->
+
+
+
+
+		<!-- Here the process: needs the name of the process (string),
+		the threshold in eV,
+		and the number of electrons released (int) -->
+		<Process name="CO2+hv -> CO2+(X)" electrons="1" threshold="13.733">
+			<!-- Here is the list of the species created
+			through that process.
+			The code adds the species produced through that process
+			to the same specie production through other processes.
+			Therefore, if you want to study a subprocess
+			(like CO2+e -> CO+ +O(1S) if you have a more global
+			CO2+e -> CO+, just put O(1S) in the species.)
+			-->
+
+			<Species>
+				<!-- you put the name of the species, and its state 
+				do not forget the / at the end.
+				the number parameter is optional
+				it denotes the number of species created throught
+				the process, instead of puting it n times
+				for example CO2 + hv -> C++ + O + O has 2 O.
+
+				Note: the number can be a double parameter!
+				it allows to account for branching ratios!!!
+				-->
+				<Specie name="CO2+" state="X" number="1"/>
+			</Species>
+
+			<!-- the energy grid, in eV
+			the unit is not used (now?)
+			-->
+			<Egrid unit="eV">
+			13.773	14.169	15.028	15.706	15.997
+			16.093	16.203	17.101	17.627	18.367
+			19.069	19.070	19.445	19.446	19.688
+			19.837	20.326	21.217	21.562	22.364
+			23.615	26.101	26.650	27.890	27.900
+			29.172	30.000	31.000	32.000	33.000
+			34.000	35.000	36.000	37.000	38.000
+			39.000	40.000	41.000	42.000	43.000
+			44.000	45.000	46.000	47.000	48.000
+			49.000	50.000	52.000	54.000	56.000
+			58.000	60.000	62.000	64.000	66.000
+			68.000	70.000	72.500	75.000	77.500
+			80.000	82.500	85.000	87.500	90.000
+			92.500	95.000	97.500	100.000	153.540
+			222.390	263.790	330.610	459.180	604.780
+			953.690	1999.680	3350.810	6199.000
+			</Egrid>
+
+			<!-- the cross section in cm2
+			the unit is not used (now?)
+			note that it is possible to add a factor, and therefore
+			not use the exponentials
+			-->
+			<Cross unit="cm2">
+			   9.4191E-18   1.9500E-17   1.0600E-17   1.6900E-17   2.1300E-17
+			   1.9800E-17   4.9900E-17   1.6800E-17   1.7500E-17   2.1500E-17
+			   2.1287E-17   1.7881E-17   1.7786E-17   1.5456E-17   1.5403E-17
+			   1.5257E-17   1.4600E-17   2.4747E-17   2.4601E-17   2.4017E-17
+			   2.2849E-17   2.1170E-17   2.0586E-17   2.0227E-17   1.9781E-17
+			   1.9421E-17   1.9900E-17   1.8800E-17   1.8300E-17   1.7600E-17
+			   1.6800E-17   1.6000E-17   1.5500E-17   1.5100E-17   1.5000E-17
+			   1.4400E-17   1.3800E-17   1.3400E-17   1.2900E-17   1.2300E-17
+			   1.1700E-17   1.1300E-17   1.1100E-17   1.0700E-17   1.0300E-17
+			   9.8800E-18   9.6500E-18   9.1700E-18   8.5500E-18   8.1100E-18
+			   7.6400E-18   7.1400E-18   6.6700E-18   6.3700E-18   5.8600E-18
+			   5.5800E-18   5.2500E-18   5.0300E-18   4.5900E-18   4.3100E-18
+			   4.0800E-18   3.8400E-18   3.6500E-18   3.4600E-18   3.2900E-18
+			   3.1300E-18   2.9700E-18   2.8500E-18   2.7100E-18   1.1100E-18
+			   4.5800E-19   2.9200E-19   2.2100E-19   1.0300E-19   5.1400E-20
+			   1.8200E-20   1.9000E-21   4.8200E-22   1.1800E-22
+			</Cross>
+		</Process>
+
+		<!-- Sample of process
+		<Process name="" electrons="" threshold="">
+			<Species>
+				<Specie name="" state=""/>
+			</Species>
+			<Egrid unit="eV">
+			</Egrid>
+			<Cross unit="cm2">
+			</Cross>
+		</Process>
+		-->
+		<Process name="CO2 + hv -> C+ + O2" electrons="1" threshold="27.9">
+			<Species>
+				<Specie name="C+" state="X"/>
+				<Specie name="O2" state="X"/>
+			</Species>
+
+			<Egrid unit="eV">
+			    27.900
+			    29.172    30.000    31.000    32.000    33.000
+			    34.000    35.000    36.000    37.000    38.000
+			    39.000    40.000    41.000    42.000    43.000
+			    44.000    45.000    46.000    47.000    48.000
+			    49.000    50.000    52.000    54.000    56.000
+			    58.000    60.000    62.000    64.000    66.000
+			    68.000    70.000    72.500    75.000    77.500
+			    80.000    82.500    85.000    87.500    90.000
+			    92.500    95.000    97.500   100.000   153.540
+			   222.390   263.790   330.610   459.180   604.780
+			   953.690  1999.680  3350.810  6199.000
+			</Egrid>
+
+			<Cross unit="cm2">
+			   4.4327E-19
+			   4.3520E-19   4.5000E-19   6.3000E-19   8.8000E-19   1.3100E-18
+			   1.6600E-18   2.0900E-18   2.3100E-18   2.3800E-18   2.3900E-18
+			   2.2700E-18   2.0400E-18   1.8300E-18   1.6600E-18   1.5300E-18
+			   1.4200E-18   1.3600E-18   1.3300E-18   1.3500E-18   1.3400E-18
+			   1.3800E-18   1.4200E-18   1.5200E-18   1.4900E-18   1.4200E-18
+			   1.3300E-18   1.1500E-18   9.8000E-19   8.8000E-19   7.8000E-19
+			   7.0000E-19   6.2000E-19   5.7000E-19   5.3000E-19   4.5000E-19
+			   4.2000E-19   3.9000E-19   3.7000E-19   3.3000E-19   3.0000E-19
+			   2.8000E-19   2.7000E-19   2.3000E-19   2.1000E-19   8.4600E-20
+			   3.4800E-20   2.2200E-20   1.6800E-20   7.8000E-21   3.9000E-21
+			   1.3800E-21   1.4400E-22   3.6600E-23   9.0000E-24
+			</Cross>
+		</Process>
+		
+		<Process name="CO2 + hv -> O+ + CO" electrons="1" threshold="19.070">
+			<Species>
+				<Specie name="CO" state="X"/>
+				<Specie name="O+" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    19.070    19.445    19.446    19.688
+    19.837    20.326    21.217    21.562    22.364
+    23.615    26.101    26.650    27.890    27.900
+    29.172    30.000    31.000    32.000    33.000
+    34.000    35.000    36.000    37.000    38.000
+    39.000    40.000    41.000    42.000    43.000
+    44.000    45.000    46.000    47.000    48.000
+    49.000    50.000    52.000    54.000    56.000
+    58.000    60.000    62.000    64.000    66.000
+    68.000    70.000    72.500    75.000    77.500
+    80.000    82.500    85.000    87.500    90.000
+    92.500    95.000    97.500   100.000   153.540
+   222.390   263.790   330.610   459.180   604.780
+   953.690  1999.680  3350.810  6199.000
+			</Egrid>
+
+			<Cross unit="cm2">
+  3.4059E-18   3.3878E-18   2.9643E-18   2.9540E-18
+   2.9260E-18   2.8000E-18   4.7460E-18   4.7180E-18   4.6060E-18
+   4.3820E-18   4.0600E-18   3.9480E-18   3.8792E-18   3.8786E-18
+   3.8080E-18   3.8000E-18   3.6300E-18   3.5900E-18   3.7700E-18
+   3.9100E-18   4.2200E-18   4.2900E-18   4.2200E-18   4.2100E-18
+   4.0900E-18   3.7700E-18   3.2800E-18   2.9200E-18   2.6000E-18
+   2.3200E-18   2.1700E-18   2.0500E-18   2.0100E-18   1.9500E-18
+   1.9100E-18   1.9000E-18   1.8500E-18   1.6600E-18   1.6200E-18
+   1.4400E-18   1.3300E-18   1.2000E-18   1.1000E-18   1.0600E-18
+   9.4000E-19   9.0000E-19   8.4000E-19   8.2000E-19   7.1000E-19
+   6.6000E-19   6.1000E-19   5.9000E-19   5.3000E-19   4.9000E-19
+   4.6000E-19   4.4000E-19   4.2000E-19   3.9000E-19   1.5500E-19
+   6.3800E-20   4.0700E-20   3.0800E-20   1.4300E-20   7.1500E-21
+   2.5300E-21   2.6400E-22   6.7100E-23   1.6500E-23
+			</Cross>
+		</Process>
+	
+		<Process name="CO2 + hv -> CO+ + O " electrons="1" threshold="19.446">
+			<Species>
+				<Specie name="O" state="X"/>
+				<Specie name="CO+" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    19.446    19.688
+    19.837    20.326    21.217    21.562    22.364
+    23.615    26.101    26.650    27.890    27.900
+    29.172    30.000    31.000    32.000    33.000
+    34.000    35.000    36.000    37.000    38.000
+    39.000    40.000    41.000    42.000    43.000
+    44.000    45.000    46.000    47.000    48.000
+    49.000    50.000    52.000    54.000    56.000
+    58.000    60.000    62.000    64.000    66.000
+    68.000    70.000    72.500    75.000    77.500
+    80.000    82.500    85.000    87.500    90.000
+    92.500    95.000    97.500   100.000   153.540
+   222.390   263.790   330.610   459.180   604.780
+   953.690  1999.680  3350.810  6199.000
+
+			</Egrid>
+			<Cross unit="cm2">
+  2.7525E-18   2.7430E-18
+   2.7170E-18   2.6000E-18   4.4070E-18   4.3810E-18   4.2770E-18
+   4.0690E-18   3.7700E-18   3.6660E-18   3.6021E-18   3.6016E-18
+   3.5360E-18   3.6300E-18   3.3400E-18   3.0500E-18   3.0200E-18
+   2.9100E-18   2.7900E-18   2.7000E-18   2.5600E-18   2.4200E-18
+   2.2200E-18   2.0400E-18   1.8300E-18   1.7200E-18   1.6600E-18
+   1.6200E-18   1.6100E-18   1.6300E-18   1.6000E-18   1.5500E-18
+   1.5800E-18   1.6100E-18   1.6900E-18   1.6100E-18   1.4600E-18
+   1.3300E-18   1.1500E-18   1.0100E-18   8.9000E-19   8.1000E-19
+   7.1000E-19   6.4000E-19   5.5000E-19   5.2000E-19   4.2000E-19
+   3.8000E-19   3.4000E-19   3.1000E-19   2.5000E-19   2.0000E-19
+   1.8000E-19   1.6000E-19   1.4000E-19   1.2000E-19   5.6400E-20
+   2.3200E-20   1.4800E-20   1.1200E-20   5.2000E-21   2.6000E-21
+   9.2000E-22   9.6000E-23   2.4400E-23   6.0000E-24
+
+			</Cross>
+		</Process>
+		<!--
+		<Process name="CO2 + hv -> CO2++" electrons="2" threshold="37.600">
+			<Species>
+				<Specie name="CO2++" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    38.000    39.000    40.000    41.000    42.000
+    43.000    44.000    45.000    46.000    47.000
+    48.000    49.000    50.000    52.000    54.000
+    56.000    58.000    60.000    62.000    64.000
+    66.000    68.000    70.000    72.500    75.000
+    77.500    80.000    82.500    85.000    87.500
+    90.000    92.500    95.000    97.500   100.000
+
+			</Egrid>
+			<Cross unit="cm2">
+   3.9450E-21   1.0430E-20   1.4830E-20   1.7640E-20   2.9690E-20
+   3.2790E-20   3.5060E-20   3.9670E-20   4.4390E-20   4.1260E-20
+   3.8500E-20   4.3840E-20   4.8810E-20   5.3610E-20   6.4750E-20
+   6.2880E-20   7.1350E-20   7.4600E-20   7.5610E-20   7.6550E-20
+   7.2920E-20   6.8950E-20   6.5560E-20   6.1590E-20   5.7580E-20
+   5.4130E-20   4.9000E-20   4.4020E-20   3.9770E-20   3.8060E-20
+   3.6380E-20   3.5280E-20   3.4190E-20   3.3760E-20   3.3320E-20
+
+			</Cross>
+		</Process>
+		<Process name="CO2 + hv -> CO+ + O+" electrons="2" threshold="39.200">
+			<Species>
+				<Specie name="CO+" state="X"/>
+				<Specie name="O+" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    40.000    41.000    42.000
+    43.000    44.000    45.000    46.000    47.000
+    48.000    49.000    50.000    52.000    54.000
+    56.000    58.000    60.000    62.000    64.000
+    66.000    68.000    70.000    72.500    75.000
+    78.500    80.000    82.500    85.000    87.500
+    90.000    92.500    95.000    97.500   100.000
+			</Egrid>
+			<Cross unit="cm2">
+   3.5000E-20   6.8000E-20   1.1800E-19
+   1.6600E-19   2.1600E-19   2.6800E-19   3.4100E-19   4.3200E-19
+   5.0600E-19   6.2700E-19   7.4900E-19   9.2600E-19   1.1300E-18
+   1.1700E-18   1.1800E-18   1.1000E-18   1.0100E-18   9.1600E-19
+   8.4900E-19   8.2100E-19   7.7500E-19   7.5200E-19   7.2200E-19
+   6.8600E-19   6.6500E-19   6.3500E-19   6.0300E-19   5.8000E-19
+   5.5700E-19   5.2800E-19   4.9800E-19   4.6300E-19   4.3700E-19
+			</Cross>
+		</Process>
+
+		<Process name="CO2 + hv -> C+ + O+  + O" electrons="2" threshold="47.200">
+			<Species>
+				<Specie name="O" state="X"/>
+				<Specie name="C+" state="X"/>
+				<Specie name="O+" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    48.000    49.000    50.000    52.000    54.000
+    56.000    58.000    60.000    62.000    64.000
+    66.000    68.000    70.000    72.500    75.000
+    77.500    80.000    82.500    85.000    87.500
+    90.000    92.500    95.000    97.500   100.000
+			</Egrid>
+
+			<Cross unit="cm2">
+   1.3000E-20   3.7000E-20   7.0000E-20   1.4500E-19   2.3500E-19
+   2.9700E-19   3.4400E-19   4.0200E-19   4.0700E-19   4.1700E-19
+   3.9400E-19   4.1900E-19   4.0700E-19   4.3200E-19   4.1300E-19
+   4.3000E-19   4.1600E-19   4.2000E-19   4.2200E-19   4.2500E-19
+   4.2000E-19   4.1500E-19   4.0800E-19   4.0200E-19   3.8800E-19
+			</Cross>
+		</Process>
+
+		<Process name="CO2 + hv -> C++ + O + O" electrons="2" threshold="73.50">
+			<Species>
+				<Specie name="C++" state="X"/>
+				<Specie name="O" state="X" number="2"/>
+			</Species>
+			<Egrid unit="eV">
+    76.000
+    77.500    80.000    82.500    85.000    87.500
+    90.000    92.500    95.000    97.500   100.000
+			</Egrid>
+			<Cross unit="cm2">
+   2.7000E-21
+   1.6000E-21   1.6000E-21   3.7000E-21   2.1000E-21   2.0000E-21
+   2.5000E-21   3.0000E-21   4.0000E-21   2.7000E-21   2.6000E-21
+			</Cross>
+		</Process>
+		<Process name="CO2 + hv -> C + 2 O+" electrons="2" threshold="43.782">
+			<Species>
+				<Specie name="C" state="X"/>
+				<Specie name="O+" state="X" number="2"/>
+			</Species>
+
+			<Egrid unit="eV">
+    44.000    45.000    46.000    47.000
+    48.000    49.000    50.000    52.000    54.000
+    56.000    58.000    60.000    62.000    64.000
+    66.000    68.000    70.000    72.500    75.000
+    77.500    80.000    82.500    85.000    87.500
+    90.000   
+			</Egrid>
+
+			<Cross unit="cm2">
+  4.2940E-20   4.7330E-20   5.1610E-20   4.6740E-20
+   4.2500E-20   4.7160E-20   5.1190E-20   5.3390E-20   6.1250E-20
+   5.6120E-20   5.9650E-20   5.8400E-20   5.5390E-20   5.2450E-20
+   4.8080E-20   4.5050E-20   4.2440E-20   3.9410E-20   3.6420E-20
+   3.5870E-20   3.4000E-20   3.1980E-20   3.0230E-20   2.9940E-20
+   2.9550E-20 
+			</Cross>
+		</Process>
+
+		<Process name="CO2 + hv -> CO(a3Pi) + O" electrons="0" threshold="11.420">
+			<Species>
+				<Specie name="CO" state="a3Pi"/>
+				<Specie name="O" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+   12.015    12.087    12.103    12.690
+    12.724    13.413    
+
+			</Egrid>
+			<Cross unit="cm2">
+  4.0200E-18   4.5000E-18   5.6100E-18   8.1200E-18
+   1.7286E-17   3.1900E-18 
+			</Cross>
+		</Process>
+
+		<Process name="CO2 + hv -> CO(A1Pi) + O" electrons="0" threshold="13.390">
+			<Species>
+				<Specie name="CO" state="A1Pi"/>
+				<Specie name="O" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+    13.413    14.181    15.042    15.706
+    16.014    16.093    16.204    17.122    17.628
+    18.392
+
+			</Egrid>
+
+			<Cross unit="cm2">
+  7.0000E-20   5.5000E-19   2.4000E-19   1.0800E-18
+   1.5900E-18   1.0300E-18   1.8000E-18   9.4000E-19   6.0000E-19
+   5.0000E-20   
+
+			</Cross>
+		</Process>
+
+		<Process name="CO2 + hv -> CO + O" electrons="0" threshold="16.440">
+			<Species>
+				<Specie name="CO" state="X"/>
+				<Specie name="O" state="X"/>
+			</Species>
+			<Egrid unit="eV">
+   17.122    17.628
+    18.392    19.689    19.869    20.331    21.219
+    21.603    22.363    23.669    26.173    26.651
+    29.275    33.212
+
+			</Egrid>
+			<Cross unit="cm2">
+  1.5400E-20   1.1700E-20
+   2.2700E-21   1.1500E-21   1.2800E-21   1.6000E-21   2.0000E-21
+   7.7700E-22   8.5000E-21   5.4500E-22   1.5500E-21   1.7200E-21
+   2.6600E-21   1.9500E-23
+
+			</Cross>
+		</Process>
+			-->
+
+
+		<info>
+Ionisations simples : 
+--------------------
+Le total vient d'Avakyan pour les énergies de [13,30[ eV. 
+La proportion des états est conservée identique à 
+celle qui est donnée par Masuoka à 30 eV.
+
+
+
+Ionisations doubles : 
+--------------------
+les valeurs viennent de Masuoka. Mais il ne donne pas 2O+. 
+Pour l'estimer, je prends le rapport de 
+{CO++ métastable}/{2O+} donné par Tian et Vidal pour la 
+double ionisation par impact électronique,
+et j'applique le même rapport à la {CO++ métastable} par 
+photoionisation (validation de la méthode par Roland Thissen)
+Cependant, cela donne une seff qui monte > 90 eV (les seff
+de Masuoka s'arretent a 100 eV alors quand on interpole, celle
+ci devient énorme...). En appliquant le rapport, on a les
+energies et seff suivantes pour 2O+ :
+    90.000    92.500    95.000    97.500   100.000
+   2.9620E-20   2.9720E-20   2.9810E-20   3.0240E-20   3.0680E-20
+Pour avoir la même décroissance pour metastable et pour 2O+, j'
+impose tout simplement d'avoir 2.9550E-20 cm2 à 90 eV et je ne lis rien au
+dessus.
+
+
+
+Dissociation : 
+---------------
+Celles d'Olivier Witasse
+
+		</info>
+
+
+
+	</CO2>
+
+	<N2>
+		<!--
+		     This species has no photoionization cross section !!!
+		-->
+		<ZeroCrs/>
+	</N2>
+
+
+
+
+
+
+
+
+</crs>

@@ -1,0 +1,18 @@
+# Cross section for N2
+# Energy in eV
+# Cross section in cm2
+# Total Cross Section
+# Elastic Cross Section
+# Process 0 : N2+H->N2*
+# Process 1 : N2+H->N2+ + H + e
+# Process 2 : N2+H->N2 + p + e
+#	AeroPlanets 1.01
+#	Copyright G Gronoff 2009
+#	Report bugs : guillaume.gronoff@gmail.com
+#
+#	Launched :Tue Dec 19 13:01:53 2017
+# Planet:Anonymous
+# Photoionization used
+# Electron impact ionization used
+# Electron impact ionization error: -0.13696% (>0 : gain)
+

@@ -1,0 +1,94 @@
+#!/usr/bin/env python
+from pylab import *
+import pylab
+from optparse import OptionParser
+import sys
+import re
+
+
+
+def srint_array(arr,colnumber=5,precision=6,number=14,type='e'):
+	""" Creates a string with the array in the formatted way:
+	arr : the array
+	colnumber : the number of printed columns
+	precision : 
+	number
+	type: e, f, g, i
+	"""
+	output=""
+	prefix='\t\t\t'
+	islogger=False
+	formatstr= "%i.%i"%(number,precision)
+	formatstr='%'+formatstr+type
+	size=len(arr)
+	tbl=[ formatstr for i in range(colnumber)]
+	colformat='\t'.join(tbl)
+	for i in range(int(size/colnumber)):
+		output+= prefix
+		output+=colformat % tuple(arr[i*colnumber:(i+1)*colnumber])
+		output+="\n"
+	reste = size%colnumber
+	if reste!=0:
+		colfort='\t'.join([formatstr for i in range(reste)])
+		output+= prefix+ colfort%tuple(arr[-reste:])
+		output+="\n"
+	return output
+
+
+
+
+
+parser = OptionParser()
+
+
+parser.add_option("-f","--file",dest="filename",help="The input file ",type="string")
+parser.add_option("-o","--outfile",dest="outname",help="The output file",type="string")
+
+
+(options, args)=parser.parse_args()
+filename=options.filename
+
+if(not filename):
+	if(len(args)):
+		print "Dans les args : "
+		filename=args[0]
+	else:
+		print "Pas de fichiers"
+		sys.exit()
+
+
+data=pylab.loadtxt(filename)
+
+
+wavelength=data[:,0]
+flux=data[:,1]
+
+# we suppose that the energy is decreasing. ie the wavelength is increasing
+energy=1239.842/wavelength
+
+#print srint_array(wavelength,type="f")
+#print srint_array(energy,type="f")
+#print srint_array(flux)
+
+result="\t<continuum>\n"
+result+="\t\t<Egrid>\n"
+result+=srint_array(energy,type="f")
+result+="\t\t</Egrid>\n"
+result+="\t\t<PhotFlux>\n"
+result+=srint_array(flux)
+result+="\t\t</PhotFlux>\n"
+result+="\t</continuum>\n"
+
+if(not options.outname):
+	print result
+else:
+	outf=open(options.outname,"w")
+	outf.writelines(result)
+
+
+
+
+
+
+
+

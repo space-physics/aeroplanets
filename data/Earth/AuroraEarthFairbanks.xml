@@ -1,0 +1,519 @@
+<aero_main>
+	
+	<Version>Earth, test of diurnal Earth, version $Id: Earth.xml 859 2010-01-20 15:41:43Z gronoff $</Version>	
+	<planet>
+	<name>Earth</name>
+	<!-- Not needed when the planet is defined
+	<UA></UA>
+	<radius></radius>
+	<go></go>
+	-->
+	<!-- with respect to the subsolar point -->
+
+	<!-- not needed when SZA is defined. Except if the model... -->
+	<!--
+	<lat>45</lat>
+	<long></long>
+	<date></date>
+	<local_hour></local_hour>
+	-->
+<!-- with respect to the planetary parameters -> needs to compute!!! -->
+	<!--
+	<SZA>45</SZA>
+	-->	
+
+	<model_atmo>1</model_atmo>
+	<year>2009</year>
+	<day_of_year>90</day_of_year>
+	<Ap>1.</Ap>
+	<UT>0</UT>
+	<planet_lat>63.5</planet_lat>
+	<planet_long>-175</planet_long>
+<!-- inclination of the planet 23.5 for the earth
+	not needed when the planet is defined
+	-->
+
+	<!--
+	<planet_i></planet_i>
+	-->
+
+</planet>
+
+<atmosphere>
+	
+	<!-- altitude grid -->
+	<alt_grid>
+		<!--
+		0 : grille standard
+		1 : data
+
+
+		-->
+		<use_model type="0"/>
+		<!--
+		 sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+		-->
+			<st_grid type="0">
+				<altmin>85</altmin>
+				<altmax>600</altmax>
+				<number>500</number>
+			</st_grid>
+
+			<altdata></altdata>
+
+	</alt_grid>
+
+	<!-- species used in the model -->
+	<neutral>
+		<neutral_species>
+			N2
+			O2
+			O
+			H
+		</neutral_species>
+		<!--
+		N2
+		CO
+		O
+		</neutral_species>
+		-->
+
+		<multiplicator>
+			<H>1.</H>
+			<!--
+			<CO2>1</CO2>
+			<O_PLUS>1.5</O_PLUS>
+			<O setMC="active" uncertainty="100%">1.</O>
+			-->
+
+		</multiplicator>
+
+		<species_file>
+			../CrossSections/init_species_opal.xml
+		</species_file>
+
+
+		<!-- model type : if 0 : reads the data
+			else : use the planet model.
+			-->
+		<model type="1"/>
+		<!--
+		<data>
+			<alt> 100 200 300 400</alt>
+			<CO2>10 11 12 13</CO2>
+			<N2>0 1 2 3</N2>
+			<CO>0 1 2 3</CO>
+			<O> 0 1 2 3</O>
+		</data>
+		-->
+
+		<temperature>
+			<use_model/>
+
+			<!--
+			     alt in km
+			     T in K
+			<alt>100 200 300 400</alt>
+			<T>1000 1500 2000 2000</T>
+			-->
+		</temperature>
+
+	</neutral>
+
+<iono>
+	<!-- ionosphere model -->
+
+	<electron>
+		<density>
+			<!-- model type : if 0-> data
+					  if 1-> planet_model
+			  nb ne in cm-3
+			  alt in km
+			-->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400</alt>
+			<ne> 4000 400 400 400</ne>
+			-->
+		</density>
+
+		<temperature>
+			<!-- 
+			     idem
+			     alt in km
+			     T in K
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+
+	</electron>
+
+	<ions>
+		<temperature>
+			<!-- 
+			     idem
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+	</ions>
+
+
+</iono>
+
+
+</atmosphere>
+
+
+
+<sun>
+	<!--use sun?
+	<use_sun/> -->
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--
+		model type = 0 : grille toor et toor
+		model type = 1 : grille standard
+		-->
+		<use_model type="0"/>
+		<!-- sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+			<st_grid type="0">
+				<emin>10</emin>
+				<emax>1000</emax>
+				<number>200</number>
+			<!- We must use lines with this grid to have a better accuracy
+			type="0" : no lines
+			type="1" : the lines of the   ->
+			<use_lines type="1"/>
+		</st_grid>
+
+		-->
+	</grid>
+
+
+	<model>
+		<flux_model type="0"/>
+
+		<!-- supplementary parameters for the sun model eg f107
+			Please note that other system can require these numbers
+			GG: 4 sept 2009. I do not put the variable in the considered
+			                part. Example for the Venusian model, it
+					could have be a possibility to put that f107
+					parameter in both the atmosphere model and the
+					sun model. But it increase a lot the entropy:
+					the probability of not upgrading the two is VERY
+					important. 
+					If it is needed, I suggest to create another parameter 
+					that can be read after the reading of f107 for the sun
+					in the atmosphere model.
+					-> if this parameter is not found, the models runs standard
+					-> you do not have to share the new xml file, so errors are
+					less likely to be made.
+		-->
+		<f107>68</f107>
+		<f107av>68</f107av>
+		<fudge>1.</fudge>
+	</model>
+
+</sun>
+
+<electron>
+	<nb_angles>8</nb_angles>
+	<use_electron/>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--  modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+		-->
+			<st_grid type="1">
+				<emin>.2</emin>
+				<emax>20000</emax>
+				<number>500</number>
+			</st_grid>
+	</grid>
+
+	<!--
+	     Inverse of the sinus of the Magnetic dip angle, nothing if vertical precipitation
+
+	<magnetic_dip>
+		<alt>
+		</alt>
+		The inverse of the sinus of the magnetic dip angle : must be >=1 Hehehehe, you can't have an horizontal MF -> meaning infinity!!!
+		<inverse_sinus>
+		</inverse_sinus>
+	</magnetic_dip>
+
+
+	     -->
+
+
+	<albedo>1</albedo>
+
+	<!-- expansion at the upper energy -->
+	<alpha>10.</alpha>
+	<!-- if we want to use precipitations-->
+	<use_precipitation />
+	<precipitation>
+			
+			<use_model type="1">
+				
+				<E0 unit="eV">6000.000000</E0>
+				
+				<entot unit="erg">100.000000</entot>
+				
+				<powlaw type="int">0</powlaw>
+				
+				<isotro>1.000000</isotro>
+			</use_model>
+	</precipitation>
+
+
+</electron>
+
+<geometry>
+	<use_geometry/>
+	<satellite>
+		<altitude unit="km"><const>1000</const></altitude>
+		<latitude><const>45</const></latitude>
+		<longitude><const>0</const></longitude>
+	</satellite>
+	<los>
+		<azimut><const>0</const></azimut>
+		<tangent_alt>
+			<range>
+				<start>100</start>
+				<end>500</end>
+				<number>200</number>
+			</range>
+		</tangent_alt>
+	</los>
+</geometry>
+
+
+<chem>
+	<use_chem/>
+	<add_model_species type="1">O2+
+		O+
+		H+
+		NO+
+		He+
+	</add_model_species>
+	<!-- 	<chem_reac id="14" value="0.05"/>  --> <!-- O(1S) ->   2972 -->
+	<chem_atmo>SortieAurora/chemistry_atmosphere.out</chem_atmo>
+</chem>
+<emissions>
+	<use_emissions/>
+	<use_all_emissions/>
+		<emit_list>SortieAurora/emission_list.out</emit_list>
+		<spectrum>SortieAurora/spectrum.out</spectrum> 
+	<emission id="0">
+		<column_file>SortieAurora/columnVK.out</column_file>
+		<profile_file>SortieAurora/profileVK.out</profile_file>
+		<extra_file>SortieAurora/extraVK.out</extra_file>
+	</emission>
+	<emission id="1">
+		<column_file>SortieAurora/columnO1S.out</column_file>
+		<profile_file>SortieAurora/profileO1S.out</profile_file>
+		<extra_file>SortieAurora/extraO1S.out</extra_file>
+		<use_absorption/>
+	</emission>
+	<emission id="2">
+		<column_file>SortieAurora/columnN2D.out</column_file>
+		<profile_file>SortieAurora/profileN2D.out</profile_file>
+		<extra_file>SortieAurora/extraN2D.out</extra_file>
+	</emission>
+	<emission id="3">
+		<column_file>SortieAurora/columnO1D.out</column_file>
+		<profile_file>SortieAurora/profileO1D.out</profile_file>
+		<extra_file>SortieAurora/extraO1D.out</extra_file>
+	</emission>
+	<emission id="4">
+		<column_file>SortieAurora/columnCOa3Pi.out</column_file>
+		<profile_file>SortieAurora/profileCOa3Pi.out</profile_file>
+		<extra_file>SortieAurora/extraCOa3Pi.out</extra_file>
+	</emission>
+	<emission id="5">
+		<column_file>SortieAurora/columnCO2B.out</column_file>
+		<profile_file>SortieAurora/profileCO2B.out</profile_file>
+		<extra_file>SortieAurora/extraCO2B.out</extra_file>
+	</emission>
+	<emission id="7">
+		<column_file>SortieAurora/columnOp2P.out</column_file>
+		<profile_file>SortieAurora/profileOp2P.out</profile_file>
+		<extra_file>SortieAurora/extraOp2P.out</extra_file>
+	</emission>
+
+	<emission id="8">
+		<column_file>SortieAurora/columnO3p3p.out</column_file>
+		<profile_file>SortieAurora/profileO3p3p.out</profile_file>
+		<extra_file>SortieAurora/extraO3p3p.out</extra_file>
+	</emission>
+	<emission name="H" state="2p">
+		<freq freq="121.6" branching="1"/>
+		<column_file>SortieAurora/columnLymanA.out</column_file>
+		<profile_file>SortieAurora/profileLymanA.out</profile_file>
+	</emission>
+
+	<emission name="H" state="n=3">
+		<freq freq="102.6" branching="1"/>
+		<column_file>SortieAurora/columnLymanB.out</column_file>
+		<profile_file>SortieAurora/profileLymanB.out</profile_file>
+	</emission>
+	<emission name="O" state="3S">
+		<freq freq="130.4" branching="1"/>
+		<column_file>SortieAurora/columnO130nm.out</column_file>
+		<profile_file>SortieAurora/profileO130nm.out</profile_file>
+	</emission>
+	<emission name="O" state="5S">
+		<freq freq="135.6" branching="1"/>
+		<column_file>SortieAurora/columnO135nm.out</column_file>
+		<profile_file>SortieAurora/profileO135nm.out</profile_file>
+	</emission>
+
+	<emission name="N2" state="135.4nm">
+		<freq freq="135.4" branching="1"/>
+		<column_file>SortieAurora/columnN2_LBH_135.4nm.out</column_file>
+		<profile_file>SortieAurora/profileN2_LBH_135.4nm.out</profile_file>
+	</emission>
+
+	<emission name="N2" state="95.8nm">
+		<freq freq="95.8" branching="1"/>
+		<column_file>SortieAurora/columnN2_CY_95.8nm.out</column_file>
+		<profile_file>SortieAurora/profileN2_CY_95.8nm.out</profile_file>
+	</emission>
+
+
+	<emission name="N*" state="113.4nm">
+		<freq freq="113.4" branching="1"/>
+		<column_file>SortieAurora/columnN113.4nm.out</column_file>
+		<profile_file>SortieAurora/profileN113.4nm.out</profile_file>
+	</emission>
+
+	<emission name="N*" state="120nm">
+		<freq freq="120.0" branching="1"/>
+		<column_file>SortieAurora/columnN120nm.out</column_file>
+		<profile_file>SortieAurora/profileN120nm.out</profile_file>
+	</emission>
+	<emission name="N*" state="124.3nm">
+		<freq freq="124.3" branching="1"/>
+		<column_file>SortieAurora/columnN124.3nm.out</column_file>
+		<profile_file>SortieAurora/profileN124.3nm.out</profile_file>
+	</emission>
+	<emission name="N*" state="149.4nm">
+		<freq freq="149.4" branching="1"/>
+		<column_file>SortieAurora/columnN149.4nm.out</column_file>
+		<profile_file>SortieAurora/profileN149.4nm.out</profile_file>
+	</emission>
+	<emission name="N+" state="108.4nm">
+		<freq freq="108.4" branching="1"/>
+		<column_file>SortieAurora/columnN108.4nm.out</column_file>
+		<profile_file>SortieAurora/profileN108.4nm.out</profile_file>
+	</emission>
+	<emission name="N2+" state="391.4 - first negative">
+		<freq freq="391.42" branching="1"/>
+		<column_file>SortieAurora/columnN2p391Itikawa.out</column_file>
+		<profile_file>SortieAurora/profileN2p391Itikawa.out</profile_file>
+	</emission>
+
+	<emission name="N2+" state="391.4nmFiNeT">
+		<freq freq="391.4" branching="1"/>
+		<column_file>SortieAurora/columnN2p3914T.out</column_file>
+		<profile_file>SortieAurora/profileN2p3914T.out</profile_file>
+	</emission>
+	<emission name="N2+" state="427.8nmFiNeT">
+		<freq freq="427.8" branching="1"/>
+		<column_file>SortieAurora/columnN2p4278T.out</column_file>
+		<profile_file>SortieAurora/profileN2p4278T.out</profile_file>
+	</emission>
+</emissions>
+
+
+
+
+
+<output>
+	<neutral_atmo>SortieAurora/neutral_atmo.dat</neutral_atmo>
+	<neutral_atmo_colden>SortieAurora/neutral_atmo_colden.dat</neutral_atmo_colden>
+	<ionosphere>SortieAurora/ionosphere.dat</ionosphere>
+	
+	<!--
+	<selection>
+		<production_selected_species>SortieAurora/prod_selected.dat</production_selected_species>
+		<!- Here the list of the species you selec for
+		     production_selected_species
+		     ->
+		<select_species>
+
+			<Specie name="N2+" state="X"/>
+			<Specie name="N2++" state="X"/>
+			<Specie name="N++" state="X"/>
+			<Specie name="O+" state="X"/>
+		</select_species>	
+	</selection>
+	<selection>
+		<production_selected_species>SortieAurora/prod_oxygen.dat</production_selected_species>
+		<select_species>
+
+			<Specie name="O2+" state="X"/>
+			<Specie name="O2++" state="X"/>
+			<Specie name="O+" state="X"/>
+			<Specie name="O++" state="X"/>
+			<Specie name="O" state="1S"/>
+			<Specie name="O" state="1D"/>
+			<Specie name="O" state="3S"/>
+			<Specie name="O" state="5S"/>
+		</select_species>
+	</selection>
+	-->
+	<selection>
+		<production_selected_species>SortieAurora/prod_O2.dat</production_selected_species>
+		<select_species>
+
+			<Specie name="O2" state="A3Su"/>
+			<Specie name="O2" state="b1Sg+"/>
+			<Specie name="O2+" state="A2Pu"/>
+			<Specie name="O2+" state="b4"/>
+		</select_species>
+	</selection>
+	<selection>
+		<production_selected_species>SortieAurora/prod_O.dat</production_selected_species>
+		<select_species>
+
+			<Specie name="O+" state="2D"/>
+			<Specie name="O+" state="2P"/>
+			<Specie name="O" state="5S"/>
+		</select_species>
+	</selection>
+	<selection>
+		<production_selected_species>SortieAurora/prod_N2.dat</production_selected_species>
+		<select_species>
+			<Specie name="N2" state="a1Pg"/>
+			<Specie name="N2" state="b1Pg"/>
+			<Specie name="N2+" state="B"/>
+		</select_species>
+	</selection>
+<!-- excitation to true if you want to have the whole production in one file.... -->
+	<production setExcitation="active">SortieAurora/productions.dat</production>
+
+
+
+
+</output>
+
+
+
+</aero_main>

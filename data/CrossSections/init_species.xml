@@ -1,0 +1,532 @@
+<aero_species>
+<!-- Specie file test.
+     it reads the photoionisation data of CO2 crs_test.xml
+-->
+
+<Version> Init Species, version $Id: init_species.xml 1629 2012-11-28 03:49:41Z gronoff $</Version>
+
+
+<CO2>
+	<!-- Mass in amu -->
+	<mass>44.00995</mass>
+
+	<!-- List of possible states, beginning with the ground state -->
+	<states>
+		X
+	</states>
+
+
+	<!-- Photoionization file name -->
+	<!--	<ioni_photon>photoionisation.xml</ioni_photon>-->
+	<ioni_photon>PhotRecommendedCO2.xml</ioni_photon>
+
+	<!--	<ioni_electron>electronimpactionization.xml</ioni_electron> -->
+	<ioni_electron>ElectronCO2.xml</ioni_electron>
+	<!-- Other ionization file name
+	<ioni_electron>crs_test.xml</ioni_electron>
+	<ioni_proton>crs_test.xml</ioni_proton>
+	-->
+	<ioni_proton>ProtonCO2.xml</ioni_proton>
+	<ioni_hydrogen>HydrogenCO2.xml</ioni_hydrogen>
+	<proton_ioni_redistribution>0</proton_ioni_redistribution>
+	<proton_ioni_redistribution_sigma>0</proton_ioni_redistribution_sigma>
+	<proton_elas_redistribution>3</proton_elas_redistribution>
+	<proton_elas_redistribution_sigma>0</proton_elas_redistribution_sigma>
+	<proton_exch_redistribution>3</proton_exch_redistribution>
+	<proton_exch_redistribution_sigma>0</proton_exch_redistribution_sigma>
+
+<!-- Porter DATA for CO2 see Porter et al 87-->
+       <EPorter>
+		3.	3.5	3.8	4.	5.
+		7.	10.	15.	20.	30.
+		40.	50.	70.	300.	400.
+	       500.
+       </EPorter>
+       
+       <GPorter>
+	5.33E-1		1.94E-1		3.18E-1		3.54E-1		5.41E-1
+	7.210E-1	1.36E-1 	6.51E-2 	4.03E-2 	2.79E-2 
+	1.51E-2		1.45E-2		1.33E-2		5.22E-3		4.21E-3
+       	3.51E-3
+     </GPorter>
+     <BPorter>
+	    2.94E1		3.6E1		1.49		2.54E-1		2.69E-2
+	    3.04E-2		9.03E-1		1.14		1.19		1.85
+	    2.13		2.4		2.51		9.7E1		1.44E1
+	    9.71
+     </BPorter>
+    <!-- c en fait, alfa, c est delta... -->
+     <APorter>
+	1.56		1.22		4.39e-1		1.83e-1		7.07e-2
+	9.67e-2 	1.54e-1		1.38e-1		1.35e-1		1.39e-1
+       	1.03e-1		1.05e-1		1.32e-1		-1.71		-1.16 
+	-1.09
+</APorter>
+
+	
+
+<cosmic>
+	<!-- Approximation should be improved here! -->
+	<Specie name="CO2+" state="X" fraction="1." electrons="1"/>
+</cosmic>
+
+
+
+
+</CO2>
+
+
+<N2>
+	<mass>28.0134</mass>
+	<states>
+		X
+	</states>
+
+	<ioni_photon>PhotRecommendedN2.xml</ioni_photon>
+	<!--	<ioni_electron>electronimpactionization.xml</ioni_electron> -->
+		<ioni_electron>ElectronN2.xml</ioni_electron> 
+	<!--	<ioni_electron>N2Itikawa.xml</ioni_electron> -->
+
+	<ioni_proton>ProtonN2.xml</ioni_proton>
+	<ioni_hydrogen>HydrogenN2.xml</ioni_hydrogen>
+	<proton_ioni_redistribution>0</proton_ioni_redistribution>
+	<proton_ioni_redistribution_sigma>0</proton_ioni_redistribution_sigma>
+	<proton_elas_redistribution>3</proton_elas_redistribution>
+	<proton_elas_redistribution_sigma>0</proton_elas_redistribution_sigma>
+	<proton_exch_redistribution>3</proton_exch_redistribution>
+	<proton_exch_redistribution_sigma>0</proton_exch_redistribution_sigma>
+
+	<Opal setMC="inactive" uncertainty="10%">13.0</Opal>
+<!-- Porter DATA for N2 see Porter et al 87-->
+     <EPorter>
+	     2.3	2.9	3.9	5.	10.
+	     15.	20.	25.	30.	50.
+	     90.	100.	300.	500.	800.
+	    1000.
+     </EPorter>
+    
+     <GPorter>
+	     2.68e-1		3.32e-1		2.47e-1		3.81e-1		2.28e-1
+	     1.27e-1		7.59e-2		6.23e-2		5.55e-2		2.95e-2
+	     1.76e-2		1.61e-2		8.60e-3		6.70e-3		5.09e-3
+	     4.21e-3
+     </GPorter>
+   
+     <BPorter>
+     	5.24e1		9.13e-1		5.39e-1		7.34e-1		4.66e-1
+	6.47e-1		6.98e-1		6.74e-1		7.11e-1		1.06
+	6.12		8.64		2.37e1		8.32		3.34
+       1.97
+     </BPorter>
+   
+     <APorter>
+	     2.7	4.62e-1		3.17e-1		4.77e-1		1.92e-1
+	     1.32e-1	1.32e-1		1.24e-1		8.07e-2		1.19e-1
+	     3.78e-1	4.73e-1		-1.71		-1.27		-1.12
+	    -1.08
+     </APorter>
+
+     <cosmic>
+	     <Specie name="N2+" state="X" fraction="0.78" electrons="1"/>
+	     <Specie name="N+" state="X" fraction="0.2" electrons="1"/>
+	     <Specie name="N2++" state="X" fraction="0.015" electrons="2"/>
+	     <Specie name="N++" state="X" fraction="0.005" electrons="2"/>
+	     <!-- Here, see Lavvas et al. 2008 and Lellouch et al. 1994 -->
+	     <Specie name="N" state="2D" fraction="0.54" electrons="0"/>
+	     <Specie name="N" state="4S" fraction="0.54" electrons="0"/>
+     </cosmic>
+</N2>
+
+
+<CH4>
+	<mass>16.04303</mass>
+	<states>
+		X
+	</states>
+	<ioni_photon>PhotRecommendedCH4.xml</ioni_photon>
+	 <!--  <ioni_electron>electronimpactionization.xml</ioni_electron> -->
+	  <ioni_electron>ElectronCH4.xml</ioni_electron>
+
+<!-- Porter DATA for N2 see Porter et al 87-->
+     <EPorter>
+	     2.3	2.9	3.9	5.	10.
+	     15.	20.	25.	30.	50.
+	     90.	100.	300.	500.	800.
+	    1000.
+     </EPorter>
+    
+     <GPorter>
+	     2.68e-1		3.32e-1		2.47e-1		3.81e-1		2.28e-1
+	     1.27e-1		7.59e-2		6.23e-2		5.55e-2		2.95e-2
+	     1.76e-2		1.61e-2		8.60e-3		6.70e-3		5.09e-3
+	     4.21e-3
+     </GPorter>
+   
+     <BPorter>
+     	5.24e1		9.13e-1		5.39e-1		7.34e-1		4.66e-1
+	6.47e-1		6.98e-1		6.74e-1		7.11e-1		1.06
+	6.12		8.64		2.37e1		8.32		3.34
+       1.97
+     </BPorter>
+   
+     <APorter>
+	     2.7	4.62e-1		3.17e-1		4.77e-1		1.92e-1
+	     1.32e-1	1.32e-1		1.24e-1		8.07e-2		1.19e-1
+	     3.78e-1	4.73e-1		-1.71		-1.27		-1.12
+	    -1.08
+     </APorter>
+
+
+     <cosmic>
+	     <Specie name="CH4+" state="X" fraction="0.46" electrons="1"/>
+	     <Specie name="CH3+" state="X" fraction="0.37" electrons="1"/>
+	     <Specie name="CH2+" state="X" fraction="0.063" electrons="1"/>
+	     <Specie name="CH+" state="X" fraction="0.026" electrons="1"/>
+	     <Specie name="C+" state="X" fraction="0.008" electrons="1"/>
+	     <Specie name="H2+" state="X" fraction="0.005" electrons="1"/>
+	     <Specie name="H+" state="X" fraction="0.066" electrons="1"/>
+     </cosmic>
+</CH4>
+
+<O>
+	<mass>15.9994</mass>
+	<states>
+		X
+	</states>
+	<!--	<ioni_photon>photoionisation.xml</ioni_photon>-->
+	<ioni_photon>PhotRecommendedO.xml</ioni_photon>
+	<ioni_electron>ElectronO.xml</ioni_electron>
+	<ioni_proton>ProtonO.xml</ioni_proton>
+	<ioni_hydrogen>HydrogenO.xml</ioni_hydrogen>
+<!-- Porter DATA for O see Porter et al 87-->
+       
+	<proton_ioni_redistribution>0</proton_ioni_redistribution>
+	<proton_ioni_redistribution_sigma>0</proton_ioni_redistribution_sigma>
+	<proton_elas_redistribution>3</proton_elas_redistribution>
+	<proton_elas_redistribution_sigma>0</proton_elas_redistribution_sigma>
+	<proton_exch_redistribution>3</proton_exch_redistribution>
+	<proton_exch_redistribution_sigma>0</proton_exch_redistribution_sigma>
+    	 <EPorter>
+		 5.	15.	20.	45.	 100.
+		 250.	500.	1000.
+	</EPorter>
+	
+    	<GPorter>
+	8.61e-1 2.35e-1 2.03e-1 8.23e-2 6.36e-2 
+	3.95e-3 2.25e-2 1.05e-2
+	</GPorter>
+     
+     	<BPorter>
+		-7.48e-1	2.85e-2		6.14e-2		3.46e-1		2.2e1
+	       	5.05e1		1.74e2		1.37e2
+	</BPorter>
+    
+     	<APorter>
+		1.8		5.47e-2		6.02e-2		6.96e-2		2.75e-1
+	       	7.32e-1		-7.36		 -3.32      
+	</APorter>
+	<cosmic>
+	     <Specie name="O+" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+
+</O>
+
+<O_PLUS>
+	<!-- O+ the name is given as O_PLUS because  xml does not recognize + in tags
+	     -->
+	<mass>15.9994</mass>
+	<states>
+		X
+	</states>
+	<ioni_photon>photoionisation.xml</ioni_photon>
+	<ioni_electron>electronimpactionization.xml</ioni_electron>
+
+<!-- Porter DATA for O see Porter et al 87
+WARNING
+WARNING
+WARNING
+Here, we supposed that the O data can be extended to O+ !!!
+-->
+       
+    	 <EPorter>
+	5. 15. 20. 45. 100. 250. 500. 1000.
+	</EPorter>
+	
+    	<GPorter>
+	8.61e-1 2.35e-1 2.03e-1 8.23e-2 6.36e-2 
+	3.95e-3 2.25e-2 1.05e-2
+	</GPorter>
+     
+     	<BPorter>
+   	-7.48e-1 2.85e-2 6.14e-2 3.46e-1 
+   	2.2e1 5.05e1 1.74e2 1.37e2
+	</BPorter>
+    
+     	<APorter>
+   	1.8 5.47e-2 6.02e-2 6.96e-2 2.75e-1 7.32e-1 
+     	-7.36 -3.32      
+	</APorter>
+
+	<cosmic>
+	     <Specie name="O++" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+</O_PLUS>
+
+<CO>
+	<mass>28.01055</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>PhotRecommendedCO.xml</ioni_photon>
+	<ioni_electron>ElectronCO.xml</ioni_electron> 
+	<!-- <ioni_electron>electronimpactionization.xml</ioni_electron>-->
+ 
+<!-- Porter DATA for CO see Porter et al 87-->
+     	<EPorter>
+		10.	15.	20.	30.	40.
+		50.	60.	83.	200.	300.
+	       	400.	500.	599.	800.
+	</EPorter>
+
+     	<GPorter>
+		2.e-1	5.45e-2	5.78e-2	4.37e-2	3.47e-2
+		3.02e-2	2.24e-2 2.05e-2 1.17e-2 8.05e-3
+	       	6.68e-3 6.35e-3	5.34e-3 5.34e-3
+	</GPorter>
+
+     	<BPorter>
+		9.03e-1 3.99	3.58 	1.31	8.62e-1
+		2.52e-1 7.56e-1	2.86 	4.33e2	 1.62e1
+	       	8.55	1.04e1	1.17e1	6.75
+	</BPorter>
+
+     	<APorter>
+		2.9e-1	2.9e-1	3.33e-1	1.12e-1	9.4e-2
+		1.86e-1	1.01e-1 1.13e-1 4.45	-1.45
+	       	-1.21	-1.26	-1.14	-1.17
+	</APorter>
+
+	<cosmic>
+	     <Specie name="CO+" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+</CO>
+
+
+
+<Ar>
+	<mass>14.0067</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>photoionisation.xml</ioni_photon>
+
+<!-- Porter DATA for O see Porter et al 87
+WARNING
+WARNING
+WARNING
+Here, we supposed that the O data can be extended to Ar !!!
+-->
+       
+    	 <EPorter>
+		5. 15. 20. 45. 100. 250. 500. 1000.
+	</EPorter>
+	
+    	<GPorter>
+		8.61e-1 2.35e-1 2.03e-1 8.23e-2 6.36e-2 
+		3.95e-3 2.25e-2 1.05e-2
+	</GPorter>
+     
+     	<BPorter>
+  	 	-7.48e-1 2.85e-2 6.14e-2 3.46e-1 
+  	 	2.2e1 5.05e1 1.74e2 1.37e2
+	</BPorter>
+    
+     	<APorter>
+	   	1.8 5.47e-2 6.02e-2 6.96e-2 2.75e-1 7.32e-1 
+	     	-7.36 -3.32      
+	</APorter>
+
+	<cosmic>
+	     <Specie name="Ar+" state="X" fraction="0.97" electrons="1"/>
+	     <Specie name="Ar++" state="X" fraction="0.03" electrons="1"/>
+	</cosmic>
+
+</Ar>
+
+<H>
+	<mass>1.00797</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>PhotRecommendedH.xml</ioni_photon>
+	<ioni_electron>ElectronH.xml</ioni_electron>
+
+<!-- Porter DATA for He see Porter et al 87
+
+WARNING
+WARNING
+WARNING
+Here, we supposed that the He data can be extended to H !!!
+-->
+	<EPorter>
+		1.5 2.  2.5 4.  5.
+		7.  15.  19.  25.  30.
+		40.  50.  75.  80.  100.
+		200.  400.  500.  700.
+	</EPorter>
+	<GPorter>
+		4.530E-01 2.210E01 1.060E00 2.760E00 2.960E-00
+		5.400E-01 4.770E-01 2.560E-01 1.790E-01 1.990E-01
+		1.570E-01 1.790E-01 9.780E-02 9.360E-02 2.210E-01
+		1.340E-01 4.140E-03 8.060E-04 2.130E-02
+	</GPorter>
+	<BPorter>
+		5.040E01 2.490E00 2.100E02 2.660E-01 1.730E01
+		8.350E00 3.370E00 6.080E01 4.150E01 4.740E01
+		4.950E01 1.860E00 6.260E01 4.570E01 6.440E-02
+		8.120E00 8.600E01 9.850E02 3.450E00
+	</BPorter>
+     	<APorter>
+		4.120E-01 1.290E00 9.480E-01 9.080E-01 1.350E00
+		8.620E-01 7.830E-01 2.530E00 2.190E00 3.040E00
+		4.220E00 8.830E-01 4.530E00 5.160E00 -1.030E00
+		-1.040E00 -1.040E00 -1.030E00 -2.270E00 
+	</APorter>
+
+	<cosmic>
+	     <Specie name="H+" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+</H>
+<He>
+	<mass>4.0026</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>photoionisation.xml</ioni_photon>
+
+	<!-- Porter DATA for He see Porter et al 87-->
+	<EPorter>
+		1.5 2.  2.5 4.  5.
+		7.  15.  19.  25.  30.
+		40.  50.  75.  80.  100.
+		200.  400.  500.  700.
+	</EPorter>
+	<GPorter>
+		4.530E-01 2.210E01 1.060E00 2.760E00 2.960E-00
+		5.400E-01 4.770E-01 2.560E-01 1.790E-01 1.990E-01
+		1.570E-01 1.790E-01 9.780E-02 9.360E-02 2.210E-01
+		1.340E-01 4.140E-03 8.060E-04 2.130E-02
+	</GPorter>
+	<BPorter>
+		5.040E01 2.490E00 2.100E02 2.660E-01 1.730E01
+		8.350E00 3.370E00 6.080E01 4.150E01 4.740E01
+		4.950E01 1.860E00 6.260E01 4.570E01 6.440E-02
+		8.120E00 8.600E01 9.850E02 3.450E00
+	</BPorter>
+     	<APorter>
+		4.120E-01 1.290E00 9.480E-01 9.080E-01 1.350E00
+		8.620E-01 7.830E-01 2.530E00 2.190E00 3.040E00
+		4.220E00 8.830E-01 4.530E00 5.160E00 -1.030E00
+		-1.040E00 -1.040E00 -1.030E00 -2.270E00 
+	</APorter>
+
+	<cosmic>
+	     <Specie name="He+" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+</He>
+
+<O2>
+	<mass>31.9988</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>PhotRecommendedO2.xml</ioni_photon>
+	<!-- 	<ioni_electron>electronimpactionization.xml</ioni_electron> -->
+	 	<ioni_electron>ElectronO2.xml</ioni_electron> 
+	<!-- test des sections efficaces d'Itikawa -->
+	<!--	<ioni_electron>O2Itikawa.xml</ioni_electron> -->
+
+	<ioni_proton>ProtonO2.xml</ioni_proton>
+	<ioni_hydrogen>HydrogenO2.xml</ioni_hydrogen>
+
+	<proton_ioni_redistribution>0</proton_ioni_redistribution>
+	<proton_ioni_redistribution_sigma>0</proton_ioni_redistribution_sigma>
+	<proton_elas_redistribution>3</proton_elas_redistribution>
+	<proton_elas_redistribution_sigma>0</proton_elas_redistribution_sigma>
+	<proton_exch_redistribution>3</proton_exch_redistribution>
+	<proton_exch_redistribution_sigma>0</proton_exch_redistribution_sigma>
+
+<!-- Porter DATA for O2 see Porter et al 87-->
+     	<EPorter>
+		10. 15. 20. 45. 300. 400. 500.
+	</EPorter>
+     	<GPorter>
+		1.81e-1 2.28e-1 1.57e-1 4.46e-2 
+		8.67e-3 6.93e-3 5.62e-3
+	</GPorter>
+     	<BPorter>
+		1.28e1 1.43e-1 5.42e-2 
+		2.79e-2 6.74e1 6.360e1 9.71
+	</BPorter>
+       
+     	<APorter>
+		1.85 1.32e-1 1.32e-1 5.88e-2 -1.97 -1.52 -1.11
+	</APorter>
+
+	<cosmic>
+	     <Specie name="O2+" state="X" fraction="1" electrons="1"/>
+	</cosmic>
+</O2>
+
+
+<H2>
+	<mass>2.01588</mass>
+
+	<states>
+		X
+	</states>
+	<ioni_photon>PhotH2.xml</ioni_photon>
+	<ioni_electron>ElectronH2.xml</ioni_electron> 
+
+<!-- Porter DATA for He see Porter et al 87
+
+WARNING
+WARNING
+WARNING
+Here, we supposed that the He data can be extended to H2 !!!
+-->
+
+     	<EPorter>
+		1.5 2. 2.5 4. 5. 7.
+        15. 19. 25. 30. 40. 50.
+        75. 80. 100. 200. 400. 500.
+        700. 
+	</EPorter>
+     	<GPorter>
+		4.53e-1 2.21e1 1.06 2.76 2.96 5.4e-1
+        4.77e-1 2.56e-1 1.79e-1 1.99e-1 1.57e-1 1.79e-1
+        9.78e-2 9.36e-2 2.21e-1 1.34e-1 4.14e-3 8.06e-4
+        2.13e-2
+	</GPorter>
+     	<BPorter>
+		5.04e1 2.49 2.1e2 2.66e-1 1.73e1 8.35
+        3.37 6.08e1 4.15e1 4.74e1 4.95e1 1.86
+        6.26e1 4.57e1 6.44e-2 8.12 8.6e1 9.85e2
+        3.45
+	</BPorter>
+       
+     	<APorter>
+		4.12e-1 1.29 9.48e-1 9.08e-1 1.35 8.62e-1
+        7.83e-1 2.53 2.19 3.04 4.22 8.83e-1
+        4.53 5.16 -1.03 -1.04 -1.04 -1.03
+        -2.27
+	</APorter>
+
+</H2>
+
+</aero_species>

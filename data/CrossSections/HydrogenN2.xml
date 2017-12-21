@@ -1,0 +1,129 @@
+<crs>
+	<Name>N2</Name>
+	<Collider>H</Collider>
+	<RecommendedFile/>
+	<N2>
+		<!-- TODO say it is the same as P -->
+		<TotalCrsProton/>
+		
+		<ElasticCrs>
+			<use_hydrogen_function/>
+			<!-- TODO : proton function, uncertainty -->
+		</ElasticCrs>
+
+		<!-- Excitations -->
+
+		<Process name="N2+H->N2*" electrons="0" threshold="10">
+			<Species>
+				<Specie name="N2" state="*"/>
+			</Species>
+			<legend>N2* / H</legend>
+			<Proc>N2*</Proc>
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Excitation/>
+			<Egrid unit="eV">
+				1.9778E+03  2.1497E+03  2.3910E+03  2.6274E+03  2.8060E+03 
+				3.0499E+03  3.2896E+03  3.5056E+03  3.7481E+03  4.0427E+03 
+				4.4181E+03  4.8817E+03  5.4117E+03  5.9664E+03  6.7460E+03 
+				7.5858E+03  8.1730E+03  8.8638E+03  9.5604E+03  1.0622E+04 
+				1.1171E+04  1.2589E+04  1.3880E+04  1.5403E+04  1.7608E+04 
+				1.9138E+04  2.0530E+04  2.1710E+04  2.2387E+04
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				1.0121E-17  1.0762E-17  1.2036E-17  1.3834E-17  1.5919E-17 
+				1.8703E-17  2.0962E-17  2.2167E-17  2.2609E-17  2.2734E-17 
+				2.2314E-17  2.1568E-17  2.1100E-17  2.0711E-17  2.0195E-17 
+				1.9931E-17  1.9865E-17  1.9713E-17  1.9498E-17  1.8806E-17 
+				1.8137E-17  1.6871E-17  1.5745E-17  1.4328E-17  1.3067E-17 
+				1.1957E-17  1.1086E-17  1.0575E-17  1.0177E-17
+			</Cross>
+		</Process>
+
+
+		<!-- Ionizations -->
+
+		<Process name="N2+H->N2+ + H + e" electrons="1" threshold="17">
+			<Species>
+				<Specie name="N2+" state="X"/>
+				<!-- AND OTHERS -->
+			</Species>
+			<legend>N2+ / H</legend>
+			<Proc>N2+</Proc>
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Ionization/>
+			<Egrid unit="eV">
+				1.0199E+03  1.1208E+03  1.2384E+03  1.5119E+03  1.8377E+03 
+				2.1592E+03  2.7938E+03  3.3368E+03  3.8905E+03  4.3940E+03 
+				4.9954E+03  5.9861E+03  7.3726E+03  8.9812E+03  1.0893E+04 
+				1.4872E+04  1.8078E+04  2.1830E+04  2.7212E+04  3.4108E+04 
+				4.4571E+04  5.5988E+04  7.3403E+04  9.2005E+04  1.1183E+05 
+				1.4938E+05  2.0062E+05  2.6159E+05  3.1797E+05  3.6869E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				3.5912E-17  4.2564E-17  5.2194E-17  6.9183E-17  9.3428E-17 
+				1.1557E-16  1.5971E-16  1.9800E-16  2.3085E-16  2.5591E-16 
+				2.8620E-16  3.1553E-16  3.4979E-16  3.8061E-16  4.0250E-16 
+				4.2940E-16  4.3318E-16  4.2987E-16  4.3365E-16  4.2425E-16 
+				4.0117E-16  3.7770E-16  3.4674E-16  3.1797E-16  2.9286E-16 
+				2.5902E-16  2.2609E-16  1.9735E-16  1.7861E-16  1.6632E-16
+			</Cross>
+		</Process>
+
+		<!-- Charge Exchange -->
+
+		<!-- Charge exchange: probably no production!-->
+		<Process name="N2+H->N2 + p + e" electrons="1" ions="0" threshold="3.4">
+			<Species>
+			</Species>
+			<legend>H->p / N2 / charge exchange</legend>
+			<Proc>H->p/N2</Proc>
+			<Section>exchange</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Green and Peterson 68 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Exchange/>
+			<Egrid unit="eV">
+				1.0033E+03  1.1245E+03  1.4598E+03  2.0395E+03  2.7846E+03 
+				3.6668E+03  4.7654E+03  6.4565E+03  8.1820E+03  9.9127E+03 
+				1.2479E+04  1.5728E+04  1.9055E+04  2.2461E+04  2.9415E+04 
+				3.7276E+04  4.4181E+04  5.0783E+04  5.9664E+04  7.4375E+04 
+				9.7189E+04  1.2798E+05  1.6964E+05  2.1146E+05  2.6216E+05 
+				3.3699E+05  4.2799E+05  5.1342E+05  6.2751E+05  7.5443E+05 
+				8.9419E+05  9.3530E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				1.5676E-16  1.6982E-16  1.8992E-16  2.1544E-16  2.4306E-16 
+				2.6360E-16  2.7362E-16  2.8620E-16  2.9351E-16  3.1073E-16 
+				3.3295E-16  3.5833E-16  3.9506E-16  4.1778E-16  4.4815E-16 
+				4.7445E-16  4.7445E-16  4.7341E-16  4.6928E-16  4.5559E-16 
+				4.3081E-16  3.9986E-16  3.6308E-16  3.2860E-16  2.9254E-16 
+				2.6102E-16  2.2584E-16  2.0040E-16  1.7841E-16  1.5711E-16 
+				1.3865E-16  1.3549E-16
+			</Cross>
+		</Process>
+
+	</N2>
+
+
+
+
+
+
+
+</crs>
+
+

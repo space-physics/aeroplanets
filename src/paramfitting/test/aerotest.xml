@@ -1,0 +1,352 @@
+<aero_main>
+	<Version>Venus Jour, dayside with electrons. Version $Id: VenusJour.xml 958 2010-04-21 19:48:15Z gronoff $</Version>
+<planet>
+	<name>Venus</name>
+	<!-- Not needed when the planet is defined
+	<UA></UA>
+	<radius></radius>
+	<go></go>
+	-->
+	<!-- with respect to the subsolar point -->
+
+	<!-- not needed when SZA is defined. Except if the model... -->
+	<lat>45</lat>
+	<!--
+	<long></long>
+	<date></date>
+	<local_hour></local_hour>
+	-->
+<!-- with respect to the planetary parameters -> needs to compute!!! -->
+	<SZA>45</SZA>
+	<!--
+	<planet_lat>45</planet_lat>
+	<planet_long></planet_long>
+	-->	
+<!-- inclination of the planet 23.5 for the earth
+	not needed when the planet is defined
+	-->
+
+	<!--
+	<planet_i></planet_i>
+	-->
+
+</planet>
+
+<atmosphere>
+	
+	<!-- altitude grid -->
+	<alt_grid>
+		<!--
+		0 : grille standard
+		1 : data
+
+
+		-->
+		<use_model type="0"/>
+		<!--
+		 sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+		-->
+			<st_grid type="0">
+				<altmin>105</altmin>
+				<altmax>400</altmax>
+				<number>200</number>
+			</st_grid>
+
+			<altdata></altdata>
+
+	</alt_grid>
+
+	<!-- species used in the model -->
+	<neutral>
+		<neutral_species>
+			CO2
+			N2
+			CO
+			O
+			O2
+		</neutral_species>
+		<!--
+		N2
+		CO
+		O
+		</neutral_species>
+		-->
+
+		<multiplicator>
+			<CO2>1</CO2>
+			<!--
+			<O_PLUS>1.5</O_PLUS>
+			<O setMC="active" uncertainty="100%">1.</O>
+			-->
+
+		</multiplicator>
+
+		<species_file>
+			../../../data/CrossSections/init_species.xml
+		</species_file>
+
+
+		<!-- model type : if 0 : reads the data
+			else : use the planet model.
+			-->
+		<model type="1"/>
+		<!--
+		<data>
+			<alt> 100 200 300 400</alt>
+			<CO2>10 11 12 13</CO2>
+			<N2>0 1 2 3</N2>
+			<CO>0 1 2 3</CO>
+			<O> 0 1 2 3</O>
+		</data>
+		-->
+
+		<temperature>
+			<use_model/>
+
+			<!--
+			     alt in km
+			     T in K
+			<alt>100 200 300 400</alt>
+			<T>1000 1500 2000 2000</T>
+			-->
+		</temperature>
+
+	</neutral>
+
+<iono>
+	<!-- ionosphere model -->
+
+	<electron>
+		<density>
+			<!-- model type : if 0-> data
+					  if 1-> planet_model
+			  nb ne in cm-3
+			  alt in km
+			-->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400</alt>
+			<ne> 4000 400 400 400</ne>
+			-->
+		</density>
+
+		<temperature>
+			<!-- 
+			     idem
+			     alt in km
+			     T in K
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+
+	</electron>
+
+	<ions>
+		<temperature>
+			<!-- 
+			     idem
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+	</ions>
+
+
+</iono>
+</atmosphere>
+
+
+
+
+
+<sun>
+	<!--use sun? -->
+	<use_sun/>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--
+		model type = 0 : grille toor et toor
+		model type = 1 : grille standard
+		-->
+		<use_model type="2"/>
+		<!-- sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+			<st_grid type="0">
+				<emin>10</emin>
+				<emax>1000</emax>
+				<number>200</number>
+			<!- We must use lines with this grid to have a better accuracy
+			type="0" : no lines
+			type="1" : the lines of the   ->
+			<use_lines type="1"/>
+		</st_grid>
+
+		-->
+	</grid>
+
+
+	<model>
+		<flux_model type="2"/>
+
+		<!-- supplementary parameters for the sun model eg f107
+			Please note that other system can require these numbers
+			GG: 4 sept 2009. I do not put the variable in the considered
+			                part. Example for the Venusian model, it
+					could have be a possibility to put that f107
+					parameter in both the atmosphere model and the
+					sun model. But it increase a lot the entropy:
+					the probability of not upgrading the two is VERY
+					important. 
+					If it is needed, I suggest to create another parameter 
+					that can be read after the reading of f107 for the sun
+					in the atmosphere model.
+					-> if this parameter is not found, the models runs standard
+					-> you do not have to share the new xml file, so errors are
+					less likely to be made.
+		-->
+		<f107>253</f107>
+		<f107av>253</f107av>
+		<fudge>1.</fudge>
+	</model>
+
+</sun>
+
+<electron>
+	<nb_angles>8</nb_angles>
+	<use_electron/>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--  modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+		-->
+			<st_grid type="1">
+				<emin>0.2</emin>
+				<emax>1600</emax>
+				<number>50</number>
+			</st_grid>
+	</grid>
+
+	<!--
+	     Inverse of the sinus of the Magnetic dip angle, nothing if vertical precipitation
+
+	<magnetic_dip>
+		<alt>
+		</alt>
+		The inverse of the sinus of the magnetic dip angle : must be >=1 Hehehehe, you can't have an horizontal MF -> meaning infinity!!!
+		<inverse_sinus>
+		</inverse_sinus>
+	</magnetic_dip>
+
+
+	     -->
+
+
+	<albedo>1</albedo>
+
+	<!-- expansion at the upper energy: inutile ce truc en fait! -->
+	<alpha>10.</alpha>
+	<!-- if we want to use precipitations-->
+	<!-- <use_precipitation/>-->
+
+</electron>
+
+<geometry>
+	<use_geometry/>
+	<satellite>
+		<altitude unit="km"><const>300</const></altitude>
+		<latitude><const>45</const></latitude>
+		<longitude><const>0</const></longitude>
+	</satellite>
+	<los>
+		<azimut><const>0</const></azimut>
+		<tangent_alt>
+			<range>
+				<start>100</start>
+				<end>290</end>
+				<number>50</number>
+			</range>
+		</tangent_alt>
+	</los>
+</geometry>
+
+<chem>
+	<use_chem/>
+</chem>
+<emissions>
+	<use_emissions/>
+	<use_all_emissions/>
+		<emit_list>VenusJourSortie/emission_list.out</emit_list>
+		<spectrum>VenusJourSortie/spectrum.out</spectrum> 
+	<emission id="1">
+		<column_file>VenusJourSortie/columnO1S.out</column_file>
+		<profile_file>VenusJourSortie/profileO1S.out</profile_file>
+		<extra_file>VenusJourSortie/extraO1S.out</extra_file>
+	</emission>
+</emissions>
+<output>
+	<neutral_atmo>VenusJourSortie/neutral_atmo.dat</neutral_atmo>
+	<neutral_atmo_colden>VenusJourSortie/neutral_atmo_colden.dat</neutral_atmo_colden>
+	<ionosphere>VenusJourSortie/ionosphere.dat</ionosphere>
+	<selection>
+		<production_selected_species>VenusJourSortie/prod_selected.dat</production_selected_species>
+		<!-- Here the list of the species you selec for
+		     production_selected_species
+		     -->
+		<select_species>
+			<Specie name="C+" state="X"/>
+			<Specie name="C++" state="X"/>
+			<Specie name="O+" state="X"/>
+		</select_species>	
+	</selection>
+	<selection>
+		<production_selected_species>VenusJourSortie/prod_oxygen.dat</production_selected_species>
+		<select_species>
+
+			<Specie name="O2+" state="X"/>
+			<Specie name="O2++" state="X"/>
+			<Specie name="O+" state="X"/>
+			<Specie name="O++" state="X"/>
+			<Specie name="O" state="1S"/>
+			<Specie name="O" state="1D"/>
+			<Specie name="O" state="3S"/>
+			<Specie name="O" state="5S"/>
+		</select_species>
+	</selection>
+
+
+
+<!-- excitation to true if you want to have the whole production in one file.... -->
+	<production setExcitation="active">VenusJourSortie/productions.dat</production>
+	<electron_production>VenusJourSortie/electronprod.dat </electron_production>
+	<cross_sections>VenusJourSortie/CrossSection</cross_sections>
+
+
+	<fluxes option="0">
+		<fluxes_filename>VenusJourSortie/down_flux.dat</fluxes_filename>
+		<altitudes>
+			270
+			250
+			200
+			150
+		</altitudes>
+	</fluxes>
+	<photoelectron_energy_flux>VenusJourSortie/energy_flux.dat</photoelectron_energy_flux>
+
+</output>
+
+
+
+</aero_main>

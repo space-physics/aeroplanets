@@ -1,0 +1,35 @@
+<?xml?>
+
+<test>
+	bla
+	<a>
+		a1
+	</a>
+	<a>a2</a>
+
+	<a>a3</a>
+
+</test>
+
+
+<testkey fact="3">
+	42
+</testkey>
+
+<testarr fact0="12" fact1="6" fact2="4">
+	1	2	3
+	1	4	6
+	1	8	12
+</testarr>
+
+<testa fact="42">
+	1	1	1	1	1	1
+</testa>
+
+
+<testk a="1"/>
+<testk a="2"/>
+<testk a="3"/>
+<testk a="4"/>
+<testk a="5"/>
+<testk a="6"/>

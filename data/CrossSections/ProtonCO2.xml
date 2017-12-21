@@ -1,0 +1,111 @@
+<crs>
+	<Name>CO2</Name>
+	<Collider>p</Collider>
+	<RecommendedFile/>
+	<CO2>
+		<!-- TODO ADD -->
+		<TotalCrsProton/>
+		
+		<ElasticCrs>
+			<use_proton_function/>
+			<!-- TODO : proton function, uncertainty -->
+		</ElasticCrs>
+
+		<!-- Excitations -->
+
+		<Process name="CO2+p->CO2*" electrons="0" threshold="10">
+			<Species>
+				<Specie name="CO2" state="*"/>
+			</Species>
+			<legend>CO2* / proton</legend>
+			<Proc>CO2*</Proc>
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="adaptation">Avakyan Gronoff Basu</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> The excitation cross section for N2 is 0.1 times the ionization cross section. We took the same factor here for CO2 </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Excitation/>
+			<Egrid unit="eV" fact="1E3">
+				0.5 0.7 1.  1.5 2.0 
+				3.0 5.0 7.0 10  15  
+				20  30  50  70  100 
+				150 200 300 500 700 
+				1000 1500 2000 3000 5000
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%" fact="1E-17">
+				0.14 0.21 0.31 0.49 0.68
+				1.07 1.85 2.61 3.68 5.18
+				6.34 7.82 8.83 8.75 8.11
+				6.96 6.06 4.82 3.47 2.75
+				2.13 1.57 1.26 0.92 0.61
+			</Cross>
+		</Process>
+
+
+		<!-- Ionizations -->
+
+		<Process name="CO2+p->CO2+ + p + e" electrons="1" threshold="17">
+			<Species>
+				<Specie name="CO2+" state="X"/>
+				<!-- AND OTHERS -->
+			</Species>
+			<legend>CO2+ / proton</legend>
+			<Proc>CO2+</Proc>
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown"></Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Ionization/>
+			<Egrid unit="eV" fact="1E3">
+				0.5 0.7 1.  1.5 2.0 
+				3.0 5.0 7.0 10  15  
+				20  30  50  70  100 
+				150 200 300 500 700 
+				1000 1500 2000 3000 5000
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%" fact="1E-16">
+				0.14 0.21 0.31 0.49 0.68
+				1.07 1.85 2.61 3.68 5.18
+				6.34 7.82 8.83 8.75 8.11
+				6.96 6.06 4.82 3.47 2.75
+				2.13 1.57 1.26 0.92 0.61
+			</Cross>
+		</Process>
+
+		<!-- Charge Exchange -->
+
+		<!-- Charge exchange: probably no production!-->
+		<Process name="CO2+p->CO2+ + H" electrons="1" threshold="13.6">
+			<Species>
+				<Specie name="CO2+" state="X"/>
+			</Species>
+			<legend>p->H / CO2 / charge exchange</legend>
+			<Proc>p->H/CO2</Proc>
+			<Section>exchange</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="review">Avakyan</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Exchange/>
+			<Egrid unit="eV" fact="1E3">
+				1.	1.5	2.0	3.0	5.0	
+				7.0	10	15	20	30	
+				50	
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%" fact="1E-16">
+				13.19 13.01 12.82 11.93 11.15
+				10.39 9.32 7.12 5.46 3.18
+				0.87
+			</Cross>
+		</Process>
+	</CO2>
+</crs>
+
+
+

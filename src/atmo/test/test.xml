@@ -1,0 +1,338 @@
+<aero_main>
+	<Version>Test version $Id: test.xml 938 2010-03-18 21:12:29Z gronoff $</Version>
+	<planet>
+	<name>Venus</name>
+	<!-- Not needed when the planet is defined
+	<UA></UA>
+	<radius></radius>
+	<go></go>
+	-->
+	<!-- with respect to the subsolar point -->
+
+	<!-- not needed when SZA is defined. Except if the model... -->
+	<lat>45</lat>
+	<!--
+	<long></long>
+	<date></date>
+	<local_hour></local_hour>
+	-->
+<!-- with respect to the planetary parameters -> needs to compute!!! -->
+	<SZA>45</SZA>
+	<!--
+	<planet_lat>0</planet_lat>
+	<planet_long></planet_long>
+	-->	
+<!-- inclination of the planet 23.5 for the earth
+	not needed when the planet is defined
+	-->
+
+	<!--
+	<planet_i></planet_i>
+	-->
+
+</planet>
+
+
+
+
+
+<atmosphere>
+	
+	<!-- altitude grid -->
+	<alt_grid>
+		<!--
+		0 : grille standard
+		1 : data
+
+
+		-->
+		<use_model type="0"/>
+		<!--
+		 sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+		-->
+			<st_grid type="0">
+				<altmin>100</altmin>
+				<altmax>200</altmax>
+				<number>50</number>
+			</st_grid>
+
+			<altdata></altdata>
+
+	</alt_grid>
+
+	<!-- species used in the model -->
+	<neutral>
+		<neutral_species>
+			CO2
+		</neutral_species>
+		<!--
+		N2
+		CO
+		O
+		</neutral_species>
+		-->
+
+
+<!--
+		<add_species>
+			<species>
+				O_PLUS
+			</species>
+			<alt>
+			</alt>
+			<O_PLUS></O_PLUS>
+
+		</add_species>
+-->
+
+
+		<multiplicator>
+			<CO2>1</CO2>
+			<!--
+			<O_PLUS>1.5</O_PLUS>
+			<O setMC="active" uncertainty="100%">1.</O>
+			-->
+
+		</multiplicator>
+
+		<species_file>
+			init_species.xml
+		</species_file>
+
+
+		<!-- model type : if 0 : reads the data
+			else : use the planet model.
+			-->
+		<model type="1"/>
+		<!--
+		<data>
+			<alt> 100 200 300 400</alt>
+			<CO2>10 11 12 13</CO2>
+			<N2>0 1 2 3</N2>
+			<CO>0 1 2 3</CO>
+			<O> 0 1 2 3</O>
+		</data>
+		-->
+		<temperature>
+			<use_model/>
+
+			<!--
+			     alt in km
+			     T in K
+			<alt>100 200 300 400</alt>
+			<T>1000 1500 2000 2000</T>
+			-->
+		</temperature>
+
+	</neutral>
+
+<iono>
+	<!-- ionosphere model -->
+
+	<electron>
+		<density>
+			<!-- model type : if 0-> data
+					  if 1-> planet_model
+			  nb ne in cm-3
+			  alt in km
+			-->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400</alt>
+			<ne> 4000 400 400 400</ne>
+			-->
+		</density>
+
+		<temperature>
+			<!-- 
+			     idem
+			     alt in km
+			     T in K
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+
+	</electron>
+
+	<ions>
+		<temperature>
+			<!-- 
+			     idem
+			     -->
+			<use_model type="1"/>
+			<!--
+			<alt> 100 200 300 400  </alt>
+			<T>  4000 4000 10000 10000 </T>
+			-->
+		</temperature>
+	</ions>
+
+
+</iono>
+
+
+</atmosphere>
+
+
+
+<sun>
+	<!--use sun? -->
+	<use_sun/>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--
+		model type = 0 : grille toor et toor
+		model type = 1 : grille standard
+		-->
+		<use_model type="0"/>
+		<!-- sinon: modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+			type 2 : constant width
+		<st_grid type="0">
+				<emin>10</emin>
+				<emax>1000</emax>
+				<number>200</number>
+			<!- We must use lines with this grid to have a better accuracy
+			type="0" : no lines
+			type="1" : the lines of the   ->
+			<use_lines type="1"/>
+		</st_grid>
+
+		-->
+	</grid>
+
+
+	<model>
+		<flux_model type="0"/>
+
+		<!-- supplementary parameters for the sun model eg f107
+			Please note that other system can require these numbers
+			GG: 4 sept 2009. I do not put the variable in the considered
+			                part. Example for the Venusian model, it
+					could have be a possibility to put that f107
+					parameter in both the atmosphere model and the
+					sun model. But it increase a lot the entropy:
+					the probability of not upgrading the two is VERY
+					important. 
+					If it is needed, I suggest to create another parameter 
+					that can be read after the reading of f107 for the sun
+					in the atmosphere model.
+					-> if this parameter is not found, the models runs standard
+					-> you do not have to share the new xml file, so errors are
+					less likely to be made.
+		-->
+		<f107>200</f107>
+		<f107av>200</f107av>
+		<fudge>1.</fudge>
+	</model>
+
+</sun>
+
+<electron>
+	<!-- We use the electron computation !!! -->
+	<use_electron/>
+	<nb_angles>8</nb_angles>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--  modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+		-->
+			<st_grid type="1">
+				<emin>.1</emin>
+				<emax>1600</emax>
+				<number>30</number>
+			</st_grid>
+	</grid>
+
+	<!--
+	     Inverse of the sinus of the Magnetic dip angle, nothing if vertical precipitation
+
+	<magnetic_dip>
+		<alt>
+		</alt>
+		The inverse of the sinus of the magnetic dip angle : must be >=1 Hehehehe, you can't have an horizontal MF -> meaning infinity!!!
+		<inverse_sinus>
+		</inverse_sinus>
+	</magnetic_dip>
+
+
+	     -->
+
+
+	<albedo>1</albedo>
+
+	<!-- expansion at the upper energy -->
+	<alpha>10.</alpha>
+	<!-- if we want to use precipitations-->
+	<!-- <use_precipitation/>-->
+	<precipitation>
+			<!--
+			if we want to use a precipitation model
+			type = "0" : nul precipitation
+			type = "1" : Maxwellian precipitation
+			type = "2" : Gaussian precipitation
+			type = "3" : Dirac precipitation
+			-->
+			<!--
+			<use_model type="1">
+				<!- Middle energy: energy for the Dirac... Unit is always eV ->
+				<E0 unit="eV">100.</E0>
+				<!- Total energy the unit is only here to show, it is always erg... ->
+				<entot unit="erg">1.</entot>
+				<!- 1 if we add a power law centered on 10eV, 0 else->
+				<powlaw type="int">0</powlaw>
+				<!- 1 if we are isotropic, 0 else->
+				<isotro>0</isotro>
+			</use_model>
+			-->
+			<!-- Here for the measurement 
+			<measurement>
+				!- The energy grid for the fluxes, in Ev -
+				<Egrid>
+ 1.05526 1.44253  1.87165     2.69399     3.49523     4.77699     7.63297     10.2547 12.8535 19.1615 25.7468 34.5936 44.891 60.316 82.4549 108.871 141.265 183.298 233.77 303.297 429.258 547.404 662.735 816.603 988.652 1116.55 1328.55 1553.4 1816.73 2237.76 2616.6 3223.31 3834.95 4483.75 5427.1 6131.6 10000.
+	</Egrid>
+				-Downward fluxes-
+				<downward>
+					<mflux angle="90" " fact="1.">
+							247263 181032 148940 154596 132223 113062 85996.9 62966.7 46117.6 35088 22867.8 15493.3 11345.8 7687 5413.76 3964.23 3137.32 2482.9 1818.37 1555.21 1095.14 866.763 634.92 383.033 280.579 230.974 169.205 139.27 94.4128 74.7353 59.172 43.3414 34.3132 29.3603 26.1125 15.7588 10.
+					</mflux>
+					<mflux angle="42">
+					</mflux>-
+				</downward>
+				-Upward fluxes!-
+				<upward>
+				</upward>
+			</measurement>
+			 -->
+		</precipitation>
+	
+
+</electron>
+<chem>
+	<use_chem/>
+</chem>
+<emissions>
+	<use_emissions/>
+	<!--	<use_all_emissions/> -->
+	<emit_list>test/emission_list.out</emit_list>
+	<spectrum>test/spectrum.out</spectrum>
+	<emission id="1">
+		<column_file>test/column.out</column_file>
+	</emission>
+	<emission id="2">
+		<column_file>test/column2.out</column_file>
+	</emission>
+	<emission id="3">
+		<column_file>test/column3.out</column_file>
+	</emission>
+</emissions>
+</aero_main>

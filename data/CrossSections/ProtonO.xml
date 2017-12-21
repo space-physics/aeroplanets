@@ -1,0 +1,137 @@
+<crs>
+	<Name>O</Name>
+	<Collider>p</Collider>
+	<RecommendedFile/>
+	<O>
+		<!-- TODO ADD -->
+		<TotalCrsProton/>
+		
+		<ElasticCrs>
+			<zero/>
+			<!-- TODO : proton function, uncertainty -->
+		</ElasticCrs>
+
+		<!-- Excitations -->
+
+		<Process name="O+p->O*" electrons="0" threshold="13">
+			<Species>
+				<Specie name="O" state="*"/>
+			</Species>
+			<legend>O* / proton</legend>
+			<Proc>O*</Proc>
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Excitation/>
+			<Egrid unit="eV">
+				2.0395E+03  2.2461E+03  2.8557E+03  3.3922E+03  4.1232E+03 
+				5.0450E+03  6.2339E+03  8.2903E+03  1.0517E+04  1.2631E+04 
+				1.6094E+04  1.8785E+04  2.2734E+04  2.7573E+04  3.1727E+04 
+				3.6588E+04  4.0427E+04  4.6979E+04  5.6543E+04  6.6798E+04 
+				7.8567E+04  9.0207E+04  1.0437E+05  1.2507E+05  1.4646E+05 
+				1.5336E+05  1.7076E+05  2.0195E+05  2.2461E+05  2.7663E+05 
+				3.2537E+05  3.6789E+05  4.2565E+05  5.0064E+05  5.7607E+05 
+				6.4142E+05  7.3645E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				1.0055E-17  1.1134E-17  1.3819E-17  1.6165E-17  1.9800E-17 
+				2.4041E-17  2.9447E-17  3.8862E-17  4.7968E-17  5.5317E-17 
+				6.6944E-17  7.4457E-17  8.1640E-17  8.7288E-17  9.1301E-17 
+				9.2409E-17  9.2005E-17  8.9714E-17  8.4834E-17  7.7880E-17 
+				7.0253E-17  6.3443E-17  5.6792E-17  4.9681E-17  4.4815E-17 
+				4.2471E-17  3.8565E-17  3.3368E-17  2.9222E-17  2.3857E-17 
+				2.0462E-17  1.7763E-17  1.5556E-17  1.3758E-17  1.2249E-17 
+				1.1282E-17  1.0244E-17
+			</Cross>
+		</Process>
+
+
+		<!-- Ionizations -->
+
+		<Process name="O+p->O+ + p + e" electrons="1" threshold="16">
+			<Species>
+				<Specie name="O+" state="X"/>
+				<!-- AND OTHERS -->
+			</Species>
+			<legend>O+ / proton</legend>
+			<Proc>O+</Proc>
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Ionization/>
+			<Egrid unit="eV">
+				1.3668E+03  1.6094E+03  1.8806E+03  2.3212E+03  2.8463E+03 
+				3.7113E+03  4.5260E+03  5.6481E+03  7.0408E+03  8.8347E+03 
+				1.1331E+04  1.4328E+04  1.8621E+04  2.3520E+04  2.9642E+04 
+				3.5794E+04  3.8734E+04  4.5559E+04  5.7481E+04  6.7757E+04 
+				7.9172E+04  9.6977E+04  1.1996E+05  1.5659E+05  1.7979E+05 
+				2.3442E+05  2.6622E+05  3.1832E+05  3.8480E+05  4.5659E+05 
+				5.5988E+05  6.5134E+05  7.6442E+05  8.8444E+05  9.7617E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				1.0066E-17  1.1736E-17  1.4110E-17  1.7763E-17  2.1998E-17 
+				2.9544E-17  3.7194E-17  4.6825E-17  6.0190E-17  7.5775E-17 
+				9.6130E-17  1.1840E-16  1.4743E-16  1.7900E-16  2.1008E-16 
+				2.3623E-16  2.5091E-16  2.6974E-16  2.8091E-16  2.8809E-16 
+				2.8277E-16  2.7272E-16  2.5285E-16  2.2833E-16  2.0962E-16 
+				1.8418E-16  1.7189E-16  1.5119E-16  1.3445E-16  1.1840E-16 
+				1.0289E-16  9.1101E-17  8.0397E-17  7.0950E-17  6.7386E-17
+			</Cross>
+		</Process>
+
+		<!-- Charge Exchange -->
+
+		<!-- Charge exchange: probably no production!-->
+		<Process name="O+p->O+ + H" electrons="1" threshold="13.6">
+			<Species>
+				<Specie name="O+" state="X"/>
+			</Species>
+			<legend>p->H / O / charge exchange</legend>
+			<Proc>p->H/O</Proc>
+			<Section>exchange</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Green and Peterson 68 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Exchange/>
+			<Egrid unit="eV">
+				1.0267E+03  1.2262E+03  1.5884E+03  2.2095E+03  2.9351E+03 
+				4.0073E+03  5.6234E+03  8.4093E+03  1.2658E+04  1.9477E+04 
+				2.9447E+04  3.3552E+04  3.7687E+04  4.0294E+04  4.5359E+04 
+				5.4654E+04  6.3234E+04  7.2048E+04  8.1909E+04  9.3325E+04 
+				1.0437E+05  1.1736E+05  1.2826E+05  1.4187E+05  1.5003E+05 
+				1.6272E+05  1.7783E+05  1.8950E+05  2.0847E+05  2.2338E+05 
+				2.3649E+05  2.5009E+05  2.6389E+05  2.6945E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				4.8817E-16  4.6569E-16  4.5111E-16  4.2799E-16  4.0962E-16 
+				3.9463E-16  3.7317E-16  3.5094E-16  3.3515E-16  3.1244E-16 
+				2.9190E-16  2.7938E-16  2.6680E-16  2.5424E-16  2.3417E-16 
+				1.9735E-16  1.6945E-16  1.4265E-16  1.1983E-16  1.0033E-16 
+				8.3634E-17  6.9793E-17  5.7229E-17  4.9681E-17  4.3940E-17 
+				3.7440E-17  3.0067E-17  2.4736E-17  2.0328E-17  1.7321E-17 
+				1.5003E-17  1.2982E-17  1.1220E-17  1.0177E-17
+			</Cross>
+		</Process>
+
+	</O>
+
+
+
+
+
+
+
+</crs>
+
+
+

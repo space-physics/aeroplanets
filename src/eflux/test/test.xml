@@ -1,0 +1,67 @@
+<aero_main>
+	<Version></Version>
+<electron>
+	<nb_angles>8</nb_angles>
+	<!-- Energy Grid definition, necessary if sun used  -->
+	<grid>
+		<!--  modele de grille standard...
+			type 0 : exp decrease
+			type 1 : power law decrease
+		-->
+			<st_grid type="1">
+				<emin>0.1</emin>
+				<emax>1000</emax>
+				<number>200</number>
+			</st_grid>
+	</grid>
+
+	<albedo>1</albedo>
+
+	<!-- expansion at the upper energy -->
+	<alpha>10.</alpha>
+	<!-- if we want to use precipitations-->
+	<!-- <use_precipitation/>-->
+	<precipitation>
+			<!--
+			if we want to use a precipitation model
+			type = "0" : nul precipitation
+			type = "1" : Maxwellian precipitation
+			type = "2" : Gaussian precipitation
+			type = "3" : Dirac precipitation
+			-->
+			<!--
+			<use_model type="1">
+				<!- Middle energy: energy for the Dirac... Unit is always eV ->
+				<E0 unit="eV">100.</E0>
+				<!- Total energy the unit is only here to show, it is always erg... ->
+				<entot unit="erg">1.</entot>
+				<!- 1 if we add a power law centered on 10eV, 0 else->
+				<powlaw type="int">0</powlaw>
+				<!- 1 if we are isotropic, 0 else->
+				<isotro>0</isotro>
+			</use_model>
+			-->
+			<!-- Here for the measurement 
+			<measurement>
+				!- The energy grid for the fluxes, in Ev -
+				<Egrid>
+ 1.05526 1.44253  1.87165     2.69399     3.49523     4.77699     7.63297     10.2547 12.8535 19.1615 25.7468 34.5936 44.891 60.316 82.4549 108.871 141.265 183.298 233.77 303.297 429.258 547.404 662.735 816.603 988.652 1116.55 1328.55 1553.4 1816.73 2237.76 2616.6 3223.31 3834.95 4483.75 5427.1 6131.6 10000.
+	</Egrid>
+				-Downward fluxes-
+				<downward>
+					<mflux angle="90" " fact="1.">
+							247263 181032 148940 154596 132223 113062 85996.9 62966.7 46117.6 35088 22867.8 15493.3 11345.8 7687 5413.76 3964.23 3137.32 2482.9 1818.37 1555.21 1095.14 866.763 634.92 383.033 280.579 230.974 169.205 139.27 94.4128 74.7353 59.172 43.3414 34.3132 29.3603 26.1125 15.7588 10.
+					</mflux>
+					<mflux angle="42">
+					</mflux>-
+				</downward>
+				-Upward fluxes!-
+				<upward>
+				</upward>
+			</measurement>
+			 -->
+		</precipitation>
+	
+
+</electron>
+</aero_main>

@@ -1,0 +1,42 @@
+<!-- Test for the random parameter -->
+
+<onedimension setMC="active" uncertainty="30%"> 100 </onedimension>
+
+<onedimension2 setMC="active" uncertainty="10"> 100 </onedimension2>
+
+<array setMC="active" uncertainty="10%"> 
+	10
+	10
+	10
+	10
+	10
+</array>
+
+
+
+<!-- For this array, only the factor is uncertain. if the factor is not selected, it is taken as 1! -->
+<arr2 setMC="active" fact_uncertainty="10%">
+	1
+	1
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+</arr2>
+<arr3 setMC="active" fact="2" fact_uncertainty="10%">
+	1
+	1
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+</arr3>
+

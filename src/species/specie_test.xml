@@ -1,0 +1,39 @@
+<aero_species>
+	<Version>Species test, not valid for experiment</Version>
+<!-- Specie file test.
+     it reads the photoionisation data of CO2 crs_test.xml
+     -->
+
+
+<CO2>
+	<!-- Mass in amu -->
+	<mass>44.00995</mass>
+
+	<!-- List of possible states, beginning with the ground state -->
+	<states>
+		X
+	</states>
+
+
+	<!-- Photoionization file name -->
+	<ioni_photon>crs_test.xml</ioni_photon>
+
+	<!-- Other ionization file name
+	<ioni_electron>crs_test.xml</ioni_electron>
+	<ioni_proton>crs_test.xml</ioni_proton>
+	-->
+
+
+</CO2>
+
+<O_PLUS>
+	<!-- O+ the name is given as O_PLUS because  xml does not recognize + in tags
+	     -->
+	<mass>15.9994</mass>
+	<states>
+		X
+	</states>
+	<ioni_photon>crs_test.xml</ioni_photon>
+</O_PLUS>
+
+</aero_species>

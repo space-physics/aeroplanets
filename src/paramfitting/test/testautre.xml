@@ -1,0 +1,113 @@
+<aerofit>
+
+	<!-- The aero1d file: set up the planet, the observation conditions... -->
+	<aerofile>aerotest.xml</aerofile>
+
+
+	<!-- You can have a list of adjustements, each will be executer one after another, saving the data between each! -->
+	<adjustment>
+
+		<!-- You can have several parameters -->
+		<Parameter>
+			<!-- Each parameters contains the species to adjust, it can be electrons -->
+			<Specie>CO2</Specie>
+			<!-- We use a model, with a pre-defined type 
+				(it will be exponential, chapman, gaussian,... with the set of necessary parameters)
+				0 : Exponential (Bates-Walker profile)
+				1 : Chapman function
+				2 : Gaussian function
+			-->
+			<Model type="1">
+				<!-- We set up the first approximation for each models -->
+				<!--	<alt>120</alt>
+					<dens>3E12</dens>
+					<Texo>300</Texo>
+					<Shape>1</Shape>-->
+				<!-- 0
+					<alt></alt>
+					<dens></dens>
+					<Texo></Texo>
+					<Shape></Shape>
+					-->
+					<alt>120</alt>
+					<dens>1E12</dens>
+					<SH>10</SH>
+				<!-- 1 Chap
+					<alt></alt>
+					<dens></dens>
+					<SH></SH>
+					-->
+				<!-- 1 Gauss
+					<alt></alt>
+					<dens></dens>
+					<Dev></Dev>
+					-->
+	
+			</Model>
+
+		
+		</Parameter>
+
+		<!-- Here, if we want to adjust also the calibration -->
+		<use_calib_adjust/>
+
+
+		<!--
+		The data to adjust: you can have several types of data
+			0 : production (/volume)
+			1 : volume emission rate
+			2 : limb flux
+			3 : density
+			...
+
+			position: position of the emission in the emission list if 1 or 2; if it does not exists: total.
+		-->
+		<data type="2" position="0">
+			<!-- Specie or emission to adjust on -->
+			<Specie name="O" state="1S" />
+			<!-- Altitude of the measurements -->
+			<altitudes>
+1.000000000e+02	1.040816327e+02	1.081632653e+02	1.122448980e+02	1.163265306e+02	
+1.204081633e+02	1.244897959e+02	1.285714286e+02	1.326530612e+02	1.367346939e+02	
+1.408163265e+02	1.448979592e+02	1.489795918e+02	1.530612245e+02	1.571428571e+02	
+1.612244898e+02	1.653061224e+02	1.693877551e+02	1.734693878e+02	1.775510204e+02	
+1.816326531e+02	1.857142857e+02	1.897959184e+02	1.938775510e+02	1.979591837e+02	
+2.020408163e+02	2.061224490e+02	2.102040816e+02	2.142857143e+02	2.183673469e+02	
+2.224489796e+02	2.265306122e+02	2.306122449e+02	2.346938776e+02	2.387755102e+02	
+2.428571429e+02	2.469387755e+02	2.510204082e+02	2.551020408e+02	2.591836735e+02	
+2.632653061e+02	2.673469388e+02	2.714285714e+02	2.755102041e+02	2.795918367e+02	
+2.836734694e+02	2.877551020e+02	2.918367347e+02	2.959183673e+02	
+			</altitudes>
+			<!-- Value of the measurements -->
+			<measurements>
+	7.725310188e+04	8.256461844e+04	8.683521475e+04	8.952780656e+04	9.027987301e+04	
+	8.936450276e+04	8.733728244e+04	8.477622273e+04	8.212347122e+04	7.968122481e+04	
+	7.761754691e+04	7.601759797e+04	7.493068261e+04	7.437897465e+04	7.436519258e+04	
+	7.493229878e+04	7.611770593e+04	7.800099974e+04	8.063536683e+04	8.409984119e+04	
+	8.835121439e+04	9.322360058e+04	9.832076999e+04	1.030995467e+05	1.069079636e+05	
+	1.091357542e+05	1.093426849e+05	1.073271064e+05	1.031473173e+05	9.709418059e+04	
+	8.960964146e+04	8.119622172e+04	7.235691699e+04	6.353031686e+04	5.505030239e+04	
+	4.715924771e+04	3.999660878e+04	3.363102167e+04	2.806681139e+04	2.326733722e+04	
+	1.917936893e+04	1.572099237e+04	1.281665296e+04	1.038822582e+04	8.363373234e+03	
+	6.673202720e+03	5.257406815e+03	4.056555639e+03	2.997447649e+03	
+			</measurements>
+
+			<!-- Tolerance for the adjustement, based on uncertainty of the measurement -->
+			<tolerance>1</tolerance>
+		</data>
+		<print_ionosphere_list>conver/convergenceE</print_ionosphere_list>
+		<print_thermosphere_list>conver/convergence_thermosphere</print_thermosphere_list>
+		<print_compar_list>conver/convergence_comparaison</print_compar_list>
+		<print_convergence_list>conver/convergence_params.dat</print_convergence_list>
+	</adjustment>
+
+
+
+	<reportfile>conver/RapportFit.dat</reportfile>
+	<xmlreportfile>conver/RapportFit.xml</xmlreportfile>
+
+
+
+
+
+</aerofit>

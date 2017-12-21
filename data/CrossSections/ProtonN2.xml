@@ -1,0 +1,161 @@
+<crs>
+	<Name>N2</Name>
+	<Collider>p</Collider>
+	<RecommendedFile/>
+	<N2>
+		<!-- TODO ADD -->
+		<TotalCrsProton/>
+		
+		<ElasticCrs>
+			<use_proton_function/>
+			<!-- TODO : proton function, uncertainty -->
+		</ElasticCrs>
+
+		<!-- Excitations -->
+
+		<Process name="N2+p->N2*" electrons="0" threshold="10">
+			<Species>
+				<Specie name="N2" state="*"/>
+			</Species>
+			<legend>N2* / proton</legend>
+			<Proc>N2*</Proc>
+			<Section>excitation</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Excitation/>
+			<Egrid unit="eV">
+				4.1733E+03  5.1852E+03  7.3162E+03  9.1904E+03  1.1570E+04 
+				1.3668E+04  1.7570E+04  2.4253E+04  3.1762E+04  4.3270E+04 
+				5.8370E+04  7.9782E+04  1.0692E+05  1.4064E+05  1.9286E+05 
+				2.5424E+05  3.4220E+05  4.5260E+05  5.9534E+05  7.7370E+05 
+				9.1301E+05  1.0000E+06
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				1.0000E-17  1.1344E-17  1.4678E-17  1.8058E-17  2.2734E-17 
+				2.7785E-17  3.3922E-17  4.2425E-17  4.7916E-17  5.1852E-17 
+				5.2366E-17  5.2137E-17  4.7445E-17  4.3318E-17  3.6388E-17 
+				3.0566E-17  2.4736E-17  2.0261E-17  1.6218E-17  1.3895E-17 
+				1.1723E-17  1.1001E-17
+			</Cross>
+		</Process>
+
+
+		<!-- Ionizations -->
+
+		<Process name="N2+p->N2+ + p + e" electrons="1" threshold="17">
+			<Species>
+				<Specie name="N2+" state="X"/>
+				<!-- AND OTHERS -->
+			</Species>
+			<legend>N2+ / proton</legend>
+			<Proc>N2+</Proc>
+			<Section>ionization</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Basu 87 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Ionization/>
+			<Egrid unit="eV">
+				1.0380E+03  1.7226E+03  2.8184E+03  4.6112E+03  7.2603E+03 
+				1.2115E+04  2.1146E+04  3.0566E+04  4.6011E+04  7.3726E+04 
+				1.1431E+05  1.8018E+05  2.7093E+05  4.4084E+05  6.2889E+05 
+				8.1283E+05  9.2714E+05  1.0144E+06
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				6.4072E-17  9.0009E-17  1.2953E-16  1.8137E-16  2.4440E-16 
+				3.2968E-16  4.2147E-16  4.8391E-16  5.3586E-16  5.3644E-16 
+				5.0838E-16  4.1641E-16  3.4712E-16  2.7034E-16  2.0597E-16 
+				1.6779E-16  1.4840E-16  1.3895E-16
+			</Cross>
+		</Process>
+
+		<!-- Charge Exchange -->
+
+		<!-- Charge exchange: probably no production!-->
+		<Process name="N2+p->N2+ + H" electrons="1" threshold="13.6">
+			<Species>
+				<Specie name="N2+" state="X"/>
+			</Species>
+			<legend>p->H / N2 / charge exchange</legend>
+			<Proc>p->H/N2</Proc>
+			<Section>exchange</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			
+			<Source type="unknown">Green and Peterson 68 - crsprot.dat</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> Review </Notes>
+			<!-- I need to check the uncertainty -->
+			<EstimatedUncertainy/>
+			<Exchange/>
+			<Egrid unit="eV">
+				1.0000E+03  1.2507E+03  1.5936E+03  2.3545E+03  3.5676E+03 
+				5.4954E+03  8.2540E+03  1.2343E+04  1.8197E+04  2.4601E+04 
+				3.7770E+04  5.2827E+04  7.3807E+04  8.8347E+04  1.1025E+05 
+				1.3401E+05  1.5036E+05  1.6614E+05  1.8909E+05  2.0802E+05 
+				2.1974E+05
+			</Egrid>
+			<Cross unit="cm2"  uncertainty="20%">
+				6.7683E-16  7.8739E-16  9.0603E-16  1.0121E-15  1.0357E-15 
+				1.0703E-15  1.0448E-15  1.0099E-15  9.0702E-16  7.7881E-16 
+				5.2194E-16  3.5365E-16  1.9757E-16  1.4156E-16  8.8444E-17 
+				5.2194E-17  3.6030E-17  2.4547E-17  1.6614E-17  1.2854E-17 
+				1.0000E-17
+			</Cross>
+		</Process>
+
+		<!-- Emission -->
+
+		 <Process name="N2+p->N2+( 391.4nm - first negative)" electrons="0" threshold="18">
+			 <Species>
+				 <Specie name="N2+" state="391.4nm - first negative-NOTOT"/>
+				 <Specie name="N2+" state="391.4nm - first negative-NOTOT"/>
+			 </Species>
+			 <Proc>N2(391.4)</Proc>
+			 <Emission></Emission>
+			<Section>emission</Section> <!-- total | elastic | ionization | dissociation | excitation | emission -->
+			<Source type="review">Avakyan 97</Source> <!-- types : measurement, bratio, theory, review, adaptation, unknown? -->
+			<Notes> First negative 319.4 nm </Notes>
+			<!-- keV when the factor in not applied, after the multiplication by 1E3, it becomes eV -->
+			 <Egrid unit="keV" fact="1E3">
+				 0.26	0.30	0.40	0.50	0.60	
+				 0.70	0.80	1.00	1.20	1.40	
+				 1.60	1.80	2.0	2.5	3.0	
+				 3.5	4.0	5.0	6.0	7.0	
+				 8.0	10.0	12.0	14.0	16.0	
+				 20.0	25.0	30.0	35.0	40.0	
+				 50.0	60.0	70.0	80.0	100.0	
+				 120.0	140.0	160.0	180.0	200.0	
+				 250.0	300.0	400.0	500.0	600.0	
+				 700.0	800.0	1000.0	
+			 </Egrid>
+			 <Cross unit="cm2" fact="1E-17">
+				 0.099 0.132 0.233 0.361 0.513
+				 0.685 0.87 1.29 1.75 2.21
+				 2.68 3.14 3.59 4.61 5.49
+				 6.22 6.83 7.72 8.30 8.66
+				 8.87 9.02 8.96 8.80 8.60
+				 8.15 7.61 7.13 6.71 6.34
+				 5.73 5.25 4.86 4.54 4.02
+				 3.62 3.31 3.06 2.85 2.67
+				 2.33 2.08 1.74 1.52 1.36
+				 1.24 1.15 1.00
+			 </Cross>
+		 </Process>
+
+
+	</N2>
+
+
+
+
+
+
+
+</crs>
+
+
+

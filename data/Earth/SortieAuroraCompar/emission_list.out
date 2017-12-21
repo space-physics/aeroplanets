@@ -1,0 +1,100 @@
+# Informations about the emissions
+Number: 0 : 	============= Emission nb 0 =============
+================================================ N2(A3Su+) VK
+ Computation of the emissions of the Vegard Kaplan bands
+ This reactions also set up the N2(A3Su+) density used in O(1S) computing 
+ When this reaction is called, it fills the N2(A3S_ density in the chem list
+ It allows for the other emissions to use that density (eg O(1S) emissions)
+
+
+Number: 1 : 	============= Emission nb 1 =============
+================================================ O(1S)
+ Computation of the emissions of O(1S) - 557.7 nm and 297.2 nm
+ The reaction uses the Frederick/Kopp O2+ + N -> O(1S) + NO+ 
+ It is negligible for the dayside, but must be checked for the nightside
+
+ When this reaction is called, it fills the O1S density in the chem list
+ It allows for the other emissions to use that density (eg O1D emissions)
+
+
+Number: 2 : 	============= Emission nb 2 =============
+================================================ N(2D) 520nm 
+ Computation of the emissions of the 520 nm
+ This reactions also set up the N(2D) photoequilibrium 
+ The longlife of the N(2D) state can be a problem for the validity of the equilibrium.
+The validity of the reaction N(2D)+O2 -> O(1D) is questioned in Link 91: it may not exists.
+Number: 3 : 	============= Emission nb 3 =============
+================================================ O(1D) 630nm 
+ Computation of the emissions of the 630 nm triplet
+ This reactions also set up the O(1D) photoequilibrium 
+
+Number: 4 : 	============= Emission nb 4 =============
+================================================ CO(a3Pi) bands around 200nm 
+
+Number: 5 : 	============= Emission nb 5 =============
+================================================ CO2+(B) doublet at 289 nm 
+
+Number: 6 : 	============= Emission nb 6 =============
+================================================ CH(A2D) band around 420-440 nm 
+
+Number: 7 : 	============= Emission nb 7 =============
+================================================ O+(2P)
+ Computation of the emissions of O+(2P) - 732.0 733.0 and 247.0 nm
+ When this reaction is called, it fills the O+(2P) density in the chem list
+ It allows for the other emissions to use that density (eg O+(2D) emissions)
+
+
+Number: 8 : 	============= Emission nb 8 =============
+================================================ O((3p)3P)
+
+Number: 9 : 	============= Emission nb 9 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 10 : 	============= Emission nb 10 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 11 : 	============= Emission nb 11 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 12 : 	============= Emission nb 12 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 13 : 	============= Emission nb 13 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 14 : 	============= Emission nb 14 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 15 : 	============= Emission nb 15 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 16 : 	============= Emission nb 16 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 17 : 	============= Emission nb 17 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 18 : 	============= Emission nb 18 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 19 : 	============= Emission nb 19 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 20 : 	============= Emission nb 20 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 21 : 	============= Emission nb 21 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+Number: 22 : 	============= Emission nb 22 =============
+================================================ Allowed
+This emission is user-defined: the user asks for a species, and computes directly its emission
+#	AeroPlanets 1.01
+#	Copyright G Gronoff 2009
+#	Report bugs : guillaume.gronoff@gmail.com
+#
+#	Launched :Tue Dec 19 13:05:08 2017
+# Planet:Earth
+# Electron impact ionization used
+# Electron impact ionization error: -27.5547% (>0 : gain)
+

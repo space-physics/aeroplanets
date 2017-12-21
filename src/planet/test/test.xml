@@ -1,0 +1,15 @@
+<aero_main>
+	<Version></Version>
+<planet>
+	<lat>0</lat>
+	<SZA>0</SZA>
+
+
+</planet>
+
+<sun>
+	<model>
+		<f107>100</f107>
+	</model>
+</sun>
+</aero_main>

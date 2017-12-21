@@ -1,0 +1,145 @@
+#	AeroPlanets 1.01
+#	Copyright G Gronoff 2009
+#	Report bugs : guillaume.gronoff@gmail.com
+#
+#	Launched :Thu Oct  6 15:06:54 2016
+
+
+***************************************
+**** CONFIG
+---- 
+---------------------------------------
+***************************************
+**** DEBUG
+---- 
+---------------------------------------
+***************************************
+**** INFO
+---- 
+---------------------------------------
+***************************************
+**** SECTION
+---- 
+---------------------------------------
+***************************************
+**** WARNING
+---- 
+---------------------------------------
+Votre document./test.xml a ete charge
+on va maintenant faire le test du nombre
+fin de check
+Le texte dans test:bla
+
+Le texte dans test:bla
+
+a[0] :a1
+
+a[1] :a2
+a[2] :a3
+Bonne nuit
+Fin de lecture de ./test.xml, et destruction de l'objet associe
+Votre document./test.xml a ete charge
+on ressort la clef
+3
+On travaille avec une clef numerique
+On travaille avec la valeur attendue
+On choppe les testk
+C est bon, il y en a 6
+numero 0
+1
+numero 1
+2
+numero 2
+3
+numero 3
+4
+numero 4
+5
+numero 5
+6
+fin test
+Fin de lecture de ./test.xml, et destruction de l'objet associe
+Votre document./test.xml a ete charge
+test_path : ./test/machin.xml
+test_path_2 : ./test
+Check if the present file exists
+testrootpath : /home/gronoff/supertest/test.cpp
+testrootpath : /home/gg/Travail/palantirold/Aeroplanets/guillaume/cppblas/src/cppscixml/supertest/test.cpp
+testrootpath : /home/gg/Travail/palantirold/Aeroplanets/guillaume/cppblas/src/cppscixml/test.cpp
+fin test
+Fin de lecture de ./test.xml, et destruction de l'objet associe
+Votre document./test2.xml a ete charge
+Nombre de nodes b : 3
+Nombre de nodes c : 3
+1
+2
+3
+Nombre de nodes c : 3
+4
+5
+6
+Nombre de nodes c : 3
+7
+8
+9
+Fin de lecture de ./test2.xml, et destruction de l'objet associe
+Votre document./test3.xml a ete charge
+Fin de lecture de ./test3.xml, et destruction de l'objet associe
+Votre document./test4.xml a ete charge
+Monte Carlo processing activated for ./test4.xml
+RANDOM ACTIVATED
+ONEvalue 100 30%
+Monte Carlo activated for /onedimension
+Your Random SEED : 2776780359416390504
+98.3755
+Monte Carlo activated for /onedimension
+66.2568
+Monte Carlo activated for /onedimension
+93.9875
+Monte Carlo activated for /onedimension
+70.2882
+Monte Carlo activated for /onedimension
+154.943
+Monte Carlo activated for /onedimension
+108.045
+Monte Carlo activated for /onedimension
+83.214
+Monte Carlo activated for /onedimension
+141.131
+Monte Carlo activated for /onedimension
+127.213
+Monte Carlo activated for /onedimension
+102.308
+ONEvalue2 10 +/-10 (1 sigma)
+Monte Carlo activated for /onedimension2
+102.686
+Monte Carlo activated for /onedimension2
+85.4843
+Monte Carlo activated for /onedimension2
+95.5909
+Monte Carlo activated for /onedimension2
+97.8725
+Monte Carlo activated for /onedimension2
+111.419
+Monte Carlo activated for /onedimension2
+85.6573
+Monte Carlo activated for /onedimension2
+118.041
+Monte Carlo activated for /onedimension2
+79.9551
+Monte Carlo activated for /onedimension2
+104.013
+Monte Carlo activated for /onedimension2
+93.6572
+ARRAY
+Monte Carlo activated for /array
+Test du facteur non defini
+The setMC is active for /arr2 but the uncertainty is not defined... The MC is not taken into account for the key: uncertainty here.
+This message can be ignored. And should be ignored if another key is defined: typically if only one of "uncertainty" and "fact_uncertainty" keys are defined
+Test du facteur defini
+The setMC is active for /arr3 but the uncertainty is not defined... The MC is not taken into account for the key: uncertainty here.
+This message can be ignored. And should be ignored if another key is defined: typically if only one of "uncertainty" and "fact_uncertainty" keys are defined
+Votre documenttest4.xml a ete charge
+Fin de lecture de test4.xml, et destruction de l'objet associe
+Votre documenttest4.xml a ete charge
+Fin de lecture de test4.xml, et destruction de l'objet associe
