@@ -15,33 +15,44 @@ Plots use Python and Matplotlib as is customary.
 ./configure --enable-maintainer-mode --enable-debug
 
 make
-```
-Some usual configurations are listed in  ./DifferentConfigurations
 
-#>make check 
+make check
+
+make install
+``` 
+
 may give some errors on the newest version of boost.
 
 
-When the program is compiled and installed. You can go to data/Earth 
-and run 
-#>aero1d AuroraEarthFairbanks.xml
-Then, you can go to SortieAurora and use #> plotte (if copied in the bin directory) to plot the different outputs.
-SortieAuroraCompar is pre-computed and allows to check if the compilation/computation was successful.
+## Usage
+
+Aurora example
+
+1. run sim
+   ```sh
+   cd data/Earth 
+
+   ./aero1d AuroraEarthFairbanks.xml
+   ```
+2. Plot
+   ```sh
+   ./SortieAurora/bin/plotte`
+   ```
+3. `SortieAuroraCompar` is pre-computed and allows to check if the compilation/computation was successful.
 
 
 ## Documentation
-```sh
-doxygen Doxyfile
-```
 
-`doc/` must have `html/` and `latex/` directory.
-
-To browse the configuration with an internet browser, open
-`doc/html/index.html`
-
-To have a pdf document, go to the latex directory and type make.
-If you have the good latex libraries, it will create a refman manual.
-
+1. compile docs
+   ```sh
+   doxygen Doxyfile
+   ```
+2. web browser: `doc/html/index.html`
+3. To create `/doc/latex/refman.pdf`:
+   ```sh
+   cd doc/latex
+   make
+   ```
 
 
 
