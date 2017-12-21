@@ -36,7 +36,7 @@ def plotter(fn:Path, save:bool):
     ax.plot(data[:,1:],data[:,0])
 
     ax.set_xscale("log")
-#    ax.set_xlim(1e-2,None)
+    ax.set_xlim(1e-2,None)
     ax.legend(legende[:data.shape[1]],loc='best')
     # %%
     if save:

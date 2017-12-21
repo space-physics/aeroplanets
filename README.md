@@ -46,9 +46,9 @@ Aurora example
    the output appears in `data/Earth/SortieAurora`
 2. Plot--automatically iterates over all files in output directory.
    ```sh
-   ./utils/Plot.py data/Earth/SortieAurora/
+   ./utils/Plot.py data/Earth/SortieAurora/ -save
    ```
-3. `SortieAuroraCompar` is pre-computed and allows to check if the compilation/computation was successful.
+3. `SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
 
 ### Plotting
 Several plotting programs exist in `utils`.
