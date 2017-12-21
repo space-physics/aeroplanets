@@ -35,10 +35,10 @@ filename=options.filename
 
 if(not filename):
 	if(len(args)):
-		print "Dans les args : "
+		print("Dans les args : ")
 		filename=args[0]
 	else:
-		print "Pas de fichiers"
+		print("Pas de fichiers")
 		sys.exit()
 
 
@@ -72,7 +72,7 @@ file.close()
 
 
 
-print "salut les gars",legende
+print("salut les gars",legende)
 
 
 
@@ -116,7 +116,7 @@ if(not imagename):
 	if(lalegend):
 		legend()
 	savefig(imagename)
-	print "show"
+	print("show")
 	show()
 else:
 	if(lalegend):

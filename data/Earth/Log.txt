@@ -2,7 +2,7 @@
 #	Copyright G Gronoff 2009
 #	Report bugs : guillaume.gronoff@gmail.com
 #
-#	Launched :Tue Dec 19 13:05:08 2017
+#	Launched :Thu Dec 21 05:08:25 2017
 
 
 ***************************************
@@ -36,28 +36,22 @@ Initialisation of the neutral atmosphere
 Name of your cross section species :N2
 Load electron impact cross section forN2
 Name of your cross section species :N2
-Warning proton energy grid not defined
 Load electron impact cross section forN2
 Name of your cross section species :N2
-Warning proton/hydrogen energy grid not defined
 Load electron impact cross section forN2
 Name of your cross section species :N2
 Name of your cross section species :O2
 Load electron impact cross section forO2
 Name of your cross section species :O2
-Warning proton energy grid not defined
 Load electron impact cross section forO2
 Name of your cross section species :O2
-Warning proton/hydrogen energy grid not defined
 Load electron impact cross section forO2
 Name of your cross section species :O2
 Name of your cross section species :O
 Load electron impact cross section forO
 Name of your cross section species :O
-Warning proton energy grid not defined
 Load electron impact cross section forO
 Name of your cross section species :O
-Warning proton/hydrogen energy grid not defined
 Load electron impact cross section forO
 Name of your cross section species :O
 Name of your cross section species :H
@@ -86,13 +80,13 @@ Energie totale integree :100 desiree : 100 facteur de normalisation :4.60489
 We load the species in Porter
 Check if CTot > 1E-20
 Begin of the energy loop
-Loop execution time : 341.46
+Loop execution time : 361.56
 ..........................................
 Total energy in the flux 6.74466e+21
 ..........................................
 Total energy :6.25e+13
 Reflected energy = 4.65079e+12
-Transmitted (without taking albedo into account : 2.66206e-20 and with albedo 0
+Transmitted (without taking albedo into account : 2.66219e-20 and with albedo 0
 Transmitted energy = 0
 Absorbed energy = 2.37578e+11
 Inelastic energy deposition : [4](3.12559e+13,6.42633e+12,2.70756e+12,1.10569e+08)

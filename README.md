@@ -34,16 +34,19 @@ may give some errors on the newest version of boost.
 
 
 ## Usage
+Currently there is a bug where if the output directory doesn't exist, the problem just keeps computing...but doesn't write any output at all.
 
 Aurora example
 
 1. run sim
    ```sh
-   ./aero1d ../data/Earth/AuroraEarthFairbanks.xml 
+   cd ../data/Earth/
+   ./aero1d AuroraEarthFairbanks.xml 
    ```
+   the output appears in `data/Earth/SortieAurora`
 2. Plot
    ```sh
-   ./SortieAurora/bin/plotte`
+   ./utils/Plot.py data/Earth/SortieAurora
    ```
 3. `SortieAuroraCompar` is pre-computed and allows to check if the compilation/computation was successful.
 
