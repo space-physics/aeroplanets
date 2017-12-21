@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:Utf-8 -*-
-from __future__ import division
 from powerlaw import powerlaw
-from pylab import *
 import sys
 dico = {}
 
@@ -51,32 +48,28 @@ def RecCreateFiles(dic, keys, pos):
 	myarr = []
 	st = keys[pos]
 	for val in dic[st]:
-		print st,val
+		print(st,val)
 		if downarray == []:
 			myarr.append( st + "=" + str(val))
 		else:
 			for dat in downarray:
 				myarr.append( st + "=" + str(val) + "   " + dat)
+
 	return myarr
 
 
-
-
 if __name__ == "__main__":
-	if len(sys.argv)!= 4:
-		print "Usage: create_launchfile.py templatename outdirname launchfilename"
-		sys.exit()
-	template = sys.argv[1]
-	outdir = sys.argv[2]
-	launchfile = sys.argv[3]
-	myvallist =  RecCreateFiles(dico, dico.keys(), 0)
-	
-	fil = open(launchfile,"w")
-	for i in range(len(myvallist)):
-		print>>fil,  "Log.txt"+str(i), i, template.strip(), "outdir=" + outdir.strip(), myvallist[i]
-	fil.close()
+    if len(sys.argv)!= 4:
+        print("Usage: create_launchfile.py templatename outdirname launchfilename")
+        raise SystemExit()
+    template = sys.argv[1]
+    outdir = sys.argv[2]
+    launchfile = sys.argv[3]
+    myvallist =  RecCreateFiles(dico, list(dico.keys()), 0)
 
-	print "Bye"
+    with open(launchfile,"w") as f:
+        for i in range(len(myvallist)):
+            print("Log.txt"+str(i), i, template.strip(), "outdir=" + outdir.strip(), myvallist[i], file=f)
 
 
 #print dico.keys()
@@ -84,8 +77,3 @@ if __name__ == "__main__":
 #print myvallist
 #for i in range(len(myvallist)):
 #	print "Log.txt"+str(i), i, "testtemplate.xml", "outdir=" + outdir.strip(), myvallist[i]
-
-
-
-
-
