@@ -16,7 +16,7 @@
 
 
 // Allows to define is debug or not
-#include <config.h>
+#include <config.h> 
 #include <iostream>
 #include <iomanip>
 #include <string>

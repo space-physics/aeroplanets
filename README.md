@@ -4,7 +4,7 @@
 ## Prereqs
 
 * Mac: `brew install make gcc boost doxygen`
-* Linux: `apt install make g++ libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev doxygen graphviz`
+* Linux: `apt install make g++ libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
 
 Plots use Python and Matplotlib as is customary.
 

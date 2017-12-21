@@ -22,7 +22,7 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
-#include <config.h>
+//#include <config.h>
 
 #ifndef TIXML_USE_STL
 #define TIXML_USE_STL
