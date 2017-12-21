@@ -28,7 +28,7 @@ make
 make check
 
 make install
-``` 
+```
 
 may give some errors on the newest version of boost.
 
@@ -41,15 +41,19 @@ Aurora example
 1. run sim
    ```sh
    cd ../data/Earth/
-   ./aero1d AuroraEarthFairbanks.xml 
+   ./aero1d AuroraEarthFairbanks.xml
    ```
    the output appears in `data/Earth/SortieAurora`
 2. Plot
    ```sh
-   ./utils/Plot.py data/Earth/SortieAurora
+   ./utils/Plot.py data/Earth/SortieAurora/chemistry_atmosphere.out
    ```
 3. `SortieAuroraCompar` is pre-computed and allows to check if the compilation/computation was successful.
 
+### Plotting
+Several plotting programs exist in `utils`.
+
+* Plot.py: chemistry_atmosphere.out
 
 ## Documentation
 
