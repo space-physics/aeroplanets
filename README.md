@@ -15,24 +15,6 @@ cmake ../src
 make -j4
 ```
 
-### Build (old way, unstable)
-I don't use this anymore as it was unreliable and not forward compatible.
-
-```sh
-./prepare_conf.sh
-
-./configure --enable-maintainer-mode --enable-debug
-
-make
-
-make check
-
-make install
-```
-
-may give some errors on the newest version of boost.
-
-
 ## Usage
 Currently there is a bug where if the output directory doesn't exist, the problem just keeps computing...but doesn't write any output at all.
 
@@ -48,7 +30,9 @@ Aurora example
    ```sh
    ./utils/Plot.py data/Earth/SortieAurora/ -save
    ```
-3. `SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
+
+
+`SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
 
 ### Precipitation
 Alfvenic aurora and other structured aurora users may be interested in configurings electron precipitation flux characteristics.
@@ -71,9 +55,8 @@ This is configured in the input XML file as follows:
 
 
 ### Plotting
-Several plotting programs exist in `utils`.
-
-* Plot.py: line plots of text output files, using headers.
+Several programs related to concurrent running of large numbers of simulations are in `utils/`, for advanced users only.
+Most users will simply use `Plot.py` to make line plots of text output files, using headers.
 
 ## Documentation
 
@@ -88,8 +71,25 @@ Several plotting programs exist in `utils`.
    make
    ```
 
+## Reference
 
 
+### Build (old way, unstable)
+I don't use this anymore as it was unreliable and not forward compatible.
+
+```sh
+./prepare_conf.sh
+
+./configure --enable-maintainer-mode --enable-debug
+
+make
+
+make check
+
+make install
+```
+
+may give some errors on the newest version of boost.
 
 
 
