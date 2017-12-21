@@ -3,6 +3,8 @@ project(trans++ CXX Fortran)
 
 include_directories(.)
 
+add_compile_options(-g)
+
 find_package(BLAS REQUIRED)
 
 find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
@@ -70,7 +72,9 @@ add_library(chem ${chmsrc})
 
 add_library(protocos protoncosmics/protocos.cpp)
 
-
 # doc/html/atmo_8hpp.html#details
-add_executable(aero atmo/atmo.cpp atmo/neutralatmo.cpp)
-target_link_libraries(aero species chem photo proton emit elecimpact protocos planet scixml boost_system)
+add_library(atmo atmo/atmo.cpp atmo/neutralatmo.cpp)
+target_link_libraries(atmo species chem photo proton emit elecimpact protocos planet scixml boost_system)
+#--- main
+add_executable(main main/main.cpp)
+target_link_libraries(main atmo)
