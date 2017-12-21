@@ -277,7 +277,7 @@
 				
 				<powlaw type="int">0</powlaw>
 				
-				<isotro>1.000000</isotro>
+				<isotro>1</isotro>
 			</use_model>
 	</precipitation>
 

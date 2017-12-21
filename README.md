@@ -50,6 +50,26 @@ Aurora example
    ```
 3. `SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
 
+### Precipitation
+Alfvenic aurora and other structured aurora users may be interested in configurings electron precipitation flux characteristics.
+This is configured in the input XML file as follows:
+
+1. `<use_precipitation />` must exist to enable electron precipitation, and the parameters are enclosed by `<precipitation>` `</precipitation>` XML tags.
+2. Electron precipitation must be read from a file or computed by a simple parameterization.
+
+`use_model`  (created in `math/mathflux.cpp`)
+* 0: Null (none)
+* 1: Maxwellian
+* 2: Gaussian
+* 3: Dirac (pseudo-monoenergetic)
+
+
+* `E0`     Characteristic energy [eV]
+* `entot`  Total flux [ergs]
+* `isotro` 0: non-isotropic.  1: isotropic.
+* `powlaw` power-law shaping 0 or 1
+
+
 ### Plotting
 Several plotting programs exist in `utils`.
 
