@@ -1,34 +1,17 @@
 #!/usr/bin/env python
 # -*- coding:Utf-8 -*-
-from __future__ import division
+
 from optparse import OptionParser
 #from powerlaw import powerlaw
-try:
-    import xml.etree.ElementTree as ET # in python >=2.5
-except ImportError:
-    try:
-        import cElementTree as ET # effbot's C module
-    except ImportError:
-        try:
-            import elementtree.ElementTree as ET # effbot's pure Python module
-        except ImportError:
-            try:
-                import lxml.etree as ET # ElementTree API using libxml2
-            except ImportError:
-                import warnings
-                warnings.warn("could not import ElementTree "
-                              "(http://effbot.org/zone/element-index.htm)")
-                # Or you might just want to raise an ImportError here.
-from pylab import *
-from StringIO import StringIO
-from string import *
-
-
+import xml.etree.ElementTree as ET # in python >=2.5
+import numpy as np
+from io import StringIO
+import sys
 
 
 def PlotShiraiNode(vNode):
 	leg=""
-	if(0==len(vNode.findall("legend"))):
+	if 0==len(vNode.findall("legend")):
 		leg=vNode.attrib["name"]
 	else:
 		leg=vNode.find("legend").text
@@ -42,7 +25,7 @@ def PlotShiraiNode(vNode):
 
 	tid=vNode.find("Equation").attrib["article_id"]
 	tip=int(vNode.find("Equation").attrib["type"])
-	params=loadtxt(StringIO(vNode.find("params").text.replace("\n"," ")))
+	params=np.loadtxt(StringIO(vNode.find("params").text.replace("\n"," ")))
 
 #	def __init__(self,emin,emax,threshold,eqtype,dataeq):
 	if(tid=="CH4"):
@@ -54,7 +37,7 @@ def PlotShiraiNode(vNode):
 
 	ene=arange(Emin,Emax,(Emax-Emin)/100.)
 	ene=array(powerlaw(Emin,Emax,100))
-	print type(ene)
+	print(type(ene))
 	cross=shirai.ReturnCrs(ene*1E-3)
 	datauncert=cross*uncertainty/100.
 	errorbar(ene,cross,yerr=datauncert,label=leg)
@@ -69,32 +52,32 @@ def PlotStdNode(vNode):
 			leg="Elastic"
 	else:
 		leg=vNode.find("legend").text
-	
+
 	fact=1
-	if("fact" in vNode.find("Egrid").keys()):
+	if("fact" in list(vNode.find("Egrid").keys())):
 		fact=float(vNode.find("Egrid").attrib.get("fact"))
 #	print "Votre facteur :",fact
 #	print loadtxt(StringIO((vNode.find("Egrid").text).replace("\n"," ")))
-	dataenergy=loadtxt(StringIO(vNode.find("Egrid").text.replace("\n"," ")))*fact
+	dataenergy=np.loadtxt(StringIO(vNode.find("Egrid").text.replace("\n"," ")))*fact
 	fact=1
-	if("fact" in vNode.find("Cross").keys()):
+	if("fact" in list(vNode.find("Cross").keys())):
 		fact=float(vNode.find("Cross").attrib.get("fact"))
-	print "Votre facteur :",fact
-	datacrs=loadtxt(StringIO(vNode.find("Cross").text.replace("\n"," ")))*fact
+	print("Votre facteur :",fact)
+	datacrs=np.loadtxt(StringIO(vNode.find("Cross").text.replace("\n"," ")))*fact
 #	print datacrs
-	
+
 	uncertainty=0
-	datauncert=zeros((len(datacrs)))
-	if("uncertainty" in vNode.find("Cross").keys()):
+	datauncert=np.zeros((len(datacrs)))
+	if("uncertainty" in list(vNode.find("Cross").keys())):
 		uncertainty=vNode.find("Cross").attrib.get("uncertainty")
 		if (uncertainty.find("%")):
 			uncert=float(uncertainty.replace("%",""))/100.
-			print "Facteur d'incertitude",uncert
+			print("Facteur d'incertitude",uncert)
 			datauncert=datacrs*uncert
 		else:
 			value=float(uncertainty)*fact
-			print "Valeur d'incertitude"
-			datauncert=ones((len(datacrs)))*value
+			print("Valeur d'incertitude")
+			datauncert=np.ones((len(datacrs)))*value
 
 #	print datauncert
 
@@ -104,23 +87,24 @@ def PlotStdNode(vNode):
 
 
 def CheckNode(vNode,nodename=""):
-	if nodename=="":
-		nodename=vNode.attrib["name"]
-	if("uncertainty" in vNode.find("Cross").keys()):
-		return True
-	if("fact_uncertainty" in vNode.find("Cross").keys()):
-		return True
-	print "Problem for the node ",nodename
-	sys.exit()
-	return False
+    if nodename=="":
+        nodename=vNode.attrib["name"]
+    if("uncertainty" in list(vNode.find("Cross").keys())):
+        return True
+    if("fact_uncertainty" in list(vNode.find("Cross").keys())):
+        return True
+
+    raise RuntimeError("Problem for the node ",nodename)
+
 
 def CheckShirai(vNode,name=""):
-	if(len(vNode.findall("uncertainty"))!=1):
-		if name=="":
-			print "Problem with",vNode.attrib["name"]
-		else:	
-			print "Problem with",name
-		sys.exit()
+    if(len(vNode.findall("uncertainty"))!=1):
+        if name=="":
+            e = "Problem with {}".format(vNode.attrib["name"])
+        else:
+            e = "Problem with {}".format(name)
+
+        raise RuntimeError(e)
 
 
 def ActiveNode(vNode):
@@ -139,9 +123,9 @@ def DeActiveShirai(vNode):
 
 
 def ForceNode(vNode,st):
-	if("uncertainty" in vNode.find("Cross").keys()):
+	if("uncertainty" in list(vNode.find("Cross").keys())):
 		return
-	if("fact_uncertainty" in vNode.find("Cross").keys()):
+	if("fact_uncertainty" in list(vNode.find("Cross").keys())):
 		return
 	vNode.find("Cross").attrib["uncertainty"]=st
 def ForceShirai(vNode,st):
@@ -163,7 +147,7 @@ def ToUncert(vNode):
 
 if __name__=="__main__":
 	if(len(sys.argv)<2):
-		print "veuillez donner un nom de fichier"
+		print("veuillez donner un nom de fichier")
 		sys.exit()
 
 
@@ -177,19 +161,19 @@ if __name__=="__main__":
 	parser.add_option("--tofactor",help="The uncertainties are converted to factor uncertainties",action="store_true",dest="tofactor")
 	parser.add_option("--touncert",help="The factor uncertainties are converted to standard uncertainties",action="store_true",dest="touncert")
 	parser.add_option("-o","--outfile",dest="outname",help="The output image",type="string")
-	
+
 	(options, args)=parser.parse_args()
 
 	filename=options.filename
 
 	if(not filename):
 		if(len(args)):
-			print "Dans les args : a"
+			print("Dans les args : a")
 			filename=args[0]
 		else:
-			print "Pas de fichiers"
+			print("Pas de fichiers")
 			sys.exit()
-	print "Fichier",filename
+	print("Fichier",filename)
 
 
 	check=options.check
@@ -199,16 +183,13 @@ if __name__=="__main__":
 	touncert=options.touncert
 	tofactor=options.tofactor
 	if tofactor and touncert:
-		print "you cannot convert to factor and to uncert at the same time"
-		sys.exit()
+		raise ValueError("you cannot convert to factor and to uncert at the same time")
 	if active:
 		check=True
 		if(not options.outname):
-			print "Error: out file not set"
-			sys.exit()
+			raise ValueError("Error: out file not set")
 		if(deactive):
-			print "You cannot activate and deactivate at the same time (dumb)"
-			sys.exit()
+			raise ValueError("You cannot activate and deactivate at the same time (dumb)")
 	force=False
 	forcesh=""
 	forcen=""
@@ -216,15 +197,15 @@ if __name__=="__main__":
 		force=True
 		forcesh=(options.force).strip()
 		forcen=forcesh+"%"
-		print "Force",forcesh,forcen
+		print("Force",forcesh,forcen)
 
 
-	
+
 	tree=ET.parse(filename)
 	root=tree.getroot()
 	processlist=root.findall(".//Process")
-	print "Nous avons trouve ",len(processlist),"processus"
-	
+	print("Nous avons trouve ",len(processlist),"processus")
+
 	for proc in processlist:
 		if(0==len(proc.findall("Shirai"))):
 			if tofactor:
@@ -273,7 +254,7 @@ if __name__=="__main__":
 				ActiveShirai(proc)
 			if deactive:
 				DeActiveShirai(proc)
-	
+
 	processlist3=root.findall(".//TotalCrs")
 	for proc in processlist3:
 		if(0==len(proc.findall("Shirai"))):
@@ -299,7 +280,7 @@ if __name__=="__main__":
 			if deactive:
 				DeActiveShirai(proc)
 
-	
+
 	if(options.outname):
 		tree.write(options.outname)
 
