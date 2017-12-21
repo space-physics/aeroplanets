@@ -7,7 +7,7 @@ add_compile_options(-g)
 
 find_package(BLAS REQUIRED)
 
-find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
+find_package(Boost REQUIRED COMPONENTS system filesystem regex unit_test_framework)
 include_directories(${Boost_INCLUDE_DIR})
 #----------------
 
