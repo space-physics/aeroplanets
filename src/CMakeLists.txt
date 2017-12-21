@@ -76,5 +76,5 @@ add_library(protocos protoncosmics/protocos.cpp)
 add_library(atmo atmo/atmo.cpp atmo/neutralatmo.cpp)
 target_link_libraries(atmo species chem photo proton emit elecimpact protocos planet scixml boost_system)
 #--- main
-add_executable(main main/main.cpp)
-target_link_libraries(main atmo)
+add_executable(aero1d main/main.cpp)
+target_link_libraries(aero1d atmo)

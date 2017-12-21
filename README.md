@@ -3,12 +3,21 @@
 
 ## Prereqs
 
-* Mac: `brew install make gcc boost doxygen openblas`
-* Linux: `apt install make g++ libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
+* Mac: `brew install make cmake gcc boost doxygen openblas`
+* Linux: `apt install make cmake g++ libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
 
 Plots use Python and Matplotlib as is customary.
 
 ## Build
+
+cd bin
+cmake ../src
+make -j4
+
+
+### Build (old way, unstable)
+I don't use this anymore as it was unreliable and not forward compatible.
+
 ```sh
 ./prepare_conf.sh
 
@@ -30,9 +39,7 @@ Aurora example
 
 1. run sim
    ```sh
-   cd data/Earth 
-
-   ./aero1d AuroraEarthFairbanks.xml
+   ./aero1d ../data/Earth/AuroraEarthFairbanks.xml 
    ```
 2. Plot
    ```sh
