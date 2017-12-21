@@ -1445,7 +1445,9 @@ void Atmo::ElectroIonize()
 	mpElecPrecipFlux->ReadPrecipitation(mAltGridKm,(mpModelAtmosphere->mAtmoSpecies));
 	
 
-	mpElecPrecipFlux->PrintPrecip("mpelecprecipflux");
+//	mpElecPrecipFlux->PrintPrecip("mpelecprecipflux");
+    string file=mpParameter->Elem("/aero_main/output/elecprecipflux");
+    mpElecPrecipFlux->PrintPrecip(file);
 
 	Log::mD<<"We add the different electron fluxes"<<endl;
 	// We add the electron precipitation and the photoelectron flux

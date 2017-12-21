@@ -446,6 +446,7 @@
 
 
 <output>
+    <elecprecipflux>SortieAurora/Electron_precip.dat</elecprecipflux>
 	<neutral_atmo>SortieAurora/neutral_atmo.dat</neutral_atmo>
 	<neutral_atmo_colden>SortieAurora/neutral_atmo_colden.dat</neutral_atmo_colden>
 	<ionosphere>SortieAurora/ionosphere.dat</ionosphere>

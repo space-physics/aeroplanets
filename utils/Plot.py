@@ -9,15 +9,22 @@ import re
 import numpy as np
 from argparse import ArgumentParser
 
+log = {'y':'Electron_precip.dat'}
 
 def filefind(path:Path):
     path = Path(path).expanduser()
+
+    if path.is_file():
+        return [path]
 
     flist = []
     for p in ('*.dat','*.out'):
         flist += list(path.glob(p))
 
     flist = [f for f in flist if f.name != 'emission_list.out']
+
+    if not flist:
+        raise FileNotFoundError('no files found in {}'.format(path))
 
     return flist
 
@@ -36,6 +43,9 @@ def plotter(fn:Path, save:bool):
     ax.plot(data[:,1:],data[:,0])
 
     ax.set_xscale("log")
+    if fn.name in log['y']:
+        ax.set_yscale('log')
+
     ax.set_xlim(1e-2,None)
     ax.legend(legende[:data.shape[1]],loc='best')
     # %%

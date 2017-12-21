@@ -2,7 +2,7 @@
 #	Copyright G Gronoff 2009
 #	Report bugs : guillaume.gronoff@gmail.com
 #
-#	Launched :Thu Dec 21 15:29:42 2017
+#	Launched :Thu Dec 21 16:12:38 2017
 
 
 ***************************************
@@ -80,7 +80,7 @@ Energie totale integree :100 desiree : 100 facteur de normalisation :4.60489
 We load the species in Porter
 Check if CTot > 1E-20
 Begin of the energy loop
-Loop execution time : 365.408
+Loop execution time : 343.673
 ..........................................
 Total energy in the flux 6.74466e+21
 ..........................................
