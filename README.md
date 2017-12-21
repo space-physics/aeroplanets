@@ -26,7 +26,8 @@ Inputs include:
 
 * Mac: `brew install make cmake gcc boost doxygen openblas`
 * Linux: `apt install make cmake g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
-* Windows:suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
+* BSD: `pkg install make cmake gcc boost-libs doxygen openblas`
+* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
 
 Plotting uses Python >= 3.5 and Matplotlib.
 
