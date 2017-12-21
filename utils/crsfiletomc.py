@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-# -*- coding:Utf-8 -*-
-
+import scipy.stats
+import matplotlib.pyplot as plt
 from optparse import OptionParser
 #from powerlaw import powerlaw
 import xml.etree.ElementTree as ET # in python >=2.5
@@ -35,12 +35,12 @@ def PlotShiraiNode(vNode):
 	if(tid=="N2"):
 		shirai=NewShiraiN2(Emin,Emax,threshold,tip,params)
 
-	ene=arange(Emin,Emax,(Emax-Emin)/100.)
-	ene=array(powerlaw(Emin,Emax,100))
+	ene= np.arange(Emin,Emax,(Emax-Emin)/100.)
+	ene= np.array(scipy.stats.powerlaw(Emin,Emax,100))
 	print(type(ene))
 	cross=shirai.ReturnCrs(ene*1E-3)
 	datauncert=cross*uncertainty/100.
-	errorbar(ene,cross,yerr=datauncert,label=leg)
+	plt.errorbar(ene,cross,yerr=datauncert,label=leg)
 
 
 def PlotStdNode(vNode):
@@ -82,7 +82,7 @@ def PlotStdNode(vNode):
 #	print datauncert
 
 #	errorbar(datacrs,dataenergy,yerr=datauncert,label=leg)
-	errorbar(dataenergy,datacrs,yerr=datauncert,label=leg)
+	plt.errorbar(dataenergy,datacrs,yerr=datauncert,label=leg)
 
 
 
