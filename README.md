@@ -1,6 +1,8 @@
 # Trans++: C++ implementation of the Trans* programs.
 
-is from Guillaume Gronoff of NASA, a former student of P. Blelly, Transcar author.
+is from [Guillaume Gronoff](https://scholar.google.com/citations?user=e2RfvmYAAAAJ) of NASA, a former student of P. Blelly, Transcar author.
+Michael Hirsch changed the broken autoconf build system to Cmake and redid the plotting utilities.
+
 
 
 It builds easily with Cmake. 
