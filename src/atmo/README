@@ -1,3 +1,14 @@
+Here, we define the atmosphere:
+call of the atmosphere model
+initialisation of the different grids of energy (photons, electrons, ...) and altitude and altitude
+
+Regarding the species, there are two parts: that includes in the model, and that only in the results.
+
+
+
+Geophys: data about planets
+-----------------------------------------------------------
+
 Ici, on definit l'atmosphere:
 appel du modèle d'atmosphère
 initialisation des différentes grilles  d'énergie (photons, electrons, ...) et d'altitude  et d'altitude 
