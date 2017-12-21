@@ -44,16 +44,16 @@ Aurora example
    ./aero1d AuroraEarthFairbanks.xml
    ```
    the output appears in `data/Earth/SortieAurora`
-2. Plot
+2. Plot--automatically iterates over all files in output directory.
    ```sh
-   ./utils/Plot.py data/Earth/SortieAurora/chemistry_atmosphere.out
+   ./utils/Plot.py data/Earth/SortieAurora/
    ```
 3. `SortieAuroraCompar` is pre-computed and allows to check if the compilation/computation was successful.
 
 ### Plotting
 Several plotting programs exist in `utils`.
 
-* Plot.py: chemistry_atmosphere.out
+* Plot.py: line plots of text output files, using headers.
 
 ## Documentation
 

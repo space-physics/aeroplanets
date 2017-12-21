@@ -1,6 +1,10 @@
 #!/usr/bin/env python
+"""
+Plot all output of aero1d program.
+Python >= 3.5
+"""
+
 from pathlib import Path
-from matplotlib.pyplot import figure, draw,pause,show,close
 import re
 import numpy as np
 from argparse import ArgumentParser
@@ -13,25 +17,27 @@ def filefind(path:Path):
     for p in ('*.dat','*.out'):
         flist += list(path.glob(p))
 
+    flist = [f for f in flist if f.name != 'emission_list.out']
+
     return flist
 
 
 def plotter(fn:Path, save:bool):
     """spawn new figure with data from file"""
+    data=np.loadtxt(fn, comments='#')
+    if data.ndim != 2: # no data in file
+        return
+    if np.allclose(data[:,1:], 0.): # all zero data
+        return
 
     fig,ax,legende = _labeler(fn)
 # %%
-    data=np.loadtxt(fn, comments='#')
-    if data.shape[1] < 2: # no data in file
-        return
 
     ax.plot(data[:,1:],data[:,0])
-#    for i in range(1, data.shape[1]):
-#        ax.plot(data[:,i], data[:,0], label=legende[i-1])
 
     ax.set_xscale("log")
-    ax.set_xlim(1e-2,None)
-    ax.legend(legende[:-1],loc='best')
+#    ax.set_xlim(1e-2,None)
+    ax.legend(legende[:data.shape[1]],loc='best')
     # %%
     if save:
         ofn = fn.with_suffix('.svg')
@@ -73,7 +79,13 @@ if __name__ == '__main__':
     p.add_argument("path", help="The aero1d output directory to plot from")
     p.add_argument("-save", help="write output image", action='store_true')
     p = p.parse_args()
+# %% greatly speed up plotting when figures are just saved to disk
+    if p.save:
+        import matplotlib
+        matplotlib.use('svg')
 
+    from matplotlib.pyplot import figure,show,close
+# %%
     flist = filefind(p.path)
     print('generating',len(flist),'plots.')
     for f in flist:
