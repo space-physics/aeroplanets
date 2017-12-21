@@ -1,12 +1,32 @@
 # Trans++: C++ implementation of the Trans* programs.
 
+is from Guillaume Gronoff of NASA, a former student of P. Blelly, Transcar author.
+
+
+It builds easily with Cmake. 
+It can be compared with other models like 
+[Glow](https://www.github.com/scivision/glowaurora) or 
+[Transcar](https://www.github.com/scivision/transcar).
+
+The simulation is configured completely with XML.
+The runtime is similar to Transcar (3-5 minutes on a laptop). 
+The output is text files, for which I have fast Python parsers that could dump to HDF5 etc. as desired. 
+Over 70 output files are created per simulation, covering production rates for numerous neutral and ion species, column emissions from UV to IR, energy grid from 1 eV ~ 30 keV, effects of secondary electroncs are considered.  
+
+Inputs include:
+* photon flux (photoionization)
+* proton flux (proton impact ionization) 
+* electron flux (electron impact ioniziation) -- parameterization or read your e- flux file.
+
+
 
 ## Prereqs
 
 * Mac: `brew install make cmake gcc boost doxygen openblas`
-* Linux: `apt install make cmake g++ libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
+* Linux: `apt install make cmake g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
+* Windows:suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
 
-Plots use Python and Matplotlib as is customary.
+Plotting uses Python >= 3.5 and Matplotlib.
 
 ## Build
 ```sh
@@ -35,7 +55,7 @@ Aurora example
 `SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
 
 ### Precipitation
-Alfvenic aurora and other structured aurora users may be interested in configurings electron precipitation flux characteristics.
+Alfvenic aurora and other structured aurora users may be interested in configuring electron precipitation flux characteristics.
 This is configured in the input XML file as follows:
 
 1. `<use_precipitation />` must exist to enable electron precipitation, and the parameters are enclosed by `<precipitation>` `</precipitation>` XML tags.
@@ -70,27 +90,4 @@ Most users will simply use `Plot.py` to make line plots of text output files, us
    cd doc/latex
    make
    ```
-
-## Reference
-
-
-### Build (old way, unstable)
-I don't use this anymore as it was unreliable and not forward compatible.
-
-```sh
-./prepare_conf.sh
-
-./configure --enable-maintainer-mode --enable-debug
-
-make
-
-make check
-
-make install
-```
-
-may give some errors on the newest version of boost.
-
-
-
 
