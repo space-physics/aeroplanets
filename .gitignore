@@ -1,0 +1,12 @@
+INSTALL
+autom4te.cache/
+compile
+config*
+depcomp
+doc/
+install-sh
+ltmain.sh
+missing
+test-driver
+
+*.pyc
