@@ -9,11 +9,11 @@
 Plots use Python and Matplotlib as is customary.
 
 ## Build
-
+```sh
 cd bin
 cmake ../src
 make -j4
-
+```
 
 ### Build (old way, unstable)
 I don't use this anymore as it was unreliable and not forward compatible.
