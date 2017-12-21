@@ -1,128 +1,96 @@
 #!/usr/bin/env python
-from pylab import *
-import pylab
-from optparse import OptionParser
-import sys
+from matplotlib.pyplot import figure, show
 import re
-
-parser = OptionParser()
+import numpy as np
+from argparse import ArgumentParser
 
 xlog=False
 ylog=False
 
 lalegend=False
 
-parser.add_option("-f","--file",dest="filename",help="The input file ",type="string")
-parser.add_option("-o","--outfile",dest="imagename",help="The output image",type="string")
-parser.add_option("--xlog",action="store_true",dest="xlog")
-parser.add_option("--ylog",action="store_true",dest="ylog")
-parser.add_option("--legend",action="store_true",dest="legend",help="If you want to see the legend")
-parser.add_option("--invert",action="store_true",dest="invert",help="If you want to invert the x and y axis. Example : to plot the densities")
-parser.add_option("--axis",dest="axis",help="Set the axis of your plot. Must be of the form \"[xmin,xmax,ymin,ymax]\"",type="string")
+p = ArgumentParser()
+p.add_argument("infn",help="The input file.")
+p.add_argument("-o","--outfn",help="The output image")
+p.add_argument("--xlog",action="store_true")
+p.add_argument("--ylog",action="store_true")
+p.add_argument("--legend",action="store_true",help="If you want to see the legend")
+p.add_argument("--invert",action="store_true",help="If you want to invert the x and y axis. Example : to plot the densities")
+p.add_argument("--axis",help="Set the axis of your plot. Must be of the form [xmin,xmax,ymin,ymax]")
+p = p.parse_args()
 
-
-
-
-
-(options, args)=parser.parse_args()
-#print options
-#print "args"
-#print args
-if(options.legend):
-	lalegend=True
-
-filename=options.filename
-
-if(not filename):
-	if(len(args)):
-		print("Dans les args : ")
-		filename=args[0]
-	else:
-		print("Pas de fichiers")
-		sys.exit()
-
-
-
-file=open(filename,'r')
-
+# %%
 is_title=False
 is_x=False
 is_y=False
 legende=[]
 
+fig = figure()
+ax = fig.gca()
 
 
-for lines in file:
-	if(re.match("^#",lines)):
-		if(not is_title):
-			title(lines[2:])
-			is_title=True
-		else:
-			if(not is_x):
-				xlabel(lines[2:])
-				is_x=True
-			else:
-				if(not is_y):
-					ylabel(lines[2:])
-					is_y=True
-				else:
-					legende.append(lines[2:])
-	
-file.close()
+with open(p.infn,'r') as f:
 
+    for lines in f:
+	    if(re.match("^#",lines)):
+		    if not is_title:
+			    ax.set_title(lines[2:])
+			    is_title=True
+		    else:
+			    if not is_x:
+				    ax.set_xlabel(lines[2:])
+				    is_x=True
+			    else:
+				    if not is_y:
+					    ax.set_ylabel(lines[2:])
+					    is_y=True
+				    else:
+					    legende.append(lines[2:])
 
+print(legende)
+# %%
+data=np.loadtxt(p.infn)
 
-print("salut les gars",legende)
-
-
-
-
-data=pylab.loadtxt(filename)
-
-
-
-if options.invert:
-	if not lalegend:
+if p.invert:
+	if not p.legend:
 		for i in range(1,len(data[0])):
-			plot(data[:,i],data[:,0])
+			ax.plot(data[:,i],data[:,0])
 	else:
 		for i in range(1,len(data[0])):
-			plot(data[:,i],data[:,0],label=legende[i-1])
+			ax.plot(data[:,i],data[:,0],label=legende[i-1])
 
 else:
-	if not lalegend:
+	if not p.legend:
 		x=data[:,0]
 		y=data[:,1:]
-		plot(x,y)
+		ax.plot(x,y)
 	else:
 		for i in range(1,len(data[0])):
-			plot(data[:,0],data[:,i],label=legende[i-1])
+			ax.plot(data[:,0],data[:,i],label=legende[i-1])
 
 
 
-if(options.xlog):
-	xscale("log")
+if p.xlog:
+	ax.set_xscale("log")
 
-if(options.ylog):
-	yscale("log")
+if p.ylog:
+	ax.set_yscale("log")
 
-if(options.axis):
-	tableau=eval(options.axis)
-	axis(tableau)
+if p.axis:
+	tableau=eval(p.axis)
+	ax.axis(tableau)
 
-imagename=options.imagename
-if(not imagename):
-	imagename=filename+".png"
-	if(lalegend):
-		legend()
-	savefig(imagename)
-	print("show")
-	show()
-else:
-	if(lalegend):
-		legend()
-	savefig(imagename)
-	show()
+if p.legend:
+   ax.legend(loc='best')
+
+# %%
+if not p.outfn:
+	imagename=p.infn+".png"
+
+fig.savefig(imagename)
+
+
+show()
 
 
 
