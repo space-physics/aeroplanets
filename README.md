@@ -41,7 +41,7 @@ Aurora example
 1. run sim
    ```sh
    cd ../data/Earth/
-   ./aero1d AuroraEarthFairbanks.xml
+   ../../bin/aero1d AuroraEarthFairbanks.xml
    ```
    the output appears in `data/Earth/SortieAurora`
 2. Plot--automatically iterates over all files in output directory.

@@ -12,7 +12,7 @@ using namespace std;
 
 Planete::Planete(XmlParameters* pParam)
 {
-	cout<<"Bonjour, je suis une nouvelle planete"<<endl;
+	cout<<"Hello, I am a new planet"<<endl;
 	mName="";
 	mUA=-1;
 	mGms_2=0;
