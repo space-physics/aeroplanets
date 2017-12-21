@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 from pathlib import Path
-from matplotlib.pyplot import figure, draw,pause,show
+from matplotlib.pyplot import figure, draw,pause,show,close
 import re
 import numpy as np
 from argparse import ArgumentParser
 
 
-def filefind(path):
+def filefind(path:Path):
     path = Path(path).expanduser()
 
     flist = []
@@ -16,28 +16,30 @@ def filefind(path):
     return flist
 
 
-def plotter(fn):
+def plotter(fn:Path, save:bool):
     """spawn new figure with data from file"""
-
 
     fig,ax,legende = _labeler(fn)
 # %%
-    data=np.loadtxt(fn)
+    data=np.loadtxt(fn, comments='#')
+    if data.shape[1] < 2: # no data in file
+        return
 
-    for i in range(1, len(data[0])):
-        ax.plot(data[:,i], data[:,0], label=legende[i-1])
+    ax.plot(data[:,1:],data[:,0])
+#    for i in range(1, data.shape[1]):
+#        ax.plot(data[:,i], data[:,0], label=legende[i-1])
 
     ax.set_xscale("log")
     ax.set_xlim(1e-2,None)
-    ax.legend(loc='best')
+    ax.legend(legende[:-1],loc='best')
     # %%
-    if not p.outfn:
-        imagename = p.path+".png"
+    if save:
+        ofn = fn.with_suffix('.svg')
+        fig.savefig(str(ofn))
+        close(fig)
 
-    fig.savefig(imagename)
 
-
-def _labeler(fn):
+def _labeler(fn:Path):
     is_title=False
     is_x=False
     is_y=False
@@ -69,17 +71,14 @@ def _labeler(fn):
 if __name__ == '__main__':
     p = ArgumentParser()
     p.add_argument("path", help="The aero1d output directory to plot from")
-    p.add_argument("-o","--outfn", help="The output image")
+    p.add_argument("-save", help="write output image", action='store_true')
     p = p.parse_args()
 
     flist = filefind(p.path)
     print('generating',len(flist),'plots.')
     for f in flist:
-
         try:
-            plotter(f)
+            plotter(f,p.save)
         except Exception as e:
             print(f,e)
-        draw()
-        pause(0.01)
-    show()
+        show()
