@@ -1,3 +1,8 @@
+
+*.svg
+*.png
+*.nc
+
 SortieAurora/
 bin/
 INSTALL
@@ -12,3 +17,45 @@ missing
 test-driver
 
 *.pyc
+*.h5
+
+data/
+dist/
+bin/
+
+archive/
+
+*.pyc
+__pycache__/*
+*.pyd
+*.egg-info
+build/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
