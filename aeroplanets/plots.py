@@ -49,5 +49,5 @@ def plotter(data, typ: str, save:bool):
     if save:
         ofn = Path(data[d].attrs['filename']).with_suffix('.svg')
         print('writing',ofn)
-        fig.savefig(str(ofn))
+        fig.savefig(ofn)
         close(fig)
