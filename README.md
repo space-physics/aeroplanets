@@ -25,17 +25,17 @@ Inputs include:
 ## Prereqs
 
 * Mac: `brew install make cmake gcc boost doxygen openblas`
-* Linux: `apt install make cmake g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev doxygen graphviz`
+* Linux: `apt install make cmake g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev doxygen graphviz`
 * BSD: `pkg install make cmake gcc boost-libs doxygen openblas`
 * Windows: suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
 
-Plotting uses Python >= 3.5 and Matplotlib.
+Plotting uses Python &ge; 3.5 and Matplotlib.
 
 ## Build
 ```sh
 cd bin
 cmake ../src
-make -j4
+make -j -l2  # don't omit the -l2 or the computer will crash on compile due to excess resource use
 ```
 
 ## Usage
