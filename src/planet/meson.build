@@ -12,6 +12,6 @@ titan = library('titan', 'Titan/titandata.cpp',
 mars = library('mars', 'Mars/datamarinerviking.cpp', 'Mars/marsatmotim.cpp', 'Mars/marsbinary.cpp',
   include_directories : '..')
 
-planet = library('planet', 'anonym.cpp', 'earth.cpp', 'mars.cpp', 'planet.cpp', 'test.cpp', 'titan.cpp', 'venus.cpp',
+planet = library('planet', 'anonym.cpp', 'earth.cpp', 'mars.cpp', 'planet.cpp', 'titan.cpp', 'venus.cpp',
   include_directories : '..',
   link_with : [earth, venus, titan, mars])

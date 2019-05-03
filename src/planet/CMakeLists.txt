@@ -13,6 +13,6 @@ target_include_directories(titan PRIVATE ${CMAKE_SOURCE_DIR}/src)
 add_library(mars Mars/datamarinerviking.cpp Mars/marsatmotim.cpp Mars/marsbinary.cpp)
 target_include_directories(mars PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
-add_library(planet anonym.cpp earth.cpp mars.cpp planet.cpp test.cpp titan.cpp venus.cpp)
+add_library(planet anonym.cpp earth.cpp mars.cpp planet.cpp titan.cpp venus.cpp)
 target_link_libraries(planet PRIVATE earth venus titan mars)
 target_include_directories(planet PRIVATE ${CMAKE_SOURCE_DIR}/src)
