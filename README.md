@@ -4,38 +4,49 @@ is from [Guillaume Gronoff](https://scholar.google.com/citations?user=e2RfvmYAAA
 Michael Hirsch changed the broken autoconf build system to Cmake and redid the plotting utilities.
 
 
-
-It builds easily with Cmake. 
-It can be compared with other models like 
-[Glow](https://www.github.com/scivision/glowaurora) or 
+It builds easily with CMake.
+It can be compared with other models like
+[Glow](https://www.github.com/scivision/glowaurora) or
 [Transcar](https://www.github.com/scivision/transcar).
 
 The simulation is configured completely with XML.
-The runtime is similar to Transcar (3-5 minutes on a laptop). 
-The output is text files, for which I have fast Python parsers that could dump to HDF5 etc. as desired. 
-Over 70 output files are created per simulation, covering production rates for numerous neutral and ion species, column emissions from UV to IR, energy grid from 1 eV ~ 30 keV, effects of secondary electroncs are considered.  
+The runtime is similar to Transcar (3-5 minutes on a laptop).
+The output is text files, for which I have fast Python parsers that could dump to HDF5 etc. as desired.
+Over 70 output files are created per simulation, covering production rates for numerous neutral and ion species, column emissions from UV to IR, energy grid from 1 eV ~ 30 keV, effects of secondary electroncs are considered.
 
 Inputs include:
 * photon flux (photoionization)
-* proton flux (proton impact ionization) 
+* proton flux (proton impact ionization)
 * electron flux (electron impact ioniziation) -- parameterization or read your e- flux file.
-
 
 
 ## Prereqs
 
-* Mac: `brew install make cmake gcc boost doxygen openblas`
-* Linux: `apt install make cmake g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev doxygen graphviz`
-* BSD: `pkg install make cmake gcc boost-libs doxygen openblas`
-* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
+* Mac:
 
-Plotting uses Python &ge; 3.5 and Matplotlib.
+    ```sh
+    brew install make cmake gcc boost doxygen openblas
+    ```
+* Linux
+
+    ```sh
+    apt install make g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev
+
+    apt install doxygen graphviz  # optional
+    ```
+
+    Then [install CMake](https://github.com/scivision/cmake-utils) via cmake_setup.py
+* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
+  Otherwise for native Windows, get [Boost binaries for Windows](https://www.boost.org/users/download/) and use [Intel](https://www.scivision.dev/install-intel-compiler-icc-icpc-ifort/) or [PGI](https://www.scivision.dev/install-pgi-free-compiler/) compilers.
+
+Plotting uses Python and Matplotlib.
 
 ## Build
+
 ```sh
-cd bin
-cmake ../src
-make -j -l2  # don't omit the -l2 or the computer will crash on compile due to excess resource use
+cd build
+cmake ..
+make -j -l 4  # don't omit the -l 4 or the computer will crash on compile due to excess resource use
 ```
 
 ## Usage
@@ -44,12 +55,14 @@ Currently there is a bug where if the output directory doesn't exist, the proble
 Aurora example
 
 1. run sim
+
    ```sh
    cd ../data/Earth/
    ../../bin/aero1d AuroraEarthFairbanks.xml
    ```
    the output appears in `data/Earth/SortieAurora`
 2. Plot--automatically iterates over all files in output directory.
+
    ```sh
    ./utils/Plot.py data/Earth/SortieAurora/ -save
    ```
@@ -65,6 +78,7 @@ This is configured in the input XML file as follows:
 2. Electron precipitation must be read from a file or computed by a simple parameterization.
 
 `use_model`  (created in `math/mathflux.cpp`)
+
 * 0: Null (none)
 * 1: Maxwellian
 * 2: Gaussian
@@ -84,13 +98,14 @@ Most users will simply use `Plot.py` to make line plots of text output files, us
 ## Documentation
 
 1. compile docs
+
    ```sh
    doxygen Doxyfile
    ```
 2. web browser: `doc/html/index.html`
 3. To create `/doc/latex/refman.pdf`:
+
    ```sh
    cd doc/latex
    make
    ```
-
