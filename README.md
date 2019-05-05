@@ -95,7 +95,9 @@ This is configured in the input XML file as follows:
 Several programs related to concurrent running of large numbers of simulations are in [utils/](./utils).
 Most users will simply use `Plot.py` to make line plots of text output files, using headers.
 
-Some examples from the 1981 Venus VTS3 model, done with Venus_*.py programs.
+Some examples from the
+[1983 Venus VTS3 empirical model](https://doi.org/10.1029/JA088iA01p00073),
+valid from about 140 km - 250 km altitude, done with Venus_*.py programs.
 
 ![Venus Latitude](./data/venus_latitude.png)
 ![Venus Time](./data/venus_time.png)
