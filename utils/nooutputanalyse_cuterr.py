@@ -9,90 +9,87 @@ import pylab
 
 
 def string_to_tblnb(str):
-	# Match a number  [-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?
-	#return [float(i)  for i in re.findall(r'\d+(?:\.\d+)?',str)]
-#	print re.findall(r'([-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?)',str)
-	return [float(i[0])  for i in re.findall(r'([-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?)',str)]
+    # Match a number  [-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?
+    # return [float(i)  for i in re.findall(r'\d+(?:\.\d+)?',str)]
+    #	print re.findall(r'([-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?)',str)
+    return [float(i[0]) for i in re.findall(r'([-+]?([0-9]+\.?[0-9]*|\.[0-9]+)([eE][-+]?[0-9]+)?)', str)]
 
 
+if len(sys.argv) == 1:
+    print "zut", sys.argv
+    print "you must define a regular expression to check your files"
+    sys.exit(1)
 
-if len(sys.argv)==1:
-	print "zut",sys.argv
-	print "you must define a regular expression to check your files"
-	sys.exit(1)
-
-regex_lect=sys.argv[1]
-
+regex_lect = sys.argv[1]
 
 
-filenames=[i for i in os.listdir("./") \
-	   if (os.path.isfile("./"+i))          \
-           and re.match(regex_lect+"$",i)]
+filenames = [i for i in os.listdir("./")
+             if (os.path.isfile("./"+i))
+             and re.match(regex_lect+"$", i)]
 
-if len(filenames)==0:
-	print "no match for your file"
-	sys.exit(1)
-	   
-	   
-datas=[]
-altitude=array([])
-defalt=False
-skipped=0
+if len(filenames) == 0:
+    print "no match for your file"
+    sys.exit(1)
+
+
+datas = []
+altitude = array([])
+defalt = False
+skipped = 0
 for i in filenames:
-	print i
-	
-	fa=os.popen("grep -ri \"Electron impact ionization error\" "+i).read()
-	value=string_to_tblnb(fa)[0]
+    print i
 
-	if(abs(value)>5):
-		skipped+=1
-		print fa," : SKIPPED"
-		continue
+    fa = os.popen("grep -ri \"Electron impact ionization error\" "+i).read()
+    value = string_to_tblnb(fa)[0]
 
-	fi=os.popen("grep -ri nan "+i).read()
-	if(len(fi)>0):
-		skipped+=1
-		continue
-	tmpdat=pylab.loadtxt("./"+i)
-	if(not defalt):
-		defalt=True
-		altitude=tmpdat[:,0]
+    if(abs(value) > 5):
+        skipped += 1
+        print fa, " : SKIPPED"
+        continue
 
-	datas.append(tmpdat[:,1:])
+    fi = os.popen("grep -ri nan "+i).read()
+    if(len(fi) > 0):
+        skipped += 1
+        continue
+    tmpdat = pylab.loadtxt("./"+i)
+    if(not defalt):
+        defalt = True
+        altitude = tmpdat[:, 0]
 
-data=array(datas)
+    datas.append(tmpdat[:, 1:])
 
-#print "bye"
-fileintro=open("./"+filenames[0],'r')
-meslignes=[]
+data = array(datas)
+
+# print "bye"
+fileintro = open("./"+filenames[0], 'r')
+meslignes = []
 for lines in fileintro:
-	if(re.match("^#",lines)):
-		meslignes.append(lines)
-
+    if(re.match("^#", lines)):
+        meslignes.append(lines)
 
 
 print data.shape
 print altitude
-(nbstat,nbalt,nbelem)=data.shape
-sauvegarde=zeros((nbalt,nbelem*2+1)) # The number of elements corresponds to altitude+ elems+error
-sauvegarde[:,0]=altitude
+(nbstat, nbalt, nbelem) = data.shape
+sauvegarde = zeros((nbalt, nbelem*2+1))  # The number of elements corresponds to altitude+ elems+error
+sauvegarde[:, 0] = altitude
 
 
 for elem in range(nbelem):
 
-	value=zeros(nbalt)
-	error=zeros(nbalt)
-	for alt in range(nbalt):
-		tbl=data[:,alt,elem]
-		value[alt]=tbl.mean()
-		error[alt]=tbl.std()*2
-	print "position :",elem,2*elem, 2*elem+1, "max :",nbelem*2
-	sauvegarde[:,2*elem+1]=value
-	sauvegarde[:,2*elem+2]=error
+    value = zeros(nbalt)
+    error = zeros(nbalt)
+    for alt in range(nbalt):
+        tbl = data[:, alt, elem]
+        value[alt] = tbl.mean()
+        error[alt] = tbl.std()*2
+    print "position :", elem, 2*elem, 2*elem+1, "max :", nbelem*2
+    sauvegarde[:, 2*elem+1] = value
+    sauvegarde[:, 2*elem+2] = error
 
-savetxt("montecarlo.dat",sauvegarde)
-print "SKIPPED:",skipped
+savetxt("montecarlo.dat", sauvegarde)
+print "SKIPPED:", skipped
 
-truc=file("montecarlo.dat","a")
+truc = file("montecarlo.dat", "a")
 truc.writelines(meslignes)
 truc.close()

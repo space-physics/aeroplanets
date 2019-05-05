@@ -1,21 +1,23 @@
 from pathlib import Path
 from matplotlib.pyplot import figure, close
 #
-log = {'y':('Electron_precip.dat',),
-       'x':()}
+log = {'y': ('Electron_precip.dat',),
+       'x': ()}
 
-def plotalt(ax,data,d):
-    ax.plot(data[d],data[d].alt_km,label=d)
+
+def plotalt(ax, data, d):
+    ax.plot(data[d], data[d].alt_km, label=d)
     ax.set_title(data[d].attrs['title'])
     ax.set_xlabel(data[d].attrs['xlabel'])
     ax.set_ylabel(data[d].attrs['ylabel'])
     ax.grid(True)
     ax.legend(loc='best')
 
-def plotter(data, typ: str, save:bool):
+
+def plotter(data, typ: str, save: bool):
     """spawn new figure with grouped data from file"""
 
-    fig = figure(figsize=(18,12))
+    fig = figure(figsize=(18, 12))
     ax = fig.gca()
 # %% plots
     attrs = None
@@ -24,20 +26,20 @@ def plotter(data, typ: str, save:bool):
             continue
 
         if d.startswith('Electron (TEC'):
-            plotalt(figure(figsize=(18,12)).gca(),data,d)
+            plotalt(figure(figsize=(18, 12)).gca(), data, d)
             continue
 
         ax.plot(data[d], data[d].alt_km, label=d)
-        attrs = data[d].attrs # use last match
+        attrs = data[d].attrs  # use last match
 
     if attrs is None:
-        print('no',typ,'found')
+        print('no', typ, 'found')
         close(fig)
         return
 
     if not typ == 'iono':
         ax.set_xscale("log")
-        ax.set_xlim(1e-2,None)
+        ax.set_xlim(1e-2, None)
     ax.grid(True)
 
     ax.set_title(attrs['title'])
@@ -48,6 +50,6 @@ def plotter(data, typ: str, save:bool):
     # %%
     if save:
         ofn = Path(data[d].attrs['filename']).with_suffix('.svg')
-        print('writing',ofn)
+        print('writing', ofn)
         fig.savefig(ofn)
         close(fig)
