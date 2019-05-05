@@ -5,8 +5,10 @@ import xarray as xr
 import xml.etree.ElementTree as etree
 from datetime import datetime,timedelta
 
+from . import venus  # noqa: F401
 
-def filefind(path:Path):
+
+def filefind(path: Path):
     EXT = ('*.dat','*.out')
     """find all data files in directory"""
     path = Path(path).expanduser()

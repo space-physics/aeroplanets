@@ -1,11 +1,11 @@
 C From:	PACF2::HEDIN        15-FEB-1990 14:21:14.82
 C To:	NSSDCA::BILITZA
-C CC:	
+C CC:
 C Subj:	VENUS MODEL
 
-C Dieter,   Here is the Venus subroutine as well as a test program 
-C similar to that for MSIS.  I haven't run it in some time.  I am sure it 
-C has not been worked over as much as MSIS to make it compatible with 
+C Dieter,   Here is the Venus subroutine as well as a test program
+C similar to that for MSIS.  I haven't run it in some time.  I am sure it
+C has not been worked over as much as MSIS to make it compatible with
 C other computers. But, Give it a try.
 C Al'
 C -----------------------------------------------------------------------
@@ -15,12 +15,14 @@ C -----------------------------------------------------------------------
 C       VENUS ATMOSPHERE MODEL (03/05/81)
 C         USES LOCAL TIME AND LATITUDE TO ESTIMATE SOLAR ZENITH
 C         ANGLE FOR SYMMETRICAL TERMS
+
 C    INPUT VARIABLES
 C      ALT - ALTITUDE (KM)
 C      XLAT - LATITUDE (DEG)
 C      XLOC - LOCAL HOUR ANGLE (HRS)
 C       MAS - MASS REQUIRED, 48 FOR ALL
 C      YRD            NOT CURRENTLY USED
+
 C    OUTPUT VARIABLES
 C      D(1) - TOTAL MASS DENSITY (GM/CM3)
 C        2  - CO2 NUMBER DENSITY (CM-3)
@@ -31,8 +33,13 @@ C        6  - N
 C        7  - N2
 C      T(1) - EXOSPHERIC TEMPERATURE
 C        2  - TEMPERATURE AT ALTITUDE
-      INTEGER YRD
-      DIMENSION D(7),T(2),MT(7)
+      INTEGER, intent(in) :: YRD
+      real, intent(in) :: alt, xlat, tloc, f107a, f107
+      integer, intent(in) :: mas
+      real, intent(out) :: D(7),T(2)
+
+      real :: MT(7)
+
       COMMON/PARM/PT(50),PD(50,6)
       COMMON/LOWER/PTM(8),PDM(8,6)
       COMMON/VTS1C/TLB,S,DB44,DB16,DB29,DB04,DB14,DB28
@@ -41,7 +48,7 @@ C        2  - TEMPERATURE AT ALTITUDE
       DATA IFL/0/,MT/48,44,16,29,4,14,28/
       REAL truc
 
-      MASS=IABS(MAS)
+      MASS = ABS(MAS)
       TB=0
       IF(MAS.EQ.-48) TB=1
       IF(IFL.EQ.1) GOTO 10
@@ -115,11 +122,11 @@ C       CO DENSITY
 30    DB29=PDM(1,3)*EXP(GLOBV(YRD,XLAT,TLOC,F107A,F107,PD(1,3)))*PD(1,3)
       D(4)=DENSS(ALT,DB29,TINF,TLB,28.,0.,T(2),PTM(6),S,T0,ZA,TA,ZM,AM,
      &SP)
-c      write(*,*),'retour de globv' 
+c      write(*,*),'retour de globv'
       truc=EXP(GLOBV(YRD,XLAT,TLOC,F107A,F107,PD(1,3)))
 c      write(*,*),'GLOBV  ',truc,' DB29', DB29
 c      write(*,*),' e ',YRD,' ',XLAT,' ',TLOC,' ',F107A,' ',F107,' '
-     
+
       DM29=DM44*XMR
       D(4)=DNETVENUS(D(4),DM29,ZHM,XMM,28.)
       D(4)=D(4)*CCORVENUS(ALT,PDM(5,2),H1,ZHO)
@@ -178,8 +185,9 @@ C      TOTAL MASS DENSITY
       DO 91 I=1,7
 C      MULTIPLICATION FACTOR FOR ONMS DENSITIES
 91    D(I)=D(I)*PDM(8,1)
-      RETURN
-      END
+
+      END subroutine vts3
+
 C------------------------------------------------------------------
       SUBROUTINE PARMSV
 C        SET INITIAL PARAMETERS (04/24/81)
@@ -301,8 +309,9 @@ C         LOWER BOUNDARY
       DO 40 K=1,6
       DO 40 J=1,8
 40    PDM(J,K) = PM(J,K+1)
-      RETURN
-      END
+
+      END SUBROUTINE PARMSV
+
 C--------------------------------------------------------------------
       FUNCTION DENSS(ALT,DLB,TINF,TLB,XM,ALPHA,TZ,ZLB,S2,T0,ZA,TA,ZM,AM,
      & SP)
@@ -366,8 +375,10 @@ C            CALCULATE DENSITY BELOW ZA
 340      CONTINUE
          DENSS=DENSS*(TZL/TZ)**(1.+ALPHA)
 350    CONTINUE
-      RETURN
-      END
+
+      END FUNCTION DENSS
+
+
       FUNCTION DNETVENUS(DD,DM,ZHM,XMM,XM)
 C       8/20/80;7/25/83
 C       TURBOPAUSE CORRECTION
@@ -376,7 +387,7 @@ C       TURBOPAUSE CORRECTION
       IF(DM.GT.0.) ADM=ALOG(DM)
       ADD=0.
       IF(DD.GT.0.) ADD=ALOG(DD)
-      YLOG=A*(ADM-ADD)     
+      YLOG=A*(ADM-ADD)
       IF(YLOG.LT.-10.) GO TO 10
       IF(YLOG.GT.10.)  GO TO 20
         DNETVENUS=DD*(1.+EXP(YLOG))**(1/A)
@@ -388,31 +399,36 @@ C       TURBOPAUSE CORRECTION
         DNETVENUS=DM
         GO TO 50
 50    CONTINUE
-      RETURN
-      END
-      FUNCTION  CCORVENUS(ALT, R,H1,ZH)
+
+      END FUNCTION DNETVENUS
+
+
+      pure real FUNCTION CCORVENUS(ALT, R,H1,ZH)
 C        CHEMISTRY/DISSOCIATION CORRECTION
+      real, intent(in) :: alt, R,H1,ZH
+
       E=(ZH-ALT)/H1
       IF(E.GT.170.) GO TO 10
       IF(E.LT.-170.) GO TO 20
         EX=EXP(E)
         CCORVENUS=(1.+R*EX)/(1.+EX)
-        GO TO 50
+        return
 10      CCORVENUS=R
-        GO TO 50
+        return
 20      CCORVENUS=1.
-        GO TO 50
-50    CONTINUE
-       RETURN
-      END
+
+      END FUNCTION CCORVENUS
+
+
       SUBROUTINE TURBO(DD,DM,ZB,ZH,XM,XMM,TZ)
 C        ESTIMATE TURBOPAUSE HEIGHT
       COMMON/PARMB/GSURF,RE
       DATA RGAS/831.4/
       GZB=GSURF/(1.+ZB/RE)**2
       ZH=ZB+RGAS*TZ/GZB/(XM-XMM)*ALOG(DD/DM)
-      RETURN
-      END
+
+      END SUBROUTINE TURBO
+
 C--------------------------------------------------------------------
       FUNCTION GLOBV(YRD,LAT,TLOC,F107A,F107,P)
 C        CALCULATE GLOBAL VARIATIONS (12/12/80)
@@ -424,7 +440,7 @@ C         USES SOLAR ZENITH ANGLE FOR SYMMETRICAL TERMS
       DATA DGTR/1.74533E-2/, XL/-1000./,SV/15*1./,TLL/1000./,HR/.2618/
       IF(ISW.NE.64999) CALL TSELECVENUS(SV)
 c       comment par gg,0 par GG
-c      IF( XL.EQ.LAT.AND.TLL.EQ.TLOC) then 
+c      IF( XL.EQ.LAT.AND.TLL.EQ.TLOC) then
 c      PLG(2,1)=0.
 c      PLG(3,1)=0.
 c      PLG(4,1)=0.
@@ -434,7 +450,7 @@ c      PLG(2,2)=0.
 c      PLG(3,3)=0.
 c      PLG(4,4)=0.
 c      PLG(5,5)=0.
-c      PLG(6,6)=0.    
+c      PLG(6,6)=0.
 c      write(*,*),"Passage par les boucles"
 c      GO TO 15
 c      endif
@@ -501,16 +517,18 @@ c42      write(*,*),'GLOB G ',G,' SW ',SW(I),' T ',T(I)
 
       endif
       GLOBV=G
-      RETURN 
-      END
+
+      END FUNCTION GLOBV
+
+
       SUBROUTINE TSELECVENUS(SV)
       DIMENSION SV(15)
       COMMON/CSW/SW(15),ISW
       DO 100 I=1,15
 100   SW(I)=SV(I)
       ISW=64999
-      RETURN
-      END
+
+      END SUBROUTINE TSELECVENUS
 C --------------------------------------------------------------------------
 C TVTS3.FOR  test driver for VTS3
 C --------------------------------------------------------------------------
@@ -557,7 +575,7 @@ c         write(*,*),I
 !         RES6(I)=D(6)
 !         RES7(I)=D(7)
 
-!4242    continue        
+!4242    continue
 !        write(*,*),'Fin gg'
 !        rewind(resu)
 C        DO 4243 J=0,11
@@ -585,7 +603,7 @@ c         write(resu,*),RES(61),RES(62)
 c        write(resu,1020),RES
 c        write(resu,*),RES
 
-        
+
 !1042    format(5f10.2)
 
 !1020    format(5(1pe14.6))
