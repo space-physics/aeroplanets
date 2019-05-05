@@ -91,9 +91,15 @@ This is configured in the input XML file as follows:
 * `powlaw` power-law shaping 0 or 1
 
 
-### Plotting
-Several programs related to concurrent running of large numbers of simulations are in `utils/`, for advanced users only.
+## Plotting
+Several programs related to concurrent running of large numbers of simulations are in [utils/](./utils).
 Most users will simply use `Plot.py` to make line plots of text output files, using headers.
+
+Some examples from the 1981 Venus VTS3 model, done with Venus_*.py programs.
+
+![Venus Latitude](./data/venus_latitude.png)
+![Venus Time](./data/venus_time.png)
+![Venus Altitude](./data/venus_altprofile.png)
 
 ## Documentation
 
