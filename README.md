@@ -22,10 +22,14 @@ Inputs include:
 
 ## Prereqs
 
+The build system is CMake + GNU Make as are widely used in software development.
+
 * Mac:
 
     ```sh
-    brew install make cmake gcc boost doxygen openblas
+    brew install make cmake gcc boost openblas
+
+    brew install doxygen  # optional
     ```
 * Linux
 
@@ -36,8 +40,8 @@ Inputs include:
     ```
 
     Then [install CMake](https://github.com/scivision/cmake-utils) via cmake_setup.py
-* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.co/install-windows-subsystem-for-linux/)
-  Otherwise for native Windows, get [Boost binaries for Windows](https://www.boost.org/users/download/) and use [Intel](https://www.scivision.dev/install-intel-compiler-icc-icpc-ifort/) or [PGI](https://www.scivision.dev/install-pgi-free-compiler/) compilers.
+* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
+   The Boost libraries currently don't work with Intel compilers and CMake on native Windows, so use WSL.
 
 Plotting uses Python and Matplotlib.
 
@@ -45,32 +49,62 @@ Plotting uses Python and Matplotlib.
 
 ```sh
 cd build
+
 cmake ..
-make -j -l 4  # don't omit the -l 4 or the computer will crash on compile due to excess resource use
+
+cmake --build . -j2
 ```
 
+Don't omit the `-j2` or the computer may crash during compile due to excess memory usage.
+
 ## Usage
-Currently there is a bug where if the output directory doesn't exist, the problem just keeps computing...but doesn't write any output at all.
 
-Aurora example
+NOTE: There is a bug where if the output directory doesn't exist,
+the problem just keeps computing,
+but doesn't write any output at all.
 
+### Aurora example
+
+From the aeroplanets/build/ directory:
+
+0. create the output directory, or no files will be output at all despite full simulation run
+
+   ```sh
+   mkdir SortieAurora
+   ```
 1. run sim
 
    ```sh
-   cd ../data/Earth/
-   ../../bin/aero1d AuroraEarthFairbanks.xml
+   ./aero1d ../data/Earth/AuroraEarthFairbanks.xml
    ```
-   the output appears in `data/Earth/SortieAurora`
-2. Plot--automatically iterates over all files in output directory.
-
-   ```sh
-   ./utils/Plot.py data/Earth/SortieAurora/ -save
-   ```
+   the output appears under SortieAurora/
 
 
-`SortieAuroraCompar` is reference data to check if the compilation/computation was successful.
+### Plot
+
+Automatically iterates over all files in output directory.
+From the aeroplanets/utils directory:
+
+```sh
+python Plot.py build/SortieAurora/
+```
+
+the optional `-p ~/plots` parameter saves plots to ~/plots/ directory.
+
+`aeroplanets/data/Earth/SortieAuroraCompar/` is reference data to check if the compilation/computation was successful.
+
+![chem.png](./doc/chem.png)
+
+![colu.png](./doc/colu.png)
+
+![extr.png](./doc/extr.png)
+
+![iono.png](./doc/iono.png)
+
+![prod.png](./doc/prod.png)
 
 ### Precipitation
+
 Alfvenic aurora and other structured aurora users may be interested in configuring electron precipitation flux characteristics.
 This is configured in the input XML file as follows:
 

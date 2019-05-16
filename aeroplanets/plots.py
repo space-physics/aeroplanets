@@ -6,7 +6,7 @@ log = {'y': ('Electron_precip.dat',),
 
 
 def plotalt(ax, data, d):
-    ax.plot(data[d], data[d].alt_km, label=d)
+    ax.plot(data[d], data.alt_km, label=d)
     ax.set_title(data[d].attrs['title'])
     ax.set_xlabel(data[d].attrs['xlabel'])
     ax.set_ylabel(data[d].attrs['ylabel'])
@@ -14,7 +14,7 @@ def plotalt(ax, data, d):
     ax.legend(loc='best')
 
 
-def plotter(data, typ: str, save: bool):
+def plotter(data, typ: str, save: Path):
     """spawn new figure with grouped data from file"""
 
     fig = figure(figsize=(18, 12))
@@ -29,7 +29,7 @@ def plotter(data, typ: str, save: bool):
             plotalt(figure(figsize=(18, 12)).gca(), data, d)
             continue
 
-        ax.plot(data[d], data[d].alt_km, label=d)
+        ax.plot(data[d], data.alt_km, label=d)
         attrs = data[d].attrs  # use last match
 
     if attrs is None:
@@ -49,7 +49,8 @@ def plotter(data, typ: str, save: bool):
     ax.legend(loc='best')
     # %%
     if save:
-        ofn = Path(data[d].attrs['filename']).with_suffix('.svg')
+        save = Path(save).expanduser()
+        ofn = Path(save / (typ + '.png'))
         print('writing', ofn)
         fig.savefig(ofn)
         close(fig)

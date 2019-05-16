@@ -36,16 +36,3 @@ add_library(protocos protoncosmics/protocos.cpp)
 target_include_directories(protocos PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory(atmo)
-
-#--- Executables.
-add_executable(aero1d main/main.cpp)
-target_link_libraries(aero1d atmo)
-target_include_directories(aero1d PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
-add_executable(aerochem chemsimu/main.cpp)
-target_link_libraries(aerochem atmo)
-target_include_directories(aerochem PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
-add_executable(aerobranch computebranchphot/main.cpp)
-target_link_libraries(aerobranch PRIVATE atmo)
-target_include_directories(aerobranch PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

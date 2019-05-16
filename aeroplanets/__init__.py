@@ -1,14 +1,15 @@
 import logging
 from pathlib import Path
 import numpy as np
-import xarray as xr
+from typing import List, Tuple
+import xarray
 import xml.etree.ElementTree as etree
 from datetime import datetime, timedelta
 
 from . import venus  # noqa: F401
 
 
-def filefind(path: Path):
+def filefind(path: Path) -> List[Path]:
     EXT = ('*.dat', '*.out')
     """find all data files in directory"""
     path = Path(path).expanduser()
@@ -28,7 +29,7 @@ def filefind(path: Path):
     return flist
 
 
-def loadaeroout(fn: Path, arr: xr.Dataset):
+def loadaeroout(fn: Path, arr: xarray.Dataset) -> xarray.Dataset:
     # %% raw data
     data = np.loadtxt(fn, comments='#')
     if (data.ndim != 2 or np.allclose(data[:, 1:], 0.)):  # no data in file or all zero data
@@ -40,10 +41,10 @@ def loadaeroout(fn: Path, arr: xr.Dataset):
     """underlying coordinates are time, altitude, lat, lon"""
     lbl['filename'] = fn.name
     for i, c in enumerate(cols):
+        if i == 0 and arr.alt_km.size == 0:
+            arr['alt_km'] = data[:, 0]
         try:
-            arr[c] = xr.DataArray(data[:, i+1],
-                                  coords={'alt_km': data[:, 0]},
-                                  dims=['alt_km'],)
+            arr[c] = (('altkm',), data[:, i+1])
             # name=fn.name[:4]) # not stored in Dataset
             arr[c].attrs = lbl
         except ValueError:
@@ -52,8 +53,11 @@ def loadaeroout(fn: Path, arr: xr.Dataset):
     return arr
 
 
-def xmlparam(fn: Path):
+def xmlparam(fn: Path) -> Tuple[datetime, dict]:
     """read data from simulation XML input file"""
+    if not isinstance(fn, (str, Path)):
+        raise ValueError('must specify simulation configuration .xml file')
+
     fn = Path(fn).expanduser()
 
     root = etree.ElementTree(file=fn).getroot()
@@ -97,28 +101,27 @@ def getmeta(fn: Path, ncol: int):
     return lbl, cols
 
 
-def createds(xmlfn: Path, flist: list):
-
-    data = np.loadtxt(flist[0], comments='#')
+def createds(xmlfn: Path) -> xarray.Dataset:
+    """
+    intializes the dataset, setting up the data coordinates
+    """
 
     t, attrs = xmlparam(xmlfn)
 
-    arr = xr.Dataset(coords={'time': t,
-                             'alt_km': data[:, 0],
-                             'lat': attrs['glat'],
-                             'lon': attrs['glon']})
-
-    arr['filelist'] = [f.name for f in flist]
+    arr = xarray.Dataset(coords={'time': t,
+                                 'alt_km': [],
+                                 'lat': attrs['glat'],
+                                 'lon': attrs['glon']})
 
     return arr
 
 
-def convertdata(fn: Path, xmlfn: Path, ofn: Path, types: tuple):
+def convertdata(path: Path, xmlfn: Path, ofn: Path, types: tuple) -> xarray.Dataset:
     """raw text output to NetCDF4"""
 
-    flist = filefind(fn)
+    flist = filefind(path)
 
-    data = createds(xmlfn, flist)
+    data = createds(xmlfn)
 
     for f in flist:
         if not f.name[:4] in types:
@@ -130,7 +133,9 @@ def convertdata(fn: Path, xmlfn: Path, ofn: Path, types: tuple):
 
     if ofn:
         ofn = Path(ofn).expanduser()
+        if ofn.is_dir():
+            raise OSError('must specify a NetCDF path/filename to write')
         print('writing', ofn)
-        data.to_netcdf(str(ofn), mode='w')
+        data.to_netcdf(ofn, mode='w')
 
     return data

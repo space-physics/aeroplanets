@@ -1,0 +1,3 @@
+if(CMAKE_CXX_COMPILER_ID STREQUAL Intel)
+  set(BLA_VENDOR Intel10_64lp)
+endif()
