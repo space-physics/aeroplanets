@@ -3,8 +3,6 @@
 *.png
 *.nc
 
-SortieAurora/
-bin/
 INSTALL
 autom4te.cache/
 compile
@@ -19,9 +17,7 @@ test-driver
 *.pyc
 *.h5
 
-data/
 dist/
-bin/
 
 archive/
 
