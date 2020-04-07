@@ -1,6 +1,7 @@
 # Trans++: C++ implementation of the Trans* programs.
 
-![ci_cmake](https://github.com/space-physics/aeroplanets/workflows/ci_cmake/badge.svg)
+![linux](https://github.com/space-physics/aeroplanets/workflows/ci_linux/badge.svg)
+![mac](https://github.com/space-physics/aeroplanets/workflows/ci_mac/badge.svg)
 
 is from
 [Guillaume Gronoff](https://scholar.google.com/citations?user=e2RfvmYAAAAJ)

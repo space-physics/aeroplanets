@@ -1,4 +1,4 @@
-name: ci_cmake
+name: ci_linux
 
 on:
   push:
@@ -13,19 +13,6 @@ on:
 
 
 jobs:
-
-  macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - run: brew install lapack boost
-
-    - run: ctest -S setup.cmake -VV
-      env:
-        FC: gfortran-9
-        CC: gcc-9
-        CXX: g++-9
 
   linux:
     runs-on: ubuntu-latest

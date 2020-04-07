@@ -4,6 +4,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 project(trans++
 LANGUAGES C CXX Fortran)
+enable_testing()
 
 include(cmake/compilers.cmake)
 
@@ -19,13 +20,18 @@ add_subdirectory(src)
 set(_intlibs atmo chem dgphiv disort earth eflux elecimpact emit iri mars mathfun observ phflux photo planet protocos proton scixml species tinyxpath titan venus)
 
 add_executable(aero1d src/main/main.cpp)
-target_link_libraries(aero1d ${_intlibs})
+target_link_libraries(aero1d ${_intlibs} Boost::headers Boost::regex)
 target_include_directories(aero1d PRIVATE src)
 
 add_executable(aerochem src/chemsimu/main.cpp)
-target_link_libraries(aerochem ${_intlibs})
+target_link_libraries(aerochem ${_intlibs} Boost::headers Boost::regex)
 target_include_directories(aerochem PRIVATE src)
 
 add_executable(aerobranch src/computebranchphot/main.cpp)
-target_link_libraries(aerobranch PRIVATE ${_intlibs})
+target_link_libraries(aerobranch PRIVATE ${_intlibs} Boost::headers Boost::regex)
 target_include_directories(aerobranch PRIVATE src)
+
+# --- tests
+
+add_test(NAME Earth
+  COMMAND $<TARGET_FILE:aero1d> ${PROJECT_SOURCE_DIR}/data/Earth/AuroraEarthFairbanks.xml)
