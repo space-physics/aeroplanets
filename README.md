@@ -1,5 +1,7 @@
 # Trans++: C++ implementation of the Trans* programs.
 
+![ci_cmake](https://github.com/space-physics/aeroplanets/workflows/ci_cmake/badge.svg)
+
 is from
 [Guillaume Gronoff](https://scholar.google.com/citations?user=e2RfvmYAAAAJ)
 ([ORCID](https://orcid.org/0000-0002-0331-7076))
@@ -25,37 +27,34 @@ Inputs include:
 
 ## Prereqs
 
-The build system is CMake + GNU Make as are widely used in software development.
+The build system is CMake as are widely used in software development.
 
 * Mac:
 
     ```sh
-    brew install make cmake gcc boost openblas
+    brew install cmake gcc boost lapack
 
     brew install doxygen  # optional
     ```
 * Linux
 
     ```sh
-    apt install make g++ gfortran libopenblas-dev libboost-filesystem-dev libboost-regex-dev
+    apt install g++ gfortran liblapack-dev libboost-filesystem-dev libboost-regex-dev
 
     apt install doxygen graphviz  # optional
     ```
 
     Then [install CMake](https://github.com/scivision/cmake-utils) via cmake_setup.py
-* Windows: suggest [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
-   The Boost libraries currently don't work with Intel compilers and CMake on native Windows, so use WSL.
+* Windows: use [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
 
 Plotting uses Python and Matplotlib.
 
 ## Build
 
 ```sh
-cd build
+cmake -B build
 
-cmake ..
-
-cmake --build . -j2
+cmake --build build -j2
 ```
 
 Don't omit the `-j2` or the computer may crash during compile due to excess memory usage.

@@ -1,31 +1,31 @@
-cmake_minimum_required (VERSION 3.13)
+cmake_minimum_required (VERSION 3.15)
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Debug or Release")
 endif()
-project(trans++ CXX Fortran)
+project(trans++
+LANGUAGES C CXX Fortran)
 
 include(cmake/compilers.cmake)
 
-find_package(BLAS REQUIRED)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 
-if(WIN32 AND NOT BOOST_ROOT)
-  # Boost 1.70 on Windows doesn't yet work with CMake 3.14
-  set(BOOST_ROOT d:/boost_1_69_0)
-  set(BOOST_INCLUDEDIR d:/boost_1_69_0/boost)
-  set(BOOST_LIBRARYDIR d:/boost_1_69_0/lib64-msvc-14.1)
-endif()
+find_package(LAPACK REQUIRED)
+
+# often need to set BOOST_ROOT and similar in your .bashrc or ~/boost.ps1 etc.
 find_package(Boost REQUIRED COMPONENTS filesystem regex)
 
 add_subdirectory(src)
 
+set(_intlibs atmo chem dgphiv disort earth eflux elecimpact emit iri mars mathfun observ phflux photo planet protocos proton scixml species tinyxpath titan venus)
+
 add_executable(aero1d src/main/main.cpp)
-target_link_libraries(aero1d atmo)
+target_link_libraries(aero1d ${_intlibs})
 target_include_directories(aero1d PRIVATE src)
 
 add_executable(aerochem src/chemsimu/main.cpp)
-target_link_libraries(aerochem atmo)
+target_link_libraries(aerochem ${_intlibs})
 target_include_directories(aerochem PRIVATE src)
 
 add_executable(aerobranch src/computebranchphot/main.cpp)
-target_link_libraries(aerobranch PRIVATE atmo)
+target_link_libraries(aerobranch PRIVATE ${_intlibs})
 target_include_directories(aerobranch PRIVATE src)

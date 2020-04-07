@@ -1,7 +1,6 @@
+build*/
+
 .mypy_cache/
-*.svg
-*.png
-*.nc
 
 INSTALL
 autom4te.cache/
@@ -15,7 +14,6 @@ missing
 test-driver
 
 *.pyc
-*.h5
 
 dist/
 

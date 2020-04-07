@@ -1,0 +1,46 @@
+name: ci_cmake
+
+on:
+  push:
+    paths:
+      - "**.f90"
+      - "**.f"
+      - "**.cpp"
+      - "**.txt"
+      - "**.cmake"
+      - ".github/workflows/ci_cmake.yml"
+  pull_request:
+
+
+jobs:
+
+  macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: brew install lapack boost
+
+    - run: ctest -S setup.cmake -VV
+      env:
+        FC: gfortran-9
+        CC: gcc-9
+        CXX: g++-9
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+
+    - name: Install packages
+      run: |
+        sudo apt update -yq
+        sudo apt install -yq --no-install-recommends g++ gfortran liblapack-dev libboost-filesystem-dev libboost-regex-dev
+
+    - run: ctest -S setup.cmake -VV
+      env:
+        FC: gfortran
+        CC: gcc
