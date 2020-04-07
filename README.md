@@ -30,7 +30,7 @@ Inputs include:
 
 The build system is CMake as are widely used in software development.
 
-* Mac:
+* Mac: NOTE: at the moment this might have regex.hpp error, I don't have access to MacOS for now.
 
     ```sh
     brew install cmake gcc boost lapack

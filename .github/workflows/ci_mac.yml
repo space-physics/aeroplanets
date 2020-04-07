@@ -1,11 +1,13 @@
 name: ci_mac
+env:
+  CMAKE_GENERATOR: Ninja
 
 on:
   push:
     paths:
       - "**.txt"
       - "**.cmake"
-      - ".github/workflows/ci_cmake.yml"
+      - ".github/workflows/ci_mac.yml"
   pull_request:
 
 
@@ -16,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: brew install lapack boost
+    - run: brew install lapack boost ninja
 
     - run: ctest -S setup.cmake -VV
       env:

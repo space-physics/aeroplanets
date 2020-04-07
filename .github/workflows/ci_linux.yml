@@ -8,7 +8,7 @@ on:
       - "**.cpp"
       - "**.txt"
       - "**.cmake"
-      - ".github/workflows/ci_cmake.yml"
+      - ".github/workflows/ci_linux.yml"
   pull_request:
 
 
