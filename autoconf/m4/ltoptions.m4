@@ -1,1 +1,1 @@
-/usr/share/aclocal/ltoptions.m4
+C:/usr/share/aclocal/ltoptions.m4

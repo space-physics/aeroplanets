@@ -44,8 +44,6 @@ The build system is CMake as are widely used in software development.
 
     apt install doxygen graphviz  # optional
     ```
-
-    Then [install CMake](https://github.com/scivision/cmake-utils) via cmake_setup.py
 * Windows: use [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
 
 Plotting uses Python and Matplotlib.
@@ -55,10 +53,11 @@ Plotting uses Python and Matplotlib.
 ```sh
 cmake -B build
 
-cmake --build build -j2
+cmake --build build
 ```
 
-Don't omit the `-j2` or the computer may crash during compile due to excess memory usage.
+Compilation can use a few GB of RAM.
+if this becomes an issue, try using `cmake -B build -G Ninja` or specify `cmake --build build -j1`
 
 ## Usage
 

@@ -1,1 +1,1 @@
-/usr/share/aclocal/ltsugar.m4
+C:/usr/share/aclocal/ltsugar.m4
