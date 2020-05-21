@@ -9,26 +9,43 @@ is from
 of NASA, a former student of Pierre-louis Blelly, Transcar author.
 Michael Hirsch changed the broken autoconf build system to Cmake and redid the plotting utilities.
 
+![Aeroplanets production model](https://agupubs.onlinelibrary.wiley.com/cms/asset/1bd9c74b-3699-4cac-9791-41b811eec3cf/jgra21542-fig-0001.png)
 
-It builds easily with CMake.
-It can be compared with other models like
-[Glow](https://www.github.com/scivision/glowaurora) or
-[Transcar](https://www.github.com/scivision/transcar).
+![Aeroplanets emissions model](https://agupubs.onlinelibrary.wiley.com/cms/asset/ea187c33-c9f3-4ddc-baf1-16df3b840a22/jgra21542-fig-0002.png)
+
+Aeroplanets builds easily with CMake using Boost for C++.
+Aeroplanets can be compared with other models like
+[Glow](https://www.github.com/space-physics/glowaurora) or
+[Transcar](https://www.github.com/space-physics/transcar).
 
 The simulation is configured completely with XML.
 The runtime is similar to Transcar (3-5 minutes on a laptop).
 The output is text files, for which I have fast Python parsers that could dump to HDF5 etc. as desired.
-Over 70 output files are created per simulation, covering production rates for numerous neutral and ion species, column emissions from UV to IR, energy grid from 1 eV ~ 30 keV, effects of secondary electroncs are considered.
+
+Over 70 output files are created per simulation, covering:
+
+* production rates for numerous neutral and ion species
+* column emissions from UV to IR
+* energy grid from 1 eV..30 keV
+* effects of secondary electrons.
 
 Inputs include:
+
 * photon flux (photoionization)
 * proton flux (proton impact ionization)
 * electron flux (electron impact ioniziation) -- parameterization or read your e- flux file.
 
+Bibliography
+
+Aeroplanets was described in Section 2 of [JGRSP 2012](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2011JA016930).
+
+* [GRL 2014: precipitation of keV energetic oxygen ions at Mars](https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2014GL060902)
+* [Astronomy & Astrophysics 2011: Ionization processes in the atmosphere of Titan](https://www.aanda.org/articles/aa/abs/2011/05/aa15675-10/aa15675-10.html)
+
 
 ## Prereqs
 
-The build system is CMake as are widely used in software development.
+The build system is CMake.
 
 * Mac: NOTE: at the moment this might have regex.hpp error, I don't have access to MacOS for now.
 
@@ -57,24 +74,23 @@ cmake --build build
 ```
 
 Compilation can use a few GB of RAM.
-if this becomes an issue, try using `cmake -B build -G Ninja` or specify `cmake --build build -j1`
+if this becomes an issue, try using `cmake -B build -G Ninja` or if you don't have Ninja, specify `cmake --build build -j1`
 
 ## Usage
 
-NOTE: There is a bug where if the output directory doesn't exist,
-the problem just keeps computing,
-but doesn't write any output at all.
+NOTE: Trans++ has a bug where if the output directory doesn't exist,
+the program just keeps computing, but doesn't write any output at all.
 
 ### Aurora example
 
 From the aeroplanets/build/ directory:
 
-0. create the output directory, or no files will be output at all despite full simulation run
+1. create the output directory, or no files will be output at all despite full simulation run
 
    ```sh
    mkdir SortieAurora
    ```
-1. run sim
+2. run sim
 
    ```sh
    ./aero1d ../data/Earth/AuroraEarthFairbanks.xml
@@ -128,6 +144,7 @@ This is configured in the input XML file as follows:
 
 
 ## Plotting
+
 Several programs related to concurrent running of large numbers of simulations are in [utils/](./utils).
 Most users will simply use `Plot.py` to make line plots of text output files, using headers.
 
