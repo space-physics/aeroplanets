@@ -1,13 +1,21 @@
-# Trans++: C++ implementation of the Trans* programs.
+# Aeroplanets / Trans++: C++ implementation of the Trans* programs.
 
 ![linux](https://github.com/space-physics/aeroplanets/workflows/ci_linux/badge.svg)
 ![mac](https://github.com/space-physics/aeroplanets/workflows/ci_mac/badge.svg)
 
-is from
+Aeroplanets is by
 [Guillaume Gronoff](https://scholar.google.com/citations?user=e2RfvmYAAAAJ)
 ([ORCID](https://orcid.org/0000-0002-0331-7076))
 of NASA, a former student of Pierre-louis Blelly, Transcar author.
-Michael Hirsch changed the broken autoconf build system to Cmake and redid the plotting utilities.
+Michael Hirsch upgraded the original autoconf build system to CMake and redid the plotting utilities.
+Aeroplanets is a **1-D kinetic electron transport ionization and excitation model** for **aurora** and **airglow** on various planetary bodies including Earth, Venus, Mars and Titan, and has been used to help conceptualize thermospheres of exoplanets.
+Impact kinetics are simulated for electrons, protons, photons and cosmic rays.
+Transport of secondary particles and suprathermal electrons is also simulated.
+Aeroplanets incorporates several models including:
+
+* Trans4 (low energy proton model)
+* Trans-Venus-Mars
+
 
 ![Aeroplanets production model](https://agupubs.onlinelibrary.wiley.com/cms/asset/1bd9c74b-3699-4cac-9791-41b811eec3cf/jgra21542-fig-0001.png)
 ![Aeroplanets emissions model](https://agupubs.onlinelibrary.wiley.com/cms/asset/ea187c33-c9f3-4ddc-baf1-16df3b840a22/jgra21542-fig-0002.png)
@@ -26,20 +34,22 @@ Over 70 output files are created per simulation, covering:
 * production rates for numerous neutral and ion species
 * column emissions from UV to IR
 * energy grid from 1 eV..30 keV
-* effects of secondary electrons.
 
 Inputs include:
 
 * photon flux (photoionization)
 * proton flux (proton impact ionization)
-* electron flux (electron impact ioniziation) -- parameterization or read your e- flux file.
+* electron flux (electron impact ionization) -- parameterization or read your e- flux file.
 
 Bibliography
 
 Aeroplanets was described in Section 2 of [JGRSP 2012](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2011JA016930).
 
+* [JGRSP 2020: Atmospheric Escape Processes and Planetary Atmospheric Evolution](https://arxiv.org/pdf/2003.03231.pdf)
+* [JGRSP 2012: Mars airglow](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2011JA017308)
 * [GRL 2014: precipitation of keV energetic oxygen ions at Mars](https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2014GL060902)
 * [Astronomy & Astrophysics 2011: Ionization processes in the atmosphere of Titan](https://www.aanda.org/articles/aa/abs/2011/05/aa15675-10/aa15675-10.html)
+* [2019 master's thesis on Mars proton/hydrogen aurora](https://search.proquest.com/docview/2288851551)
 
 
 ## Prereqs
