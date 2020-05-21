@@ -10,7 +10,6 @@ of NASA, a former student of Pierre-louis Blelly, Transcar author.
 Michael Hirsch changed the broken autoconf build system to Cmake and redid the plotting utilities.
 
 ![Aeroplanets production model](https://agupubs.onlinelibrary.wiley.com/cms/asset/1bd9c74b-3699-4cac-9791-41b811eec3cf/jgra21542-fig-0001.png)
-
 ![Aeroplanets emissions model](https://agupubs.onlinelibrary.wiley.com/cms/asset/ea187c33-c9f3-4ddc-baf1-16df3b840a22/jgra21542-fig-0002.png)
 
 Aeroplanets builds easily with CMake using Boost for C++.
