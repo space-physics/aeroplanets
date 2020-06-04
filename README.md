@@ -70,7 +70,7 @@ The build system is CMake.
 
     apt install doxygen graphviz  # optional
     ```
-* Windows: use [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
+* Windows: use [MSYS2](http://localhost:1313/install-msys2-windows/) or [Windows Subsystem for Linux](https://www.scivision.dev/install-windows-subsystem-for-linux/)
 
 Plotting uses Python and Matplotlib.
 

@@ -1,5 +1,6 @@
 add_library(iri OBJECT Earth/iris12.f Earth/irif12.f Earth/msis90.f Earth/cira86_pour_iri12.f)
 target_compile_options(iri PRIVATE -w)
+target_compile_options(iri PRIVATE ${gcc10opts})
 
 add_library(earth OBJECT Earth/irimsis.cpp)
 target_link_libraries(earth PRIVATE iri)

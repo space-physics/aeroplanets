@@ -18,3 +18,8 @@ if(CMAKE_Fortran_COMPILER_ID STREQUAL Intel)
 elseif(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
   add_compile_options(-mtune=native)
 endif()
+
+unset(gcc10opts)
+if(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10)
+  set(gcc10opts -fallow-argument-mismatch)
+endif()
