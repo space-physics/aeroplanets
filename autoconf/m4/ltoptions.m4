@@ -1,1 +1,0 @@
-C:/usr/share/aclocal/ltoptions.m4
