@@ -8,8 +8,6 @@ on:
       - "**.txt"
       - "**.cmake"
       - ".github/workflows/ci_mac.yml"
-  pull_request:
-
 
 jobs:
 
