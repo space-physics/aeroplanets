@@ -21,7 +21,7 @@ target_include_directories(phflux PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 add_library(dgphiv OBJECT proton/fortran/dgphiv.f proton/fortran/expogk.f)
 
 add_library(proton OBJECT proton/proton.cpp)
-target_link_libraries(proton PRIVATE phflux dgphiv ${LAPACK_LIBRARIES})
+target_link_libraries(proton PRIVATE phflux dgphiv LAPACK::LAPACK)
 target_include_directories(proton PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory(planet)
