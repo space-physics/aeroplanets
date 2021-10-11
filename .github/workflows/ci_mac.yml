@@ -1,6 +1,8 @@
 name: ci_mac
+
 env:
   CMAKE_GENERATOR: Ninja
+  CMAKE_BUILD_TYPE: Release
 
 on:
   push:
@@ -20,6 +22,6 @@ jobs:
 
     - run: ctest -S setup.cmake -VV
       env:
-        FC: gfortran-9
-        CC: gcc-9
-        CXX: g++-9
+        FC: gfortran-111
+        CC: gcc-11
+        CXX: g++-11

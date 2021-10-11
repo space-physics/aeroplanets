@@ -1,5 +1,8 @@
 name: ci_linux
 
+env:
+  CMAKE_BUILD_TYPE: Release
+
 on:
   push:
     paths:
@@ -23,9 +26,6 @@ jobs:
     - name: Install packages
       run: |
         sudo apt update -yq
-        sudo apt install -yq --no-install-recommends g++ gfortran liblapack-dev libboost-filesystem-dev libboost-regex-dev
+        sudo apt install -yq --no-install-recommends liblapack-dev libboost-filesystem-dev libboost-regex-dev
 
     - run: ctest -S setup.cmake -VV
-      env:
-        FC: gfortran
-        CC: gcc
