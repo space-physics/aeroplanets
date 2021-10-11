@@ -22,6 +22,6 @@ jobs:
 
     - run: ctest -S setup.cmake -VV
       env:
-        FC: gfortran-111
+        FC: gfortran-11
         CC: gcc-11
         CXX: g++-11
